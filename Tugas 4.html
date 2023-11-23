@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>TUGAS 4 (Naive Bayes) &#8212; Data Mining</title>
-    
+    <title>Tugas 4 &#8212; PPW</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,355 +62,364 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas 4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="TUGAS 5 (Clustering K-Means) &amp; TUGAS 6 (Decision Tree" href="Tugas%205.html" />
-    <link rel="prev" title="TUGAS 3 (KNN)" href="Tugas%203.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+    <link rel="next" title="Tugas 5" href="Tugas%205.html" />
+    <link rel="prev" title="Crawling Viva" href="crawling_viva.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.jpeg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data Mining</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.jpeg" class="logo__image only-light" alt="PPW - Home"/>
+    <script>document.write(`<img src="_static/logo.jpeg" class="logo__image only-dark" alt="PPW - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Penambangan Data
+                    PPW
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Tugas%201.html">
-   <strong>
-    TUGAS 1
-   </strong>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tugas%202.html">
-   <strong>
-    TUGAS 2 (DISKRITASI)
-   </strong>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tugas%203.html">
-   <strong>
-    TUGAS 3 (KNN)
-   </strong>
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   <strong>
-    TUGAS 4 (Naive Bayes)
-   </strong>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tugas%205.html">
-   <strong>
-    TUGAS 5 (Clustering K-Means) &amp; TUGAS 6 (Decision Tree
-   </strong>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="UTS.html">
-   <strong>
-    UTS
-   </strong>
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tugas7.html">
-   Tugas 7
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tugas8.html">
-   Tugas 8
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%201%20PPW.html">Tugas 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%202%20PPW.html">Tugas 2</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas%203%20PPW.html">Tugas 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawling_viva.html">Crawling Viva</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%205.html">Tugas 5</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Tugas 4.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTugas 4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Tugas 4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTugas 4.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Tugas 4.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
+</div></div>
       
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
+    </div>
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
 </div>
+</div>
+              
+              
 
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tugas 4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>TUGAS 4 (Naive Bayes)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="tugas-4-naive-bayes">
-<h1><strong>TUGAS 4 (Naive Bayes)</strong><a class="headerlink" href="#tugas-4-naive-bayes" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tugas-4">
+<h1>Tugas 4<a class="headerlink" href="#tugas-4" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing the libraries</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/ApoorvRusia/Naive-Bayes-classification-on-Iris-dataset/master/iris.csv&#39;</span><span class="p">)</span>
-<span class="n">dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/pramdf042/PPW/main/crawling_viva_fix.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a08fa0c3-38b3-43be-a89f-766ac05e647b">
-    <div class="colab-df-container">
-      <div>
+  <div id="df-8357752b-b1a7-49b4-8954-8d673c4b7c17" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -416,53 +437,47 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sepal_length</th>
-      <th>sepal_width</th>
-      <th>petal_length</th>
-      <th>petal_width</th>
-      <th>species</th>
+      <th>Judul</th>
+      <th>Isi Berita</th>
+      <th>Link</th>
+      <th>Kategori</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>Terpopuler: Tentara Israel Frustasi Dihujat Wa...</td>
+      <td>Round Up – Perang Israel-Hamas di Jalur Gaza t...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660151...</td>
+      <td>nasional</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>Jadi Tersangka Pemerasan, Firli Bahuri Teranca...</td>
+      <td>Jakarta - Ketua Komisi Pemberantasan Korupsi (...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660272...</td>
+      <td>nasional</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>Firli Bahuri Ditetapkan Tersangka, Eks Pegawai...</td>
+      <td>Jakarta – Ketua wadah pegawai KPK Yudi Purnomo...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660271...</td>
+      <td>nasional</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>Kondisi Terkini 4 Korban Luka Kecelakaan Minib...</td>
+      <td>Surabaya – Empat korban luka berat dalam insid...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660237...</td>
+      <td>nasional</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>setosa</td>
+      <td>Polisi Segera Periksa Firli sebagai Tersangka ...</td>
+      <td>Jakarta- Polisi segera mengagendakan pemeriksa...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660268...</td>
+      <td>nasional</td>
     </tr>
     <tr>
       <th>...</th>
@@ -470,67 +485,61 @@ title="Print to PDF"
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>145</th>
-      <td>6.7</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.3</td>
-      <td>virginica</td>
+      <th>67</th>
+      <td>Firli Bahuri Resmi Jadi Tersangka Kasus Pemera...</td>
+      <td>Jakarta – Polda Metro Jaya menetapkan Ketua Ko...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660262...</td>
+      <td>kriminal</td>
     </tr>
     <tr>
-      <th>146</th>
-      <td>6.3</td>
-      <td>2.5</td>
-      <td>5.0</td>
-      <td>1.9</td>
-      <td>virginica</td>
+      <th>68</th>
+      <td>Jadi Tersangka Pemerasan, Firli Bahuri Teranca...</td>
+      <td>Jakarta - Ketua Komisi Pemberantasan Korupsi (...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660272...</td>
+      <td>kriminal</td>
     </tr>
     <tr>
-      <th>147</th>
-      <td>6.5</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.0</td>
-      <td>virginica</td>
+      <th>69</th>
+      <td>Kronologi Lengkap Kasus Mutilasi Mahasiswa UMY</td>
+      <td>Yogyakarta – Dua terdakwa kasus mutilasi terha...</td>
+      <td>https://www.viva.co.id/berita/kriminal/1660261...</td>
+      <td>kriminal</td>
     </tr>
     <tr>
-      <th>148</th>
-      <td>6.2</td>
-      <td>3.4</td>
-      <td>5.4</td>
-      <td>2.3</td>
-      <td>virginica</td>
+      <th>70</th>
+      <td>Firli Bahuri Ditetapkan Tersangka, Eks Pegawai...</td>
+      <td>Jakarta – Ketua wadah pegawai KPK Yudi Purnomo...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660271...</td>
+      <td>kriminal</td>
     </tr>
     <tr>
-      <th>149</th>
-      <td>5.9</td>
-      <td>3.0</td>
-      <td>5.1</td>
-      <td>1.8</td>
-      <td>virginica</td>
+      <th>71</th>
+      <td>Tutupi Wajah Seperti Ninja, Caleg PKB Ngamuk S...</td>
+      <td>Pasuruan – Seorang Caleg muda PKB Kabupaten Pa...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660212...</td>
+      <td>kriminal</td>
     </tr>
   </tbody>
 </table>
-<p>150 rows × 5 columns</p>
+<p>72 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-a08fa0c3-38b3-43be-a89f-766ac05e647b')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8357752b-b1a7-49b4-8954-8d673c4b7c17')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
-      </button>
-
+    </button>
+    
   <style>
     .colab-df-container {
       display:flex;
-      flex-wrap:wrap;
       gap: 12px;
     }
 
@@ -552,6 +561,10 @@ title="Print to PDF"
       fill: #174EA6;
     }
 
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
     [theme=dark] .colab-df-convert {
       background-color: #3B4455;
       fill: #D2E3FC;
@@ -565,158 +578,732 @@ title="Print to PDF"
     }
   </style>
 
-      <script>
-        const buttonEl =
-          document.querySelector('#df-a08fa0c3-38b3-43be-a89f-766ac05e647b button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
+    <script>
+      const buttonEl =
+        document.querySelector('#df-8357752b-b1a7-49b4-8954-8d673c4b7c17 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
 
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-a08fa0c3-38b3-43be-a89f-766ac05e647b');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-8357752b-b1a7-49b4-8954-8d673c4b7c17');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
 
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
     </div>
   </div>
-</div></div>
+  </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Spliting the dataset in independent and dependent variables</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Splitting the dataset into the Training set and Test set</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">82</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Feature Scaling to bring the variable in a single scale</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fitting Naive Bayes Classification to the Training set with linear kernel</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="n">nvclassifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">nvclassifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GaussianNB()
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul         0
+Isi Berita    0
+Link          0
+Kategori      0
+dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicting the Test set results</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">nvclassifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;virginica&#39; &#39;virginica&#39; &#39;setosa&#39; &#39;setosa&#39; &#39;setosa&#39; &#39;virginica&#39;
- &#39;versicolor&#39; &#39;versicolor&#39; &#39;versicolor&#39; &#39;versicolor&#39; &#39;versicolor&#39;
- &#39;virginica&#39; &#39;setosa&#39; &#39;setosa&#39; &#39;setosa&#39; &#39;setosa&#39; &#39;virginica&#39; &#39;versicolor&#39;
- &#39;setosa&#39; &#39;versicolor&#39; &#39;setosa&#39; &#39;virginica&#39; &#39;setosa&#39; &#39;virginica&#39;
- &#39;virginica&#39; &#39;versicolor&#39; &#39;virginica&#39; &#39;setosa&#39; &#39;virginica&#39; &#39;versicolor&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul         0
+Isi Berita    0
+Link          0
+Kategori      0
+dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#lets see the actual and predicted value side by side</span>
-<span class="n">y_compare</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_pred</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
-<span class="c1">#actual value on the left side and predicted value on the right hand side</span>
-<span class="c1">#printing the top 5 values</span>
-<span class="n">y_compare</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;virginica&#39;, &#39;virginica&#39;],
-       [&#39;virginica&#39;, &#39;virginica&#39;],
-       [&#39;setosa&#39;, &#39;setosa&#39;],
-       [&#39;setosa&#39;, &#39;setosa&#39;],
-       [&#39;setosa&#39;, &#39;setosa&#39;]], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(72, 4)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Making the Confusion Matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[11  0  0]
- [ 0  8  1]
- [ 0  1  9]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#finding accuracy from the confusion matrix.</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">corrPred</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">falsePred</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cleaning</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s.?!,]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">text</span>
 
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
-            <span class="n">corrPred</span> <span class="o">+=</span><span class="n">cm</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">c</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">falsePred</span> <span class="o">+=</span> <span class="n">cm</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">c</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correct predictions: &#39;</span><span class="p">,</span> <span class="n">corrPred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;False predictions&#39;</span><span class="p">,</span> <span class="n">falsePred</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Accuracy of the Naive Bayes Clasification is: &#39;</span><span class="p">,</span> <span class="n">corrPred</span><span class="o">/</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Isi Berita&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cleaning</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Correct predictions:  28
-False predictions 2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     Round Up  Perang IsraelHamas di Jalur Gaza ter...
+1     Jakarta  Ketua Komisi Pemberantasan Korupsi KP...
+2     Jakarta  Ketua wadah pegawai KPK Yudi Purnomo ...
+3     Surabaya  Empat korban luka berat dalam inside...
+4     Jakarta Polisi segera mengagendakan pemeriksaa...
+                            ...                        
+67    Jakarta  Polda Metro Jaya menetapkan Ketua Kom...
+68    Jakarta  Ketua Komisi Pemberantasan Korupsi KP...
+69    Yogyakarta  Dua terdakwa kasus mutilasi terhad...
+70    Jakarta  Ketua wadah pegawai KPK Yudi Purnomo ...
+71    Pasuruan  Seorang Caleg muda PKB Kabupaten Pas...
+Name: Cleaning, Length: 72, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     [round up  perang israelhamas di jalur gaza te...
+1     [jakarta  ketua komisi pemberantasan korupsi k...
+2     [jakarta  ketua wadah pegawai kpk yudi purnomo...
+3     [surabaya  empat korban luka berat dalam insid...
+4     [jakarta polisi segera mengagendakan pemeriksa...
+                            ...                        
+67    [jakarta  polda metro jaya menetapkan ketua ko...
+68    [jakarta  ketua komisi pemberantasan korupsi k...
+69    [yogyakarta  dua terdakwa kasus mutilasi terha...
+70    [jakarta  ketua wadah pegawai kpk yudi purnomo...
+71    [pasuruan  seorang caleg muda pkb kabupaten pa...
+Name: Tokenizing, Length: 72, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">graph_cosine_sim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.11</span><span class="p">):</span>
+  <span class="c1"># TFIDF</span>
+  <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+  <span class="n">tfidf</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">cos_sim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)</span>
+  <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 
-Accuracy of the Naive Bayes Clasification is:  0.9333333333333333
+  <span class="c1"># Mengisi nilai similarity antara kalimat ke dalam edges (Garis Penghubung)</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+      <span class="n">sim</span> <span class="o">=</span> <span class="n">cos_sim</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">sim</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">G</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">):</span>
+  <span class="c1"># Menggambar graf dengan canvas yang diperbesar</span>
+  <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c1"># Menentukan posisi simpul</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Menentukan ukuran canvas</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+  <span class="c1"># Menggambar graf dengan ukuran canvas yang diperbesar</span>
+  <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+  <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">summarization</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span> <span class="n">show_centrality</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="c1"># Memasukkan Nilai Cosine Similirity ke dalam Graph</span>
+  <span class="n">G</span> <span class="o">=</span> <span class="n">graph_cosine_sim</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+
+  <span class="c1"># Menghitung nilai dari closeness centrality</span>
+  <span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">show_centrality</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai Closeness Centrality Dokumen Ke - </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">centrality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="c1"># Menyusun Kalimat berdasarkan nilai Closeness Centrality tertinggi dan lebih dari treshold</span>
+  <span class="n">centrality</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">centrality</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span> <span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+  <span class="n">summary_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">centr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">centrality</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+      <span class="n">summary_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">centr</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">summary_sentences</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="p">,</span> <span class="n">G</span> <span class="o">=</span> <span class="n">summarization</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tokenizing&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">show_centrality</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai Closeness Centrality Dokumen Ke - 1 : {0: 0.16666666666666666, 3: 0.25, 4: 0.16666666666666666, 10: 0.3125, 18: 0.5208333333333334, 12: 0.390625, 13: 0.2604166666666667, 14: 0.3125, 16: 0.3125}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;selengkapnya di tautan ini selengkapnya di tautan ini&#39;,
+ &#39;dua bocah yang masih duduk di sekolah dasar asal kabupaten sampang, madura, nekat mengendarai sepeda motor ke jakarta. selengkapnya di tautan ini&#39;,
+ &#39;koordinator masyarakat anti korupsi maki boyamin saiman menyebutkan kalau ketua kpk firli bahuri berbohong ketika dirinya menjelaskan mobilnya hilang saat rampung menjalani pemeriksaan di bareskrim polri. selengkapnya di tautan ini&#39;,
+ &#39;perdebatan sengit terjadi dengan melibatkan poliitkus pdi perjuangan pdip guntur romli dengan pengamat sekaligus direktur eksekutif indo barometer m. qodari. selengkapnya di tautan ini&#39;,
+ &#39;pasangan capres dan cawapres nomor urut 1, anies baswdanmuhaimin iskandar amin kembali mengumumkan formasi timnas pemenangannya.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/69cc216a5317c36c983a17904d28c95e96d64aaf6845973ac4ff014462859a6b.png" src="_images/69cc216a5317c36c983a17904d28c95e96d64aaf6845973ac4ff014462859a6b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Summary&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span> <span class="p">:</span> <span class="n">summarization</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">show_centrality</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai Closeness Centrality Dokumen Ke - 1 : {0: 0.3888888888888889, 1: 0.34146341463414637, 3: 0.32558139534883723, 6: 0.4, 9: 0.28, 4: 0.25, 5: 0.22950819672131148, 8: 0.1891891891891892, 18: 0.3888888888888889, 10: 0.2857142857142857, 12: 0.2978723404255319, 13: 0.23333333333333334, 14: 0.2978723404255319, 15: 0.23333333333333334, 16: 0.2857142857142857}
+Nilai Closeness Centrality Dokumen Ke - 2 : {0: 0.6153846153846154, 1: 0.4444444444444444, 3: 0.47058823529411764, 6: 0.5, 7: 0.6153846153846154, 2: 0.32, 8: 0.4444444444444444, 4: 0.3333333333333333, 5: 0.4}
+Nilai Closeness Centrality Dokumen Ke - 3 : {0: 0.7142857142857143, 2: 0.5555555555555556, 3: 0.8333333333333334, 5: 0.7142857142857143, 1: 0.45454545454545453, 4: 0.5}
+Nilai Closeness Centrality Dokumen Ke - 4 : {0: 0.6956521739130435, 1: 0.64, 2: 0.64, 3: 0.64, 7: 0.6666666666666666, 9: 0.5925925925925926, 10: 0.5161290322580645, 11: 0.47058823529411764, 13: 0.47058823529411764, 15: 0.5333333333333333, 16: 0.47058823529411764, 5: 0.45714285714285713, 6: 0.5, 8: 0.5161290322580645, 12: 0.5517241379310345, 4: 0.43243243243243246, 14: 0.36363636363636365}
+Nilai Closeness Centrality Dokumen Ke - 5 : {0: 1.0, 2: 1.0, 3: 1.0}
+Nilai Closeness Centrality Dokumen Ke - 6 : {0: 0.6666666666666666, 1: 1.0, 6: 0.8, 2: 0.5714285714285714, 4: 0.6666666666666666}
+Nilai Closeness Centrality Dokumen Ke - 7 : {0: 0.4067796610169492, 3: 0.34782608695652173, 7: 0.42105263157894735, 20: 0.46153846153846156, 1: 0.375, 15: 0.47058823529411764, 17: 0.4067796610169492, 19: 0.5, 2: 0.4067796610169492, 6: 0.39344262295081966, 11: 0.43636363636363634, 12: 0.2926829268292683, 14: 0.48, 4: 0.2608695652173913, 18: 0.41379310344827586, 24: 0.3116883116883117, 5: 0.4, 9: 0.375, 8: 0.4528301886792453, 21: 0.3870967741935484, 22: 0.36923076923076925, 13: 0.5, 10: 0.2823529411764706, 16: 0.4897959183673469, 23: 0.38095238095238093}
+Nilai Closeness Centrality Dokumen Ke - 8 : {0: 0.5909090909090909, 1: 0.41935483870967744, 3: 0.38235294117647056, 7: 0.7222222222222222, 8: 0.5, 11: 0.5652173913043478, 5: 0.5, 6: 0.5, 9: 0.43333333333333335, 10: 0.48148148148148145, 13: 0.4642857142857143, 15: 0.4642857142857143, 14: 0.37142857142857144, 12: 0.325}
+Nilai Closeness Centrality Dokumen Ke - 9 : {0: 0.6923076923076923, 1: 0.45, 4: 0.6428571428571429, 5: 0.5625, 6: 0.45, 7: 0.6, 9: 0.6428571428571429, 2: 0.5294117647058824, 3: 0.36, 8: 0.45}
+Nilai Closeness Centrality Dokumen Ke - 10 : {0: 0.45454545454545453, 1: 0.43478260869565216, 2: 0.42857142857142855, 3: 0.40540540540540543, 5: 0.4411764705882353, 6: 0.379746835443038, 25: 0.38961038961038963, 4: 0.379746835443038, 15: 0.46875, 16: 0.45454545454545453, 22: 0.44776119402985076, 23: 0.5172413793103449, 10: 0.375, 20: 0.5084745762711864, 28: 0.3614457831325301, 9: 0.46153846153846156, 21: 0.46153846153846156, 24: 0.38961038961038963, 11: 0.3157894736842105, 13: 0.40540540540540543, 7: 0.36585365853658536, 8: 0.4918032786885246, 29: 0.29411764705882354, 12: 0.297029702970297, 18: 0.297029702970297, 19: 0.297029702970297, 26: 0.2912621359223301, 14: 0.38961038961038963, 32: 0.2830188679245283, 17: 0.3157894736842105, 30: 0.2830188679245283}
+Nilai Closeness Centrality Dokumen Ke - 11 : {0: 0.5769230769230769, 1: 0.5, 2: 0.6521739130434783, 3: 0.75, 4: 0.6, 6: 0.6818181818181818, 9: 0.5357142857142857, 10: 0.5769230769230769, 5: 0.5769230769230769, 8: 0.625, 13: 0.5769230769230769, 12: 0.6, 7: 0.375, 11: 0.4838709677419355, 14: 0.42857142857142855, 15: 0.38461538461538464}
+Nilai Closeness Centrality Dokumen Ke - 12 : {0: 0.3918918918918919, 2: 0.4084507042253521, 15: 0.5178571428571429, 21: 0.4142857142857143, 1: 0.30526315789473685, 19: 0.32222222222222224, 24: 0.4027777777777778, 3: 0.4264705882352941, 17: 0.47540983606557374, 25: 0.38666666666666666, 16: 0.5087719298245614, 28: 0.35802469135802467, 29: 0.4393939393939394, 4: 0.31521739130434784, 5: 0.3815789473684211, 11: 0.4142857142857143, 6: 0.4393939393939394, 26: 0.47540983606557374, 7: 0.29896907216494845, 8: 0.31521739130434784, 9: 0.29591836734693877, 10: 0.3118279569892473, 22: 0.3670886075949367, 23: 0.5087719298245614, 12: 0.35365853658536583, 13: 0.29, 14: 0.4603174603174603, 20: 0.3972602739726027, 18: 0.4393939393939394, 27: 0.42028985507246375}
+Nilai Closeness Centrality Dokumen Ke - 13 : {0: 0.3699300699300699, 1: 0.3989441930618401, 18: 0.4152276295133438, 19: 0.4844322344322345, 7: 0.3989441930618401, 9: 0.3699300699300699, 10: 0.3912721893491124, 13: 0.4624125874125874, 3: 0.27494802494802495, 4: 0.47316636851520566, 5: 0.3838896952104499, 23: 0.3699300699300699, 6: 0.2865655471289274, 11: 0.4423076923076923, 8: 0.3036739380022962, 12: 0.3989441930618401, 27: 0.3699300699300699, 16: 0.3989441930618401, 14: 0.2787144362486828, 15: 0.05128205128205128, 20: 0.07692307692307693, 17: 0.05128205128205128, 21: 0.35079575596816975, 22: 0.3229548229548229, 25: 0.3229548229548229, 24: 0.2642357642357642, 28: 0.31301775147928995}
+Nilai Closeness Centrality Dokumen Ke - 14 : {0: 0.5555555555555556, 2: 0.6451612903225806, 9: 0.5405405405405406, 10: 0.5555555555555556, 13: 0.45454545454545453, 14: 0.6060606060606061, 18: 0.5882352941176471, 20: 0.5882352941176471, 1: 0.5882352941176471, 4: 0.7142857142857143, 12: 0.5405405405405406, 15: 0.38461538461538464, 16: 0.47619047619047616, 21: 0.38461538461538464, 3: 0.5, 6: 0.5128205128205128, 7: 0.4878048780487805, 5: 0.43478260869565216, 8: 0.4878048780487805, 11: 0.43478260869565216, 17: 0.37735849056603776}
+Nilai Closeness Centrality Dokumen Ke - 15 : {0: 0.36363636363636365, 4: 0.45454545454545453, 12: 0.37735849056603776, 26: 0.49382716049382713, 34: 0.37735849056603776, 1: 0.43010752688172044, 6: 0.43010752688172044, 10: 0.43478260869565216, 14: 0.36036036036036034, 16: 0.38461538461538464, 25: 0.3076923076923077, 27: 0.41237113402061853, 2: 0.40404040404040403, 24: 0.2898550724637681, 39: 0.3448275862068966, 42: 0.43478260869565216, 3: 0.37735849056603776, 7: 0.36036036036036034, 36: 0.27586206896551724, 31: 0.35714285714285715, 33: 0.3305785123966942, 5: 0.2857142857142857, 38: 0.29411764705882354, 19: 0.37735849056603776, 9: 0.36036036036036034, 20: 0.3448275862068966, 21: 0.37383177570093457, 28: 0.38095238095238093, 8: 0.18018018018018017, 11: 0.2185792349726776, 13: 0.273972602739726, 15: 0.2777777777777778, 22: 0.35714285714285715, 17: 0.28776978417266186, 32: 0.36363636363636365, 18: 0.3508771929824561, 30: 0.2898550724637681, 40: 0.27586206896551724, 41: 0.3252032520325203, 29: 0.23668639053254437, 35: 0.27586206896551724}
+Nilai Closeness Centrality Dokumen Ke - 16 : {0: 0.625, 1: 0.45454545454545453, 2: 0.625, 7: 0.7142857142857143, 9: 0.7692307692307693, 10: 0.5263157894736842, 8: 0.5555555555555556, 3: 0.5882352941176471, 4: 0.625, 5: 0.6666666666666666, 6: 0.4166666666666667}
+Nilai Closeness Centrality Dokumen Ke - 17 : {0: 0.6410256410256411, 2: 0.6410256410256411, 3: 0.6944444444444445, 4: 0.5208333333333334, 5: 0.8333333333333334, 6: 0.5952380952380952, 8: 0.6410256410256411, 11: 0.5208333333333334, 1: 0.08333333333333333, 7: 0.08333333333333333, 9: 0.6410256410256411, 10: 0.5952380952380952, 12: 0.462962962962963}
+Nilai Closeness Centrality Dokumen Ke - 18 : {0: 0.45714285714285713, 5: 0.5818181818181819, 9: 0.5818181818181819, 11: 0.49230769230769234, 1: 0.3368421052631579, 2: 0.45714285714285713, 4: 0.45714285714285713, 3: 0.4, 6: 0.1, 12: 0.1, 7: 0.32000000000000006}
+Nilai Closeness Centrality Dokumen Ke - 19 : {0: 0.6666666666666666, 1: 0.5263157894736842, 2: 0.6666666666666666, 3: 0.5882352941176471, 5: 0.625, 7: 0.5263157894736842, 10: 0.6666666666666666, 6: 0.625, 9: 0.47619047619047616, 4: 0.47619047619047616, 8: 0.45454545454545453}
+Nilai Closeness Centrality Dokumen Ke - 20 : {0: 0.6923076923076923, 1: 0.45, 4: 0.6428571428571429, 5: 0.5625, 6: 0.45, 7: 0.6, 9: 0.6428571428571429, 2: 0.5294117647058824, 3: 0.36, 8: 0.45}
+Nilai Closeness Centrality Dokumen Ke - 21 : {0: 0.6153846153846154, 1: 0.4444444444444444, 3: 0.47058823529411764, 6: 0.5, 7: 0.6153846153846154, 2: 0.32, 8: 0.4444444444444444, 4: 0.3333333333333333, 5: 0.4}
+Nilai Closeness Centrality Dokumen Ke - 22 : {0: 0.7142857142857143, 2: 0.5555555555555556, 3: 0.8333333333333334, 5: 0.7142857142857143, 1: 0.45454545454545453, 4: 0.5}
+Nilai Closeness Centrality Dokumen Ke - 23 : {0: 0.5666666666666667, 2: 0.4533333333333333, 3: 0.4358974358974359, 5: 0.53125, 9: 0.5, 11: 0.6296296296296297, 12: 0.5862068965517241, 15: 0.6181818181818182, 20: 0.7391304347826086, 35: 0.4857142857142857, 16: 0.6415094339622641, 23: 0.5483870967741935, 4: 0.4722222222222222, 6: 0.37362637362637363, 7: 0.5230769230769231, 13: 0.5396825396825397, 29: 0.7083333333333334, 18: 0.5396825396825397, 25: 0.4788732394366197, 8: 0.4722222222222222, 10: 0.40963855421686746, 14: 0.5074626865671642, 33: 0.53125, 22: 0.4594594594594595, 17: 0.5964912280701754, 24: 0.6415094339622641, 27: 0.68, 28: 0.5, 30: 0.5862068965517241, 19: 0.5573770491803278, 26: 0.5396825396825397, 21: 0.5396825396825397, 31: 0.5396825396825397, 32: 0.5151515151515151, 36: 0.4722222222222222}
+Nilai Closeness Centrality Dokumen Ke - 24 : {0: 0.45454545454545453, 1: 0.43478260869565216, 2: 0.42857142857142855, 3: 0.40540540540540543, 5: 0.4411764705882353, 6: 0.379746835443038, 25: 0.38961038961038963, 4: 0.379746835443038, 15: 0.46875, 16: 0.45454545454545453, 22: 0.44776119402985076, 23: 0.5172413793103449, 10: 0.375, 20: 0.5084745762711864, 28: 0.3614457831325301, 9: 0.46153846153846156, 21: 0.46153846153846156, 24: 0.38961038961038963, 11: 0.3157894736842105, 13: 0.40540540540540543, 7: 0.36585365853658536, 8: 0.4918032786885246, 29: 0.29411764705882354, 12: 0.297029702970297, 18: 0.297029702970297, 19: 0.297029702970297, 26: 0.2912621359223301, 14: 0.38961038961038963, 32: 0.2830188679245283, 17: 0.3157894736842105, 30: 0.2830188679245283}
+Nilai Closeness Centrality Dokumen Ke - 25 : {0: 0.5789473684210527, 1: 0.6470588235294118, 2: 0.55, 3: 0.6875, 9: 0.55, 5: 0.6875, 8: 0.55, 11: 0.5789473684210527, 4: 0.55, 7: 0.5238095238095238, 10: 0.6875, 6: 0.4230769230769231}
+Nilai Closeness Centrality Dokumen Ke - 26 : {0: 0.4222222222222222, 1: 0.5277777777777778, 5: 0.5, 12: 0.48717948717948717, 3: 0.6129032258064516, 9: 0.5428571428571428, 11: 0.48717948717948717, 14: 0.5588235294117647, 2: 0.5588235294117647, 10: 0.4523809523809524, 15: 0.5135135135135135, 16: 0.6333333333333333, 18: 0.4523809523809524, 7: 0.40425531914893614, 8: 0.4634146341463415, 17: 0.5277777777777778, 4: 0.38, 20: 0.41304347826086957, 13: 0.31666666666666665, 19: 0.296875}
+Nilai Closeness Centrality Dokumen Ke - 27 : {0: 0.4, 1: 0.5052631578947369, 2: 0.5052631578947369, 3: 0.3310344827586207, 6: 0.45714285714285713, 4: 0.48, 13: 0.45714285714285713, 5: 0.36923076923076925, 11: 0.4, 12: 0.3096774193548387, 10: 0.35555555555555557, 9: 0.08888888888888888, 16: 0.13333333333333333, 14: 0.34285714285714286, 15: 0.384, 17: 0.08888888888888888}
+Nilai Closeness Centrality Dokumen Ke - 28 : {0: 0.7, 1: 0.7777777777777778, 4: 0.5, 5: 0.7, 7: 0.875, 2: 0.6363636363636364, 3: 0.5384615384615384, 6: 0.5384615384615384}
+Nilai Closeness Centrality Dokumen Ke - 29 : {0: 0.5185185185185185, 1: 0.4375, 2: 0.6086956521739131, 3: 0.4666666666666667, 6: 0.5833333333333334, 8: 0.5384615384615384, 9: 0.4666666666666667, 11: 0.4827586206896552, 14: 0.5, 4: 0.358974358974359, 5: 0.4, 10: 0.45161290322580644, 12: 0.3333333333333333, 7: 0.4827586206896552, 13: 0.358974358974359}
+Nilai Closeness Centrality Dokumen Ke - 30 : {0: 0.14285714285714285, 4: 0.14285714285714285, 1: 0.5102040816326531, 2: 0.44642857142857145, 5: 0.44642857142857145, 6: 0.39682539682539686, 8: 0.3246753246753247, 7: 0.27472527472527475}
+Nilai Closeness Centrality Dokumen Ke - 31 : {0: 0.5555555555555556, 1: 0.625, 2: 0.4166666666666667, 5: 0.5882352941176471, 7: 0.625, 4: 0.5882352941176471, 6: 0.7142857142857143, 8: 0.5555555555555556, 3: 0.37037037037037035, 9: 0.5263157894736842, 10: 0.35714285714285715}
+Nilai Closeness Centrality Dokumen Ke - 32 : {0: 0.3125, 10: 0.43478260869565216, 1: 0.4166666666666667, 3: 0.5263157894736842, 9: 0.47619047619047616, 2: 0.4166666666666667, 5: 0.625, 6: 0.4166666666666667, 4: 0.38461538461538464, 8: 0.2857142857142857, 7: 0.3333333333333333}
+Nilai Closeness Centrality Dokumen Ke - 33 : {0: 0.4222222222222222, 1: 0.5757575757575758, 2: 0.5277777777777778, 11: 0.4523809523809524, 9: 0.5588235294117647, 13: 0.5588235294117647, 14: 0.48717948717948717, 15: 0.5588235294117647, 17: 0.5588235294117647, 3: 0.3333333333333333, 4: 0.4523809523809524, 6: 0.5135135135135135, 8: 0.48717948717948717, 21: 0.3958333333333333, 5: 0.4318181818181818, 19: 0.475, 7: 0.31666666666666665, 12: 0.40425531914893614, 20: 0.40425531914893614, 16: 0.4523809523809524}
+Nilai Closeness Centrality Dokumen Ke - 34 : {0: 0.42, 2: 0.45652173913043476, 3: 0.5675675675675675, 8: 0.4772727272727273, 1: 0.42, 7: 0.5, 9: 0.375, 13: 0.44680851063829785, 18: 0.5526315789473685, 4: 0.4666666666666667, 10: 0.4883720930232558, 14: 0.5121951219512195, 21: 0.525, 20: 0.5121951219512195, 5: 0.3442622950819672, 6: 0.38181818181818183, 16: 0.4772727272727273, 11: 0.6363636363636364, 19: 0.5675675675675675, 12: 0.375, 17: 0.375, 15: 0.328125}
+Nilai Closeness Centrality Dokumen Ke - 35 : {0: 0.43243243243243246, 1: 0.32, 4: 0.34782608695652173, 5: 0.47058823529411764, 13: 0.3076923076923077, 15: 0.43243243243243246, 2: 0.3902439024390244, 8: 0.34782608695652173, 12: 0.4444444444444444, 18: 0.2711864406779661, 6: 0.3076923076923077, 7: 0.35555555555555557, 9: 0.27586206896551724, 14: 0.3404255319148936, 10: 0.2191780821917808, 11: 0.3137254901960784, 17: 0.21621621621621623}
+Nilai Closeness Centrality Dokumen Ke - 36 : {1: 0.3974358974358974, 20: 0.5535714285714286, 24: 0.4492753623188406, 31: 0.31, 2: 0.5961538461538461, 4: 0.543859649122807, 5: 0.5081967213114754, 8: 0.484375, 10: 0.3780487804878049, 22: 0.5081967213114754, 23: 0.4626865671641791, 25: 0.5166666666666667, 28: 0.484375, 29: 0.44285714285714284, 30: 0.47692307692307695, 33: 0.4492753623188406, 6: 0.4492753623188406, 9: 0.484375, 17: 0.4025974025974026, 18: 0.49206349206349204, 7: 0.543859649122807, 11: 0.47692307692307695, 15: 0.4696969696969697, 32: 0.40789473684210525, 13: 0.44285714285714284, 14: 0.4246575342465753, 26: 0.44285714285714284, 12: 0.4025974025974026, 16: 0.4492753623188406, 19: 0.34831460674157305, 21: 0.4626865671641791, 27: 0.4025974025974026}
+Nilai Closeness Centrality Dokumen Ke - 37 : {0: 0.5142857142857142, 1: 0.5294117647058824, 2: 0.5806451612903226, 3: 0.5294117647058824, 5: 0.5806451612903226, 13: 0.5625, 14: 0.4864864864864865, 17: 0.34615384615384615, 18: 0.4864864864864865, 4: 0.47368421052631576, 7: 0.5625, 6: 0.36, 10: 0.5294117647058824, 11: 0.42857142857142855, 12: 0.3829787234042553, 8: 0.28125, 9: 0.35294117647058826, 15: 0.3829787234042553, 20: 0.28125}
+Nilai Closeness Centrality Dokumen Ke - 38 : {0: 0.5333333333333333, 1: 0.49230769230769234, 2: 0.7111111111111111, 7: 0.3368421052631579, 8: 0.5818181818181819, 5: 0.4, 6: 0.4266666666666667, 9: 0.49230769230769234, 10: 0.45714285714285713, 3: 0.1, 4: 0.1}
+Nilai Closeness Centrality Dokumen Ke - 39 : {0: 0.75, 2: 0.75, 5: 1.0, 7: 0.6}
+Nilai Closeness Centrality Dokumen Ke - 40 : {0: 0.625, 3: 1.0, 5: 0.625, 1: 0.625, 2: 0.625, 4: 0.5555555555555556}
+Nilai Closeness Centrality Dokumen Ke - 41 : {0: 0.46022727272727276, 1: 0.4909090909090909, 2: 0.3681818181818182, 4: 0.5259740259740261, 3: 0.3875598086124402, 6: 0.43315508021390375, 8: 0.29454545454545455, 9: 0.4090909090909091, 10: 0.3875598086124402, 5: 0.09090909090909091, 7: 0.09090909090909091, 11: 0.29454545454545455}
+Nilai Closeness Centrality Dokumen Ke - 42 : {0: 0.4782608695652174, 1: 0.4, 8: 0.5116279069767442, 13: 0.5, 15: 0.5116279069767442, 17: 0.5365853658536586, 18: 0.4782608695652174, 2: 0.46808510638297873, 5: 0.5, 7: 0.41509433962264153, 3: 0.38596491228070173, 11: 0.41509433962264153, 14: 0.39285714285714285, 21: 0.4583333333333333, 4: 0.36666666666666664, 6: 0.41509433962264153, 12: 0.3492063492063492, 20: 0.5945945945945946, 19: 0.5, 10: 0.2972972972972973, 23: 0.4230769230769231, 9: 0.2619047619047619, 22: 0.3384615384615385}
+Nilai Closeness Centrality Dokumen Ke - 43 : {0: 0.46153846153846156, 1: 0.5454545454545454, 4: 0.6, 12: 0.32432432432432434, 2: 0.46153846153846156, 3: 0.36363636363636365, 5: 0.6, 6: 0.5454545454545454, 7: 0.5, 11: 0.5217391304347826, 8: 0.42857142857142855, 9: 0.4444444444444444, 10: 0.375}
+Nilai Closeness Centrality Dokumen Ke - 44 : {0: 0.6923076923076923, 1: 0.45, 4: 0.6428571428571429, 5: 0.5625, 6: 0.45, 7: 0.6, 9: 0.6428571428571429, 2: 0.5294117647058824, 3: 0.36, 8: 0.45}
+Nilai Closeness Centrality Dokumen Ke - 45 : {0: 0.6153846153846154, 1: 0.4444444444444444, 3: 0.47058823529411764, 6: 0.5, 7: 0.6153846153846154, 2: 0.32, 8: 0.4444444444444444, 4: 0.3333333333333333, 5: 0.4}
+Nilai Closeness Centrality Dokumen Ke - 46 : {0: 0.5666666666666667, 2: 0.4533333333333333, 3: 0.4358974358974359, 5: 0.53125, 9: 0.5, 11: 0.6296296296296297, 12: 0.5862068965517241, 15: 0.6181818181818182, 20: 0.7391304347826086, 35: 0.4857142857142857, 16: 0.6415094339622641, 23: 0.5483870967741935, 4: 0.4722222222222222, 6: 0.37362637362637363, 7: 0.5230769230769231, 13: 0.5396825396825397, 29: 0.7083333333333334, 18: 0.5396825396825397, 25: 0.4788732394366197, 8: 0.4722222222222222, 10: 0.40963855421686746, 14: 0.5074626865671642, 33: 0.53125, 22: 0.4594594594594595, 17: 0.5964912280701754, 24: 0.6415094339622641, 27: 0.68, 28: 0.5, 30: 0.5862068965517241, 19: 0.5573770491803278, 26: 0.5396825396825397, 21: 0.5396825396825397, 31: 0.5396825396825397, 32: 0.5151515151515151, 36: 0.4722222222222222}
+Nilai Closeness Centrality Dokumen Ke - 47 : {0: 0.7142857142857143, 2: 0.5555555555555556, 3: 0.8333333333333334, 5: 0.7142857142857143, 1: 0.45454545454545453, 4: 0.5}
+Nilai Closeness Centrality Dokumen Ke - 48 : {0: 0.45454545454545453, 1: 0.43478260869565216, 2: 0.42857142857142855, 3: 0.40540540540540543, 5: 0.4411764705882353, 6: 0.379746835443038, 25: 0.38961038961038963, 4: 0.379746835443038, 15: 0.46875, 16: 0.45454545454545453, 22: 0.44776119402985076, 23: 0.5172413793103449, 10: 0.375, 20: 0.5084745762711864, 28: 0.3614457831325301, 9: 0.46153846153846156, 21: 0.46153846153846156, 24: 0.38961038961038963, 11: 0.3157894736842105, 13: 0.40540540540540543, 7: 0.36585365853658536, 8: 0.4918032786885246, 29: 0.29411764705882354, 12: 0.297029702970297, 18: 0.297029702970297, 19: 0.297029702970297, 26: 0.2912621359223301, 14: 0.38961038961038963, 32: 0.2830188679245283, 17: 0.3157894736842105, 30: 0.2830188679245283}
+Nilai Closeness Centrality Dokumen Ke - 49 : {0: 0.5666666666666667, 2: 0.4533333333333333, 3: 0.4358974358974359, 5: 0.53125, 9: 0.5, 11: 0.6296296296296297, 12: 0.5862068965517241, 15: 0.6181818181818182, 20: 0.7391304347826086, 35: 0.4857142857142857, 16: 0.6415094339622641, 23: 0.5483870967741935, 4: 0.4722222222222222, 6: 0.37362637362637363, 7: 0.5230769230769231, 13: 0.5396825396825397, 29: 0.7083333333333334, 18: 0.5396825396825397, 25: 0.4788732394366197, 8: 0.4722222222222222, 10: 0.40963855421686746, 14: 0.5074626865671642, 33: 0.53125, 22: 0.4594594594594595, 17: 0.5964912280701754, 24: 0.6415094339622641, 27: 0.68, 28: 0.5, 30: 0.5862068965517241, 19: 0.5573770491803278, 26: 0.5396825396825397, 21: 0.5396825396825397, 31: 0.5396825396825397, 32: 0.5151515151515151, 36: 0.4722222222222222}
+Nilai Closeness Centrality Dokumen Ke - 50 : {0: 0.35, 1: 0.42424242424242425, 5: 0.3684210526315789, 22: 0.417910447761194, 2: 0.4, 3: 0.4, 14: 0.45161290322580644, 25: 0.3076923076923077, 27: 0.4375, 24: 0.34146341463414637, 26: 0.39436619718309857, 6: 0.29473684210526313, 4: 0.4057971014492754, 8: 0.3111111111111111, 9: 0.358974358974359, 13: 0.39436619718309857, 21: 0.3373493975903614, 7: 0.3783783783783784, 15: 0.3684210526315789, 17: 0.34146341463414637, 18: 0.28, 19: 0.28, 10: 0.24347826086956523, 11: 0.2413793103448276, 12: 0.2413793103448276, 16: 0.36363636363636365, 20: 0.32558139534883723, 28: 0.2978723404255319, 23: 0.25688073394495414}
+Nilai Closeness Centrality Dokumen Ke - 51 : {0: 0.6086956521739131, 2: 0.7368421052631579, 5: 0.5384615384615384, 8: 0.6086956521739131, 12: 0.7, 13: 0.5384615384615384, 14: 0.42424242424242425, 1: 0.45161290322580644, 10: 0.6086956521739131, 3: 0.5185185185185185, 4: 0.5, 6: 0.56, 7: 0.5185185185185185, 9: 0.4827586206896552, 11: 0.3684210526315789}
+Nilai Closeness Centrality Dokumen Ke - 52 : {1: 0.33801169590643276, 2: 0.3042105263157895, 3: 0.4345864661654135, 7: 0.3709884467265725, 5: 0.3456937799043062, 13: 0.4609250398724083, 4: 0.3537331701346389, 12: 0.42251461988304095, 18: 0.36215538847117795, 6: 0.2925101214574899, 9: 0.3104189044038668, 10: 0.3900134952766532, 8: 0.05263157894736842, 11: 0.05263157894736842, 14: 0.4609250398724083, 17: 0.42251461988304095, 19: 0.3709884467265725, 15: 0.36215538847117795, 16: 0.3168859649122807, 20: 0.26685133887349954}
+Nilai Closeness Centrality Dokumen Ke - 53 : {0: 0.42857142857142855, 3: 0.3870967741935484, 7: 0.46153846153846156, 14: 0.5217391304347826, 1: 0.4444444444444444, 2: 0.4444444444444444, 9: 0.48, 6: 0.46153846153846156, 4: 0.5, 5: 0.3870967741935484, 13: 0.3, 10: 0.32432432432432434, 12: 0.23529411764705882}
+Nilai Closeness Centrality Dokumen Ke - 54 : {0: 0.5625, 2: 0.6428571428571429, 3: 0.47368421052631576, 6: 0.5294117647058824, 7: 0.6, 11: 0.4090909090909091, 10: 0.6, 4: 0.3103448275862069, 8: 0.42857142857142855, 9: 0.5}
+Nilai Closeness Centrality Dokumen Ke - 55 : {0: 0.4345864661654135, 1: 0.4002770083102493, 7: 0.4345864661654135, 9: 0.411095305832148, 13: 0.4345864661654135, 18: 0.4753289473684211, 22: 0.4002770083102493, 3: 0.3104189044038668, 14: 0.3306636155606407, 19: 0.4473684210526316, 2: 0.24143692564745195, 5: 0.19253830779480346, 21: 0.3104189044038668, 6: 0.2925101214574899, 10: 0.2982456140350877, 12: 0.05263157894736842, 17: 0.05263157894736842, 15: 0.3306636155606407, 16: 0.24533106960950762, 20: 0.411095305832148}
+Nilai Closeness Centrality Dokumen Ke - 56 : {0: 0.6944444444444445, 1: 0.5555555555555556, 2: 0.43859649122807015, 3: 0.5208333333333334, 6: 0.5952380952380952, 8: 0.4901960784313726, 10: 0.462962962962963, 11: 0.43859649122807015, 12: 0.4166666666666667, 9: 0.34722222222222227, 4: 0.08333333333333333, 5: 0.08333333333333333, 7: 0.32051282051282054}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai Closeness Centrality Dokumen Ke - 57 : {0: 0.5833333333333334, 5: 0.4827586206896552, 6: 0.4666666666666667, 9: 0.56, 13: 0.5185185185185185, 14: 0.5, 15: 0.42424242424242425, 1: 0.35, 2: 0.5185185185185185, 3: 0.56, 7: 0.45161290322580644, 11: 0.45161290322580644, 4: 0.3333333333333333, 8: 0.3888888888888889, 10: 0.3181818181818182}
+Nilai Closeness Centrality Dokumen Ke - 58 : {0: 0.36363636363636365, 2: 0.4, 8: 0.5, 1: 0.34285714285714286, 10: 0.5, 11: 0.5714285714285714, 3: 0.5454545454545454, 4: 0.41379310344827586, 5: 0.41379310344827586, 7: 0.5714285714285714, 12: 0.4, 6: 0.3, 9: 0.5454545454545454}
+Nilai Closeness Centrality Dokumen Ke - 59 : {0: 0.5263157894736842, 1: 0.5882352941176471, 5: 0.5555555555555556, 9: 0.37037037037037035, 10: 0.4166666666666667, 11: 0.4, 3: 0.45454545454545453, 7: 0.47619047619047616, 2: 0.2631578947368421, 4: 0.3448275862068966, 6: 0.3333333333333333}
+Nilai Closeness Centrality Dokumen Ke - 60 : {0: 0.28125, 1: 0.34615384615384615, 2: 0.225, 9: 0.4090909090909091, 3: 0.34615384615384615, 6: 0.28125, 7: 0.4090909090909091, 5: 0.225, 8: 0.42857142857142855, 10: 0.42857142857142855}
+Nilai Closeness Centrality Dokumen Ke - 61 : {0: 0.625, 1: 0.9090909090909091, 3: 0.6666666666666666, 4: 0.5882352941176471, 10: 0.5882352941176471, 2: 0.5555555555555556, 5: 0.5, 7: 0.7142857142857143, 8: 0.5555555555555556, 9: 0.625, 6: 0.5555555555555556}
+Nilai Closeness Centrality Dokumen Ke - 62 : {0: 0.5882352941176471, 3: 0.5263157894736842, 7: 0.7142857142857143, 12: 0.625, 13: 0.5, 1: 0.47619047619047616, 9: 0.5, 2: 0.5555555555555556, 6: 0.35714285714285715, 11: 0.5555555555555556, 8: 0.3448275862068966}
+Nilai Closeness Centrality Dokumen Ke - 63 : {0: 0.6, 1: 0.5625, 3: 0.5625, 8: 0.6, 9: 0.45, 2: 0.375, 6: 0.375, 7: 0.45, 5: 0.4090909090909091, 4: 0.3}
+Nilai Closeness Centrality Dokumen Ke - 64 : {0: 0.6666666666666666, 1: 0.5714285714285714, 3: 0.48, 5: 0.46153846153846156, 7: 0.631578947368421, 11: 0.5454545454545454, 12: 0.5, 13: 0.48, 2: 0.42857142857142855, 9: 0.4444444444444444, 4: 0.3333333333333333, 6: 0.32432432432432434, 8: 0.3157894736842105}
+Nilai Closeness Centrality Dokumen Ke - 65 : {0: 0.4358974358974359, 3: 0.5151515151515151, 7: 0.4473684210526316, 17: 0.3090909090909091, 18: 0.4857142857142857, 1: 0.4473684210526316, 6: 0.4473684210526316, 11: 0.4594594594594595, 12: 0.38636363636363635, 15: 0.5151515151515151, 2: 0.4146341463414634, 5: 0.53125, 10: 0.3333333333333333, 16: 0.4473684210526316, 9: 0.4594594594594595, 14: 0.40476190476190477, 8: 0.3617021276595745, 13: 0.4473684210526316}
+Nilai Closeness Centrality Dokumen Ke - 66 : {0: 0.6, 5: 0.631578947368421, 6: 0.41379310344827586, 7: 0.5217391304347826, 8: 0.6, 13: 0.46153846153846156, 14: 0.46153846153846156, 1: 0.32432432432432434, 2: 0.3076923076923077, 4: 0.42857142857142855, 10: 0.5, 12: 0.46153846153846156, 9: 0.34285714285714286}
+Nilai Closeness Centrality Dokumen Ke - 67 : {0: 0.3125, 3: 0.4411764705882353, 2: 0.36585365853658536, 4: 0.4838709677419355, 6: 0.625, 5: 0.3333333333333333, 7: 0.3333333333333333, 16: 0.4411764705882353, 8: 0.40540540540540543, 12: 0.4166666666666667, 13: 0.40540540540540543, 14: 0.46875, 9: 0.25862068965517243, 11: 0.3409090909090909, 15: 0.3, 17: 0.32608695652173914}
+Nilai Closeness Centrality Dokumen Ke - 68 : {0: 0.6923076923076923, 1: 0.45, 4: 0.6428571428571429, 5: 0.5625, 6: 0.45, 7: 0.6, 9: 0.6428571428571429, 2: 0.5294117647058824, 3: 0.36, 8: 0.45}
+Nilai Closeness Centrality Dokumen Ke - 69 : {0: 0.6153846153846154, 1: 0.4444444444444444, 3: 0.47058823529411764, 6: 0.5, 7: 0.6153846153846154, 2: 0.32, 8: 0.4444444444444444, 4: 0.3333333333333333, 5: 0.4}
+Nilai Closeness Centrality Dokumen Ke - 70 : {0: 0.5666666666666667, 2: 0.4533333333333333, 3: 0.4358974358974359, 5: 0.53125, 9: 0.5, 11: 0.6296296296296297, 12: 0.5862068965517241, 15: 0.6181818181818182, 20: 0.7391304347826086, 35: 0.4857142857142857, 16: 0.6415094339622641, 23: 0.5483870967741935, 4: 0.4722222222222222, 6: 0.37362637362637363, 7: 0.5230769230769231, 13: 0.5396825396825397, 29: 0.7083333333333334, 18: 0.5396825396825397, 25: 0.4788732394366197, 8: 0.4722222222222222, 10: 0.40963855421686746, 14: 0.5074626865671642, 33: 0.53125, 22: 0.4594594594594595, 17: 0.5964912280701754, 24: 0.6415094339622641, 27: 0.68, 28: 0.5, 30: 0.5862068965517241, 19: 0.5573770491803278, 26: 0.5396825396825397, 21: 0.5396825396825397, 31: 0.5396825396825397, 32: 0.5151515151515151, 36: 0.4722222222222222}
+Nilai Closeness Centrality Dokumen Ke - 71 : {0: 0.7142857142857143, 2: 0.5555555555555556, 3: 0.8333333333333334, 5: 0.7142857142857143, 1: 0.45454545454545453, 4: 0.5}
+Nilai Closeness Centrality Dokumen Ke - 72 : {0: 0.45454545454545453, 1: 0.43478260869565216, 2: 0.42857142857142855, 3: 0.40540540540540543, 5: 0.4411764705882353, 6: 0.379746835443038, 25: 0.38961038961038963, 4: 0.379746835443038, 15: 0.46875, 16: 0.45454545454545453, 22: 0.44776119402985076, 23: 0.5172413793103449, 10: 0.375, 20: 0.5084745762711864, 28: 0.3614457831325301, 9: 0.46153846153846156, 21: 0.46153846153846156, 24: 0.38961038961038963, 11: 0.3157894736842105, 13: 0.40540540540540543, 7: 0.36585365853658536, 8: 0.4918032786885246, 29: 0.29411764705882354, 12: 0.297029702970297, 18: 0.297029702970297, 19: 0.297029702970297, 26: 0.2912621359223301, 14: 0.38961038961038963, 32: 0.2830188679245283, 17: 0.3157894736842105, 30: 0.2830188679245283}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Summary&quot;</span><span class="p">,</span> <span class="s2">&quot;Kategori&quot;</span><span class="p">]]</span>
+<span class="n">new_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-9c3a133b-af0c-49d2-a10e-aaf9832b7a6a" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Summary</th>
+      <th>Kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[berita seputar israel dan isu terkini di tana...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[jakarta  ketua komisi pemberantasan korupsi k...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[dia pun berharap kalau firli bahuri bisa mund...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[surabaya  empat korban luka berat dalam insid...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[jakarta polisi segera mengagendakan pemeriksa...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>[jakarta  polda metro jaya menetapkan ketua ko...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>[jakarta  ketua komisi pemberantasan korupsi k...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>[terdakwa dua ruddian dan korban redho kemudia...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>[dia pun berharap kalau firli bahuri bisa mund...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>[para keluarga wasik yang menggunakan alat sea...</td>
+      <td>kriminal</td>
+    </tr>
+  </tbody>
+</table>
+<p>72 rows × 2 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9c3a133b-af0c-49d2-a10e-aaf9832b7a6a')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-9c3a133b-af0c-49d2-a10e-aaf9832b7a6a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-9c3a133b-af0c-49d2-a10e-aaf9832b7a6a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Data Berita Hasil Ringkasan.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Summary&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;jakarta\xa0 ketua komisi pemberantasan korupsi kpk, firli bahuri terancam pidana penjara seumur hidup buntut ditetapkan jadi tersangka kasus dugaan pemerasan atau penerimaan gratifikasi dalam penanganan korupsi kementerian pertanian kementan 2021.&#39;,
+ &#39;firli bakal dikenakan pasal 12e atau pasal 12b atau pasal 11 uu 311999 yang telah diubah dengan uu 202001 tentang perubahan atas uu 311999 tentang pemberantasan tindak pidana korupsi juncto pasal 65 kuhp. untuk diketahui, polda metro jaya menaikkan status kasus dugaan pemerasan yang dilakukan pimpinan komisi pemberantasan korupsi kpk dalam penanganan kasus korupsi di kementerian pertanian kementan tahun 2021 ke penyidikan. menetapkan saudara fb selaku ketua kpk ri sebagai tersangka dalam perkara dugaan tindak pidana korupsi berupa pemerasan atau penerimaan gratifikasi, katanya. sebagaimana yang dimaksud ayat 1, dipidana seumur hidup atau pidana penjara paling singkat empat tahun dan paling lama 20 tahun. dalam rentetan pasal berlapis itu, firli terancam hukuman paling berat penjara seumur hidup sebagaimana pasal 12b ayat 1 terkait penerimaan gratifikasi yang dilakukan bagi pegawai negeri atau penyelenggara negara. selanjutnya direkomendasikan untuk dinaikkan status dari penyelidikan ke tahap penyidikan, ujar direktur reserse kriminal khusus polda metro jaya, komisaris besar polisi ade safri simanjuntak kepada wartawan, sabtu 7 oktober 2023. mantan kapolres kota solo ini mengatakan, sedikitnya ada 91 orang telah diperiksa sebagai saksi kasus dugaan pemerasan ke eks menteri pertanian syahrul yasin limpo syl itu.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Summary&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Summary&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_string_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Summary&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">non_string_indices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vectorizer_summary</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">X_summary</span> <span class="o">=</span> <span class="n">vectorizer_summary</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Summary&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Kategori&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_summary</span><span class="p">,</span> <span class="n">X_test_summary</span><span class="p">,</span> <span class="n">y_train_summary</span><span class="p">,</span> <span class="n">y_test_summary</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_summary</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi model Naive Bayes Gaussian</span>
+<span class="n">gnb_summary</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># Melatih model menggunakan data latih</span>
+<span class="n">gnb_summary</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_summary</span><span class="p">,</span> <span class="n">y_train_summary</span><span class="p">)</span>
+
+<span class="c1"># Membuat prediksi pada data uji</span>
+<span class="n">y_pred_gnb_summary</span> <span class="o">=</span> <span class="n">gnb_summary</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengukur kinerja model dengan menghitung akurasi atau metrik lain yang relevan</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_summary</span><span class="p">,</span> <span class="n">y_pred_gnb_summary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Akurasi: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.5454545454545454
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_summary</span><span class="p">,</span> <span class="n">y_pred_gnb_summary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Report Klasifikasi:</span><span class="se">\n</span><span class="si">{</span><span class="n">report</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Report Klasifikasi:
+              precision    recall  f1-score   support
+
+    kriminal       0.71      0.83      0.77         6
+    nasional       0.50      0.22      0.31         9
+     politik       0.45      0.71      0.56         7
+
+    accuracy                           0.55        22
+   macro avg       0.56      0.59      0.54        22
+weighted avg       0.54      0.55      0.51        22
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">):</span>
+  <span class="c1"># Membuat plot confusion matrix</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">gnb_summary</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">gnb_summary</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_summary</span><span class="p">,</span> <span class="n">y_pred_gnb_summary</span><span class="p">)</span>
+<span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/97fe05aebf439e5406536480482c93f4ae8d21366f463357a8fed196a94db65e.png" src="_images/97fe05aebf439e5406536480482c93f4ae8d21366f463357a8fed196a94db65e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sebuah tim peneliti, yang dipimpin oleh mahasiswa doktoral Institute of Agricultural Engineering, University of Bonn, Jerman Sonja Hillemacher dan Dr. Inga Tiemann, telah melakukan penelitian ilmiah selama bertahun-tahun terhadap perilaku ayam di depan cermin. Ide bereksperimen dengan ayam datang dari para ilmuwan tersebut bersama guru besar Biopsikologi dari Departemen Biopsikologi di Universitas Ruhr, Onur Güntürkün. Filosofi penelitian ini bermula dari sebuah pertanyaan terkait &#39;Apakah hewan dapat mengenali dirinya sendiri?,&#39; kata Sonja Hillemacher. Penelitian ini pun bertujuan untuk menjawab pertanyaan apakah ayam mampu mengenali diri mereka sendiri ketika berinteraksi dengan cermin. Metode Pendekatan Perilaku Hewan Penelitian ini mengadopsi metode yang telah umum digunakan dalam uji cermin, yang dikenal sebagai &#39;mark test&#39;. Dalam tes ini, tanda berwarna ditempatkan di tubuh hewan yang hanya dapat dikenali oleh individu tersebut ketika ia melihat dirinya sendiri di cermin. Apabila hewan tersebut mulai memeriksa atau meraba area tubuhnya yang ditandai di depan cermin, itu menunjukkan bahwa hewan telah mengenali wujudnya sebagai dirinya sendiri. Namun, tes ini tidak selalu berhasil, di mana sebagian hewan yang diyakini sadar diri, tidak memperhatikan cermin. Mungkin, karena mereka merasa tidak nyaman dalam lingkungan percobaan &#39;buatan&#39;? Penelitian ini mencoba mendekati eksperimen ini dengan mempertimbangkan perilaku alami ayam yang relevan secara ekologis. &#39;Beberapa ayam, terutama ayam jantan, memperingatkan sesamanya melalui panggilan khusus ketika ada predator -- seperti burung pemangsa atau rubah - - muncul,&#39; kata Güntürkün. Sebaliknya jika ayam jago berhadapan dengan predatornya sendirian, biasanya mereka akan berdiam diri agar tidak menarik perhatian predator itu sendiri dan menjadi korban. &#39;Seruan peringatan adalah perilaku sempurna untuk diintegrasikan ke dalam tes kesadaran diri yang lebih relevan secara ekologis,&#39; tambah biopsikolog tersebut. Uji Coba dengan Melepas Burung Pemangsa Pertama, penelitian ini memeriksa apakah ayam jantan benar-benar mengeluarkan panggilan alarm saat berhadapan dengan spesies dan tetap diam saat sendirian. Ilmuwan membangun tempat uji coba khusus yang memisahkan dua area di mana ayam jantan dapat melihat satu sama lain. Setelah itu, seekor burung pemangsa pun dilepaskan di langit-langit sebuah area. Dengan melibatkan 58 ekor ayam jantan, setiap ayamnya mengalami proses pengulangan penelitian sebanyak tiga kali untuk memvalidasi hasil statistik. Hasilnya pun menunjukkan bahwa ayam jantan mengeluarkan 77 panggilan alarm saat berhadapan dengan ayam jantan lain, tetapi hanya 17 panggilan ketika ayam jantan itu sendiri. Dengan begitu, ini menunjukkan bahwa sebagian besar ayam jantan sangat waspada saat menghadapi sesamanya ketika predator terlihat. Uji Coba dengan Cermin Langkah selanjutnya adalah menempatkan cermin di antara dua kompartemen, bukan di dalam kisi-kisi. Dalam proses penelitian ini, para peneliti menjalankannya tiga kali dengan masing-masing hewan. Hasilnya, hanya 25 panggilan alarm yang dikeluarkan selama 174 percobaan. Hasil ini mendukung gagasan bahwa ayam jantan mungkin mengenali dirinya sendiri dalam bayangan cerminnya. Namun, masih diperlukan penelitian lebih lanjut untuk memahami apakah hewan-hewan tersebut melihat bayangan diri mereka sebagai entitas yang sama atau sebagai binatang asing yang meniru perilaku mereka sendiri. Penelitian ini menunjukkan bahwa uji tanda cermin yang mengintegrasikan perilaku hewan ke dalam konteks yang lebih relevan secara ekologis memberikan hasil yang lebih dapat diandalkan.&quot;</span><span class="p">]</span>
+<span class="n">new_data_summary</span><span class="p">,</span> <span class="n">G</span> <span class="o">=</span> <span class="n">summarization</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">new_data_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;dalam tes ini, tanda berwarna ditempatkan di tubuh hewan yang hanya dapat dikenali oleh individu tersebut ketika ia melihat dirinya sendiri di cermin. hasil ini mendukung gagasan bahwa ayam jantan mungkin mengenali dirinya sendiri dalam bayangan cerminnya. apabila hewan tersebut mulai memeriksa atau meraba area tubuhnya yang ditandai di depan cermin, itu menunjukkan bahwa hewan telah mengenali wujudnya sebagai dirinya sendiri. hasilnya pun menunjukkan bahwa ayam jantan mengeluarkan 77 panggilan alarm saat berhadapan dengan ayam jantan lain, tetapi hanya 17 panggilan ketika ayam jantan itu sendiri. penelitian ini pun bertujuan untuk menjawab pertanyaan apakah ayam mampu mengenali diri mereka sendiri ketika berinteraksi dengan cermin.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_new_data_summary</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">new_data_summary</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tfidf_Xnew_summary</span> <span class="o">=</span> <span class="n">vectorizer_summary</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">cleaned_new_data_summary</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="n">tfidf_Xnew_summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., ..., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_gnb_summary</span> <span class="o">=</span> <span class="n">gnb_summary</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">tfidf_Xnew_summary</span><span class="p">)</span>
+<span class="n">pred_gnb_summary</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;politik&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">gnb_summary</span><span class="p">,</span> <span class="s1">&#39;modelnbsummary.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;modelnbsummary.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi model Naive Bayes Gaussian</span>
+<span class="n">svm_summary</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+
+<span class="c1"># Melatih model menggunakan data latih</span>
+<span class="n">svm_summary</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_summary</span><span class="p">,</span> <span class="n">y_train_summary</span><span class="p">)</span>
+
+<span class="c1"># Membuat prediksi pada data uji</span>
+<span class="n">y_pred_svm_summary</span> <span class="o">=</span> <span class="n">svm_summary</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengukur kinerja model dengan menghitung akurasi atau metrik lain yang relevan</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_summary</span><span class="p">,</span> <span class="n">y_pred_svm_summary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Akurasi: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.5454545454545454
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_svm_summary</span> <span class="o">=</span> <span class="n">svm_summary</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">tfidf_Xnew_summary</span><span class="p">)</span>
+<span class="n">pred_svm_summary</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;politik&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">svm_summary</span><span class="p">,</span> <span class="s1">&#39;modelSVMsummary.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;modelSVMsummary.pkl&#39;]
 </pre></div>
 </div>
 </div>
@@ -735,7 +1322,7 @@ Accuracy of the Naive Bayes Clasification is:  0.9333333333333333
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -743,50 +1330,87 @@ Accuracy of the Naive Bayes Clasification is:  0.9333333333333333
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Tugas%203.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><strong>TUGAS 3 (KNN)</strong></p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Tugas%205.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>TUGAS 5 (Clustering K-Means) &amp; TUGAS 6 (Decision Tree</strong></p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Pramudya Dwi Febrianto<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="crawling_viva.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Crawling Viva</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Tugas%205.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tugas 5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pramudya Dwi Febrianto
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
