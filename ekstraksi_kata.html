@@ -1,0 +1,1963 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Ekstraksi Kata Kunci dengan Text Rank &#8212; PPW</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ekstraksi_kata';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tugas 5" href="Tugas%205.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PPW</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    PPW
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tugas%201%20PPW.html">Tugas 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%202%20PPW.html">Tugas 2</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas%203%20PPW.html">Tugas 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawling_viva.html">Crawling Viva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%204.html">Tugas 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%205.html">Tugas 5</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ekstraksi Kata Kunci dengan Text Rank</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fekstraksi_kata.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ekstraksi_kata.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ekstraksi Kata Kunci dengan Text Rank</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual-spreadsheet">Perhitungan Manual (Spreadsheet)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-rank">Text Rank</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ekstraksi-kata-kunci-dengan-text-rank">
+<h1>Ekstraksi Kata Kunci dengan Text Rank<a class="headerlink" href="#ekstraksi-kata-kunci-dengan-text-rank" title="Permalink to this heading">#</a></h1>
+<p>Rumus TextRank:</p>
+<div class="math notranslate nohighlight">
+\[ W_i = (1 - d) + d \cdot \sum_{j \in In(i)} \frac{w_{ij}}{\sum_{k \in Out(j)} w_{jk}} \cdot W_j \]</div>
+<p>Penjelasan unsur-unsur dalam rumus tersebut:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((W_i)\)</span>: Skor TextRank untuk kata <span class="math notranslate nohighlight">\((i)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((d)\)</span>: Faktor redaman (damping factor), seringkali bernilai sekitar 0.85.</p></li>
+<li><p><span class="math notranslate nohighlight">\((In(i))\)</span>: Himpunan kata-kata yang memiliki hubungan (edge) masuk ke kata <span class="math notranslate nohighlight">\((i)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((Out(j))\)</span>: Himpunan kata-kata yang memiliki hubungan keluar dari kata <span class="math notranslate nohighlight">\((j)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((w_{ij})\)</span>: Bobot hubungan antara kata <span class="math notranslate nohighlight">\((i)\)</span> dan <span class="math notranslate nohighlight">\((j)\)</span>.</p></li>
+</ul>
+<p>Penjelasan langkah-langkah rumus:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((1 - d)\)</span>: Bagian dari rumus yang menyatakan kontribusi dampak faktor redaman.</p></li>
+<li><p><span class="math notranslate nohighlight">\((\sum_{j \in In(i)})\)</span>: Penjumlahan atas kata-kata yang memiliki hubungan masuk ke kata <span class="math notranslate nohighlight">\((i)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((\frac{w_{ij}}{\sum_{k \in Out(j)} w_{jk}})\)</span>: Bagian yang menghitung kontribusi dari setiap kata yang memiliki hubungan keluar dari kata <span class="math notranslate nohighlight">\((j)\)</span>. Fungsi ini memperhitungkan bobot relatif dari setiap hubungan keluar dari kata <span class="math notranslate nohighlight">\((j)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\((W_j)\)</span>: Skor TextRank dari kata <span class="math notranslate nohighlight">\((j)\)</span>. Skor ini dihitung pada iterasi sebelumnya dan digunakan untuk menghitung skor baru untuk kata <span class="math notranslate nohighlight">\((i)\)</span>.</p></li>
+</ol>
+<p>Dengan mengulangi rumus ini melalui beberapa iterasi, nilai skor TextRank untuk setiap kata akan konvergen ke nilai yang mencerminkan tingkat kepentingan kata-kata dalam teks. Pada akhirnya, kata-kata dengan skor TextRank tertinggi dianggap sebagai kata kunci atau kata-kata yang paling penting dalam teks tersebut.</p>
+<section id="perhitungan-manual-spreadsheet">
+<h2>Perhitungan Manual (Spreadsheet)<a class="headerlink" href="#perhitungan-manual-spreadsheet" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.google.com/spreadsheets/d/1TeWV35ZgZQ11l2bl7BeWxoMFWZHUlpQXM3E1miQzdhU/edit?usp=sharing">Text Rank Perhitungan Manual SpreadSheet</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">stopwords</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">):</span>
+  <span class="c1"># Menggambar graf dengan canvas yang diperbesar</span>
+  <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c1"># Menentukan posisi simpul</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Menentukan ukuran canvas</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+  <span class="c1"># Menggambar graf dengan ukuran canvas yang diperbesar</span>
+  <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_color</span><span class="p">)</span>
+  <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">graph_co_occurrence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_matrics</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+  <span class="n">tfidf_matrics</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">co_occurrence_matrix</span> <span class="o">=</span> <span class="n">tfidf_matrics</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tfidf_matrics</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+  <span class="n">df_co_occurence</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">co_occurrence_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+  <span class="n">df_co_occurence</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Word&#39;</span><span class="p">,</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+
+  <span class="k">if</span> <span class="n">show_matrics</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabel Co-occurence Matrics: &quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_co_occurence</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+  <span class="c1"># Membuat graf berbobot menggunakan NetworkX</span>
+  <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+  <span class="n">num_words</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="c1"># Menambahkan edge ke graf berdasarkan matriks co-occurrence</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_words</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_words</span><span class="p">):</span>
+      <span class="n">weight</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">weight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[</span><span class="n">i</span><span class="p">],</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[</span><span class="n">j</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">G</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">text_rank</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">damping_factor</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+  <span class="c1"># Inisialisasi nilai TextRank untuk setiap node</span>
+  <span class="n">initial_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">graph</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
+  <span class="n">ranks</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="n">initial_value</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">()}</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inisialisasi Score Awal : </span><span class="si">{</span><span class="n">ranks</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Edges : </span><span class="si">{</span><span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">()</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+    <span class="n">new_ranks</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;========== Iterasi Ke - </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> ==========&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+      <span class="n">rank_sum</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">operasi</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+      <span class="c1"># Menampilkan informasi out_sum dan win untuk setiap node dan neighbor</span>
+      <span class="n">out_sums_info</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="n">win</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
+
+      <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="n">edge_weight</span> <span class="o">=</span> <span class="n">graph</span><span class="p">[</span><span class="n">neighbor</span><span class="p">][</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span>
+        <span class="n">out_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">graph</span><span class="p">[</span><span class="n">neighbor</span><span class="p">][</span><span class="n">out_neighbor</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">out_neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">neighbor</span><span class="p">))</span>
+        <span class="n">rank_sum</span> <span class="o">+=</span> <span class="p">(</span><span class="n">edge_weight</span> <span class="o">/</span> <span class="n">out_sum</span><span class="p">)</span> <span class="o">*</span> <span class="n">ranks</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
+        <span class="n">operasi</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">edge_weight</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">out_sum</span><span class="si">}</span><span class="s2">) * </span><span class="si">{</span><span class="n">ranks</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span><span class="si">}</span><span class="s2"> + &quot;</span>
+
+        <span class="c1"># Menambah informasi out_sum untuk setiap neighbor</span>
+        <span class="n">out_sums_info</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">out_neighbor</span><span class="p">:</span> <span class="n">graph</span><span class="p">[</span><span class="n">neighbor</span><span class="p">][</span><span class="n">out_neighbor</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">out_neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)}</span>
+
+      <span class="c1"># Jika operasi kosong, atur nilai operasi menjadi 0</span>
+      <span class="n">operasi</span> <span class="o">=</span> <span class="n">operasi</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="k">if</span> <span class="n">operasi</span> <span class="k">else</span> <span class="s1">&#39;0&#39;</span>
+
+      <span class="n">new_rank</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">damping_factor</span><span class="p">)</span> <span class="o">+</span> <span class="n">damping_factor</span> <span class="o">*</span> <span class="n">rank_sum</span>
+      <span class="n">new_ranks</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_rank</span>
+
+      <span class="c1"># Menampilkan informasi out_sum dan win pada setiap iterasi</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Win(</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">win</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Out_sums_info(</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">out_sums_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;W(</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">) = (1 - </span><span class="si">{</span><span class="n">damping_factor</span><span class="si">}</span><span class="s2">) + </span><span class="si">{</span><span class="n">damping_factor</span><span class="si">}</span><span class="s2"> * (</span><span class="si">{</span><span class="n">operasi</span><span class="si">}</span><span class="s2">) = </span><span class="si">{</span><span class="n">new_rank</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># Periksa konvergensi</span>
+    <span class="n">convergence</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">new_ranks</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">-</span> <span class="n">ranks</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">tol</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+    <span class="n">ranks</span> <span class="o">=</span> <span class="n">new_ranks</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New Score : </span><span class="si">{</span><span class="n">new_ranks</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">convergence</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Konvergensi tercapai pada iterasi ke-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      <span class="k">break</span>
+
+  <span class="k">return</span> <span class="n">ranks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_top_words</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">show_matrics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_scores</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">full_text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Stopwords removal</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">stopwords</span><span class="p">(</span><span class="n">full_text</span><span class="p">)]</span>
+
+    <span class="n">G</span> <span class="o">=</span> <span class="n">graph_co_occurrence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">show_matrics</span><span class="p">)</span>
+
+    <span class="c1"># Menghitung nilai dari PageRank (TextRank)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">text_rank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Dictionary untuk menyimpan skor tertinggi setiap kata</span>
+    <span class="n">ranked_words_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="n">current_score</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ranked_words_dict</span> <span class="ow">or</span> <span class="n">current_score</span> <span class="o">&gt;</span> <span class="n">ranked_words_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]:</span>
+            <span class="n">ranked_words_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_score</span>
+
+    <span class="c1"># Mengurutkan kata-kata berdasarkan skor tertinggi</span>
+    <span class="n">ranked_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(((</span><span class="n">score</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">ranked_words_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Memilih sejumlah w kata tertinggi</span>
+    <span class="n">selected_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">ranked_words</span><span class="p">[:</span><span class="n">w</span><span class="p">]]</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="c1"># Menggabungkan kata-kata menjadi satu string terpisah dengan koma</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">selected_words</span><span class="p">)</span> <span class="k">if</span> <span class="n">selected_words</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">show_scores</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dokumen ke </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">full_text</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1"> Kata Kunci : </span><span class="si">{</span><span class="n">keywords</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TextRank Scores:&quot;</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">ranked_words</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skor: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">, Kata: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">selected_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pemandangan gunung semeru indah&#39;</span><span class="p">]</span>
+<span class="n">G1</span><span class="p">,</span> <span class="n">keywords1</span> <span class="o">=</span> <span class="n">extract_top_words</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">show_matrics</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabel Co-occurence Matrics: 
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-7985f452-b906-49ff-a801-b5d2bdae18c1" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Word</th>
+      <th>gunung</th>
+      <th>indah</th>
+      <th>pemandangan</th>
+      <th>semeru</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>gunung</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>indah</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>pemandangan</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>semeru</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7985f452-b906-49ff-a801-b5d2bdae18c1')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7985f452-b906-49ff-a801-b5d2bdae18c1 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7985f452-b906-49ff-a801-b5d2bdae18c1');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inisialisasi Score Awal : {&#39;gunung&#39;: 0.25, &#39;indah&#39;: 0.25, &#39;pemandangan&#39;: 0.25, &#39;semeru&#39;: 0.25}
+Edges : [(&#39;gunung&#39;, &#39;indah&#39;), (&#39;gunung&#39;, &#39;pemandangan&#39;), (&#39;gunung&#39;, &#39;semeru&#39;), (&#39;indah&#39;, &#39;pemandangan&#39;), (&#39;indah&#39;, &#39;semeru&#39;), (&#39;pemandangan&#39;, &#39;semeru&#39;)]
+
+========== Iterasi Ke - 0 ==========
+Win(gunung): 0
+Out_sums_info(gunung): {}
+W(gunung) = (1 - 0.85) + 0.85 * (0) = 0.15000000000000002
+
+Win(indah): 1
+Out_sums_info(indah): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(indah) = (1 - 0.85) + 0.85 * ((1/3) * 0.25) = 0.22083333333333335
+
+Win(pemandangan): 2
+Out_sums_info(pemandangan): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(pemandangan) = (1 - 0.85) + 0.85 * ((1/3) * 0.25 + (1/2) * 0.25) = 0.32708333333333334
+
+Win(semeru): 3
+Out_sums_info(semeru): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;pemandangan&#39;: {&#39;semeru&#39;: 1}}
+W(semeru) = (1 - 0.85) + 0.85 * ((1/3) * 0.25 + (1/2) * 0.25 + (1/1) * 0.25) = 0.5395833333333333
+
+New Score : {&#39;gunung&#39;: 0.15000000000000002, &#39;indah&#39;: 0.22083333333333335, &#39;pemandangan&#39;: 0.32708333333333334, &#39;semeru&#39;: 0.5395833333333333}
+
+========== Iterasi Ke - 1 ==========
+Win(gunung): 0
+Out_sums_info(gunung): {}
+W(gunung) = (1 - 0.85) + 0.85 * (0) = 0.15000000000000002
+
+Win(indah): 1
+Out_sums_info(indah): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(indah) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002) = 0.19250000000000003
+
+Win(pemandangan): 2
+Out_sums_info(pemandangan): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(pemandangan) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.22083333333333335) = 0.2863541666666667
+
+Win(semeru): 3
+Out_sums_info(semeru): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;pemandangan&#39;: {&#39;semeru&#39;: 1}}
+W(semeru) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.22083333333333335 + (1/1) * 0.32708333333333334) = 0.5643750000000001
+
+New Score : {&#39;gunung&#39;: 0.15000000000000002, &#39;indah&#39;: 0.19250000000000003, &#39;pemandangan&#39;: 0.2863541666666667, &#39;semeru&#39;: 0.5643750000000001}
+
+========== Iterasi Ke - 2 ==========
+Win(gunung): 0
+Out_sums_info(gunung): {}
+W(gunung) = (1 - 0.85) + 0.85 * (0) = 0.15000000000000002
+
+Win(indah): 1
+Out_sums_info(indah): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(indah) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002) = 0.19250000000000003
+
+Win(pemandangan): 2
+Out_sums_info(pemandangan): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(pemandangan) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.19250000000000003) = 0.2743125
+
+Win(semeru): 3
+Out_sums_info(semeru): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;pemandangan&#39;: {&#39;semeru&#39;: 1}}
+W(semeru) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.19250000000000003 + (1/1) * 0.2863541666666667) = 0.5177135416666667
+
+New Score : {&#39;gunung&#39;: 0.15000000000000002, &#39;indah&#39;: 0.19250000000000003, &#39;pemandangan&#39;: 0.2743125, &#39;semeru&#39;: 0.5177135416666667}
+
+========== Iterasi Ke - 3 ==========
+Win(gunung): 0
+Out_sums_info(gunung): {}
+W(gunung) = (1 - 0.85) + 0.85 * (0) = 0.15000000000000002
+
+Win(indah): 1
+Out_sums_info(indah): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(indah) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002) = 0.19250000000000003
+
+Win(pemandangan): 2
+Out_sums_info(pemandangan): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(pemandangan) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.19250000000000003) = 0.2743125
+
+Win(semeru): 3
+Out_sums_info(semeru): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;pemandangan&#39;: {&#39;semeru&#39;: 1}}
+W(semeru) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.19250000000000003 + (1/1) * 0.2743125) = 0.507478125
+
+New Score : {&#39;gunung&#39;: 0.15000000000000002, &#39;indah&#39;: 0.19250000000000003, &#39;pemandangan&#39;: 0.2743125, &#39;semeru&#39;: 0.507478125}
+
+========== Iterasi Ke - 4 ==========
+Win(gunung): 0
+Out_sums_info(gunung): {}
+W(gunung) = (1 - 0.85) + 0.85 * (0) = 0.15000000000000002
+
+Win(indah): 1
+Out_sums_info(indah): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(indah) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002) = 0.19250000000000003
+
+Win(pemandangan): 2
+Out_sums_info(pemandangan): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}}
+W(pemandangan) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.19250000000000003) = 0.2743125
+
+Win(semeru): 3
+Out_sums_info(semeru): {&#39;gunung&#39;: {&#39;indah&#39;: 1, &#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;indah&#39;: {&#39;pemandangan&#39;: 1, &#39;semeru&#39;: 1}, &#39;pemandangan&#39;: {&#39;semeru&#39;: 1}}
+W(semeru) = (1 - 0.85) + 0.85 * ((1/3) * 0.15000000000000002 + (1/2) * 0.19250000000000003 + (1/1) * 0.2743125) = 0.507478125
+
+New Score : {&#39;gunung&#39;: 0.15000000000000002, &#39;indah&#39;: 0.19250000000000003, &#39;pemandangan&#39;: 0.2743125, &#39;semeru&#39;: 0.507478125}
+
+Konvergensi tercapai pada iterasi ke-4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_graph</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/182704500645b71921d7d081c617fde2a3596b63f730a80298fb01c0b863f4ff.png" src="_images/182704500645b71921d7d081c617fde2a3596b63f730a80298fb01c0b863f4ff.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keywords1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;semeru&#39;, &#39;pemandangan&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="text-rank">
+<h2>Text Rank<a class="headerlink" href="#text-rank" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/pramdf042/PPW/main/crawling_viva_fix.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-31617e23-8b11-4b05-93e9-e5e2c60cfa21" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul</th>
+      <th>Isi Berita</th>
+      <th>Link</th>
+      <th>Kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Terpopuler: Tentara Israel Frustasi Dihujat Wa...</td>
+      <td>Round Up – Perang Israel-Hamas di Jalur Gaza t...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660151...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jadi Tersangka Pemerasan, Firli Bahuri Teranca...</td>
+      <td>Jakarta - Ketua Komisi Pemberantasan Korupsi (...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660272...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Firli Bahuri Ditetapkan Tersangka, Eks Pegawai...</td>
+      <td>Jakarta – Ketua wadah pegawai KPK Yudi Purnomo...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660271...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kondisi Terkini 4 Korban Luka Kecelakaan Minib...</td>
+      <td>Surabaya – Empat korban luka berat dalam insid...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660237...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Polisi Segera Periksa Firli sebagai Tersangka ...</td>
+      <td>Jakarta- Polisi segera mengagendakan pemeriksa...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660268...</td>
+      <td>nasional</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>Firli Bahuri Resmi Jadi Tersangka Kasus Pemera...</td>
+      <td>Jakarta – Polda Metro Jaya menetapkan Ketua Ko...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660262...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Jadi Tersangka Pemerasan, Firli Bahuri Teranca...</td>
+      <td>Jakarta - Ketua Komisi Pemberantasan Korupsi (...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660272...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>Kronologi Lengkap Kasus Mutilasi Mahasiswa UMY</td>
+      <td>Yogyakarta – Dua terdakwa kasus mutilasi terha...</td>
+      <td>https://www.viva.co.id/berita/kriminal/1660261...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>Firli Bahuri Ditetapkan Tersangka, Eks Pegawai...</td>
+      <td>Jakarta – Ketua wadah pegawai KPK Yudi Purnomo...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660271...</td>
+      <td>kriminal</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Tutupi Wajah Seperti Ninja, Caleg PKB Ngamuk S...</td>
+      <td>Pasuruan – Seorang Caleg muda PKB Kabupaten Pa...</td>
+      <td>https://www.viva.co.id/berita/nasional/1660212...</td>
+      <td>kriminal</td>
+    </tr>
+  </tbody>
+</table>
+<p>72 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-31617e23-8b11-4b05-93e9-e5e2c60cfa21')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-31617e23-8b11-4b05-93e9-e5e2c60cfa21 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-31617e23-8b11-4b05-93e9-e5e2c60cfa21');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Judul         0
+Isi Berita    0
+Link          0
+Kategori      0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cleaning</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s.?!,]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">text</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Isi Berita&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cleaning</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     round up  perang israelhamas di jalur gaza ter...
+1     jakarta  ketua komisi pemberantasan korupsi kp...
+2     jakarta  ketua wadah pegawai kpk yudi purnomo ...
+3     surabaya  empat korban luka berat dalam inside...
+4     jakarta polisi segera mengagendakan pemeriksaa...
+                            ...                        
+67    jakarta  polda metro jaya menetapkan ketua kom...
+68    jakarta  ketua komisi pemberantasan korupsi kp...
+69    yogyakarta  dua terdakwa kasus mutilasi terhad...
+70    jakarta  ketua wadah pegawai kpk yudi purnomo ...
+71    pasuruan  seorang caleg muda pkb kabupaten pas...
+Name: Cleaning, Length: 72, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stopwordText</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stopword Removal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stopwordText</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stopword Removal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     [round up perang israelhamas jalur gaza menyit...
+1     [jakarta ketua komisi pemberantasan korupsi kp...
+2     [jakarta ketua wadah pegawai kpk yudi purnomo ...
+3     [surabaya korban luka berat insiden minibus di...
+4     [jakarta polisi mengagendakan pemeriksaan ketu...
+                            ...                        
+67    [jakarta polda metro jaya menetapkan ketua kom...
+68    [jakarta ketua komisi pemberantasan korupsi kp...
+69    [yogyakarta terdakwa mutilasi mahasiswa univer...
+70    [jakarta ketua wadah pegawai kpk yudi purnomo ...
+71    [pasuruan caleg muda pkb kabupaten pasuruan be...
+Name: Tokenizing, Length: 72, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">):</span>
+  <span class="c1"># Menggambar graf dengan canvas yang diperbesar</span>
+  <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c1"># Menentukan posisi simpul</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Menentukan ukuran canvas</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+  <span class="c1"># Menggambar graf dengan ukuran canvas yang diperbesar</span>
+  <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+  <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">graph_co_occurrence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_matrics</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+    <span class="n">tfidf_matrics</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">co_occurrence_matrix</span> <span class="o">=</span> <span class="n">tfidf_matrics</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tfidf_matrics</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="n">df_co_occurence</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">co_occurrence_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="n">show_matrics</span><span class="p">:</span>
+      <span class="n">display</span><span class="p">(</span><span class="n">df_co_occurence</span><span class="p">)</span>
+
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+    <span class="c1"># Menambahkan edge ke graf berdasarkan matriks co-occurrence</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">co_occurrence_matrix</span><span class="p">)):</span>
+      <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">co_occurrence_matrix</span><span class="p">)):</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">weight</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+          <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[</span><span class="n">i</span><span class="p">],</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()[</span><span class="n">j</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_top_words</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_matrics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_scores</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">full_text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="n">G</span> <span class="o">=</span> <span class="n">graph_co_occurrence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">show_matrics</span><span class="p">)</span>
+
+    <span class="c1"># Menghitung nilai dari PageRank (TextRank)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Dictionary untuk menyimpan skor tertinggi setiap kata</span>
+    <span class="n">ranked_words_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="n">current_score</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ranked_words_dict</span> <span class="ow">or</span> <span class="n">current_score</span> <span class="o">&gt;</span> <span class="n">ranked_words_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]:</span>
+            <span class="n">ranked_words_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_score</span>
+
+    <span class="c1"># Mengurutkan kata-kata berdasarkan skor tertinggi</span>
+    <span class="n">ranked_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(((</span><span class="n">score</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">ranked_words_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Memilih sejumlah w kata tertinggi</span>
+    <span class="n">selected_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ranked_words</span><span class="p">[:</span><span class="n">w</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="c1"># Menggabungkan kata-kata menjadi satu string terpisah dengan koma</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">selected_words</span><span class="p">)</span> <span class="k">if</span> <span class="n">selected_words</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">show_scores</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dokumen ke </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">full_text</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1"> Kata Kunci : </span><span class="si">{</span><span class="n">keywords</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TextRank Scores:&quot;</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">ranked_words</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skor: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">, Kata: </span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">selected_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_all</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_matrics</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_scores</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+  <span class="c1"># G = graph_co_occurrence(x, show_matrics)</span>
+
+  <span class="n">G</span><span class="p">,</span> <span class="n">top_words</span> <span class="o">=</span> <span class="n">extract_top_words</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">show_matrics</span><span class="p">,</span> <span class="n">show_scores</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plot Graph :&quot;</span><span class="p">)</span>
+    <span class="n">plot_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+  <span class="c1"># Menggabungkan kata-kata menjadi satu string terpisah dengan koma</span>
+  <span class="n">keywords</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">top_words</span><span class="p">)</span> <span class="k">if</span> <span class="n">top_words</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+  <span class="k">return</span> <span class="n">keywords</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Tokenizing&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">example</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;jakarta ketua komisi pemberantasan korupsi kpk, firli bahuri terancam pidana penjara seumur hidup buntut ditetapkan tersangka dugaan pemerasan penerimaan gratifikasi penanganan korupsi kementerian pertanian kementan 2021. firli dikenakan pasal 12e pasal 12b pasal 11 uu 311999 diubah uu 202001 perubahan uu 311999 pemberantasan tindak pidana korupsi juncto pasal 65 kuhp.&#39;,
+ &#39;rentetan pasal berlapis itu, firli terancam hukuman berat penjara seumur hidup pasal 12b ayat 1 terkait penerimaan gratifikasi pegawai negeri penyelenggara negara.&#39;,
+ &#39;diungkap direktur reserse kriminal khusus polda metro jaya, komisaris polisi ade safri simanjuntak.&#39;,
+ &#39;ayat 1, dipidana seumur hidup pidana penjara singkat 20 tahun.&#39;,
+ &#39;pidana denda rp200 juta rp1 miliar, wartawan, kamis 23 november 2023. ade penetapan firli tersangka penyidik menemukan bukti cukup.&#39;,
+ &#39;mantan kapolres kota solo mengatakan, 91 orang diperiksa saksi dugaan pemerasan eks menteri pertanian syahrul yasin limpo syl itu.&#39;,
+ &#39;menetapkan saudara fb ketua kpk ri tersangka perkara dugaan tindak pidana korupsi pemerasan penerimaan gratifikasi, katanya.&#39;,
+ &#39;diketahui, polda metro jaya menaikkan status dugaan pemerasan pimpinan komisi pemberantasan korupsi kpk penanganan korupsi kementerian pertanian kementan 2021 penyidikan.&#39;,
+ &#39;direkomendasikan dinaikkan status penyelidikan tahap penyidikan, direktur reserse kriminal khusus polda metro jaya, komisaris polisi ade safri simanjuntak wartawan, sabtu 7 oktober 2023.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keyword</span> <span class="o">=</span>  <span class="n">extract_all</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">show_matrics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_scores</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-03bd661e-b3dc-4143-9be2-414e0b487f25" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>11</th>
+      <th>12b</th>
+      <th>12e</th>
+      <th>20</th>
+      <th>202001</th>
+      <th>2021</th>
+      <th>2023</th>
+      <th>23</th>
+      <th>311999</th>
+      <th>65</th>
+      <th>...</th>
+      <th>syl</th>
+      <th>tahap</th>
+      <th>tahun</th>
+      <th>terancam</th>
+      <th>terkait</th>
+      <th>tersangka</th>
+      <th>tindak</th>
+      <th>uu</th>
+      <th>wartawan</th>
+      <th>yasin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>3</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>114 rows × 114 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-03bd661e-b3dc-4143-9be2-414e0b487f25')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-03bd661e-b3dc-4143-9be2-414e0b487f25 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-03bd661e-b3dc-4143-9be2-414e0b487f25');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dokumen ke 1 : jakarta ketua komisi pemberantasan korupsi kpk, firli bahuri terancam pidana penjara seumur hidup buntut ditetapkan tersangka dugaan pemerasan penerimaan gratifikasi penanganan korupsi kementerian pertanian kementan 2021. firli dikenakan pasal 12e pasal 12b pasal 11 uu 311999 diubah uu 202001 perubahan uu 311999 pemberantasan tindak pidana korupsi juncto pasal 65 kuhp. rentetan pasal berlapis itu, firli terancam hukuman berat penjara seumur hidup pasal 12b ayat 1 terkait penerimaan gratifikasi pegawai negeri penyelenggara negara. diungkap direktur reserse kriminal khusus polda metro jaya, komisaris polisi ade safri simanjuntak. ayat 1, dipidana seumur hidup pidana penjara singkat 20 tahun. pidana denda rp200 juta rp1 miliar, wartawan, kamis 23 november 2023. ade penetapan firli tersangka penyidik menemukan bukti cukup. mantan kapolres kota solo mengatakan, 91 orang diperiksa saksi dugaan pemerasan eks menteri pertanian syahrul yasin limpo syl itu. menetapkan saudara fb ketua kpk ri tersangka perkara dugaan tindak pidana korupsi pemerasan penerimaan gratifikasi, katanya. diketahui, polda metro jaya menaikkan status dugaan pemerasan pimpinan komisi pemberantasan korupsi kpk penanganan korupsi kementerian pertanian kementan 2021 penyidikan. direkomendasikan dinaikkan status penyelidikan tahap penyidikan, direktur reserse kriminal khusus polda metro jaya, komisaris polisi ade safri simanjuntak wartawan, sabtu 7 oktober 2023.
+3 Kata Kunci : tersangka, tindak, uu
+TextRank Scores:
+Skor: 0.0892378518438002, Kata: uu
+Skor: 0.03881519657524169, Kata: tersangka
+Skor: 0.036112052752640934, Kata: tindak
+Skor: 0.030946819833222658, Kata: yasin
+Skor: 0.02716688235778334, Kata: tahap
+Skor: 0.025464035282354063, Kata: pidana
+Skor: 0.02417904214810856, Kata: status
+Skor: 0.02172491912099248, Kata: terancam
+Skor: 0.02056458936379774, Kata: seumur
+Skor: 0.017976146880211874, Kata: simanjuntak
+Skor: 0.016728142024921757, Kata: syl
+Skor: 0.015382483568948035, Kata: pasal
+Skor: 0.014841792313008055, Kata: terkait
+Skor: 0.014754814038678272, Kata: pertanian
+Skor: 0.013414840805576634, Kata: safri
+Skor: 0.013182927367740514, Kata: polda
+Skor: 0.01281607684970242, Kata: pemerasan
+Skor: 0.01173886821718956, Kata: syahrul
+Skor: 0.011675012311767423, Kata: rp200
+Skor: 0.011421550905064314, Kata: penjara
+Skor: 0.011212836135223982, Kata: penerimaan
+Skor: 0.010177018888511722, Kata: pemberantasan
+Skor: 0.009923088639091577, Kata: reserse
+Skor: 0.009798267212715909, Kata: korupsi
+Skor: 0.009146991592676684, Kata: solo
+Skor: 0.009097201261726489, Kata: rp1
+Skor: 0.008656863183256461, Kata: penanganan
+Skor: 0.008605235099702919, Kata: perubahan
+Skor: 0.008481158037166897, Kata: polisi
+Skor: 0.008474904330330938, Kata: saudara
+Skor: 0.008134351628811647, Kata: sabtu
+Skor: 0.007804711630554011, Kata: rentetan
+Skor: 0.007543770906129612, Kata: saksi
+Skor: 0.007035177351404695, Kata: penyidik
+Skor: 0.00702074091566285, Kata: singkat
+Skor: 0.006603813005942054, Kata: ri
+Skor: 0.0065703805012796625, Kata: pimpinan
+Skor: 0.006436784999027105, Kata: penyelenggara
+Skor: 0.006371728897574636, Kata: metro
+Skor: 0.006335790279340305, Kata: kpk
+Skor: 0.006162085857346386, Kata: penetapan
+Skor: 0.00587146087584685, Kata: firli
+Skor: 0.005811031184316636, Kata: orang
+Skor: 0.005494772794469098, Kata: november
+Skor: 0.0053613706707855945, Kata: hidup
+Skor: 0.005252846895892695, Kata: menteri
+Skor: 0.004998216480938549, Kata: komisi
+Skor: 0.004952669704495604, Kata: pegawai
+Skor: 0.004911389029957611, Kata: ketua
+Skor: 0.004904204383042366, Kata: perkara
+Skor: 0.004698159893670069, Kata: kementerian
+Skor: 0.004692534343506549, Kata: kriminal
+Skor: 0.004616793470155115, Kata: penyelidikan
+Skor: 0.0045622338109966515, Kata: gratifikasi
+Skor: 0.004538309122234598, Kata: menemukan
+Skor: 0.004523375966927516, Kata: kementan
+Skor: 0.004423481620001361, Kata: mantan
+Skor: 0.004341082515725592, Kata: komisaris
+Skor: 0.004285607774783139, Kata: oktober
+Skor: 0.004277650511278321, Kata: negeri
+Skor: 0.004182748038664216, Kata: kamis
+Skor: 0.004164199908200137, Kata: dugaan
+Skor: 0.004106165095400222, Kata: limpo
+Skor: 0.004097863908299769, Kata: juncto
+Skor: 0.004096860414249552, Kata: jaya
+Skor: 0.0040422850619249, Kata: khusus
+Skor: 0.003988494937249407, Kata: jakarta
+Skor: 0.0038827043326297877, Kata: juta
+Skor: 0.0038345386345305134, Kata: kota
+Skor: 0.0038341823857173385, Kata: menaikkan
+Skor: 0.003775672417707658, Kata: menetapkan
+Skor: 0.0036065604955439357, Kata: diubah
+Skor: 0.0035991995669168364, Kata: kapolres
+Skor: 0.003595605034953736, Kata: denda
+Skor: 0.0035936432212913894, Kata: hukuman
+Skor: 0.003527650721550998, Kata: ditetapkan
+Skor: 0.003452404854417955, Kata: dikenakan
+Skor: 0.0034201792616835335, Kata: 311999
+Skor: 0.003402557933303895, Kata: direktur
+Skor: 0.003380567244933958, Kata: buntut
+Skor: 0.0033565054924749537, Kata: dipidana
+Skor: 0.003311905763326337, Kata: bahuri
+Skor: 0.003286413622889164, Kata: ayat
+Skor: 0.003271629453238363, Kata: eks
+Skor: 0.0032462091372084884, Kata: 65
+Skor: 0.003227335419185964, Kata: berlapis
+Skor: 0.0032150852883727717, Kata: ade
+Skor: 0.0032080093448778597, Kata: bukti
+Skor: 0.0031947629823009392, Kata: direkomendasikan
+Skor: 0.003136938598331941, Kata: 2021
+Skor: 0.003097247270727756, Kata: diungkap
+Skor: 0.0030818093256825153, Kata: berat
+Skor: 0.003080026611913647, Kata: 202001
+Skor: 0.003075707536755452, Kata: diperiksa
+Skor: 0.003057963411877548, Kata: dinaikkan
+Skor: 0.0030253153264901125, Kata: 12e
+Skor: 0.003001030267074506, Kata: 23
+Skor: 0.002987967187830025, Kata: 12b
+Skor: 0.0029791620159680164, Kata: fb
+Skor: 0.0029370211787765523, Kata: 91
+Skor: 0.0029370211787765523, Kata: 20
+Skor: 0.0029370211787765523, Kata: 11
+Skor: 0, Kata: wartawan,
+Skor: 0, Kata: tahun.
+Skor: 0, Kata: simanjuntak.
+Skor: 0, Kata: penyidikan.
+Skor: 0, Kata: penyidikan,
+Skor: 0, Kata: negara.
+Skor: 0, Kata: miliar,
+Skor: 0, Kata: mengatakan,
+Skor: 0, Kata: kuhp.
+Skor: 0, Kata: kpk,
+Skor: 0, Kata: katanya.
+Skor: 0, Kata: jaya,
+Skor: 0, Kata: itu.
+Skor: 0, Kata: itu,
+Skor: 0, Kata: gratifikasi,
+Skor: 0, Kata: diketahui,
+Skor: 0, Kata: cukup.
+Skor: 0, Kata: 7
+Skor: 0, Kata: 2023.
+Skor: 0, Kata: 2021.
+Skor: 0, Kata: 1,
+Skor: 0, Kata: 1
+
+Plot Graph :
+</pre></div>
+</div>
+<img alt="_images/88f99b92236d2c4bea86fa9f029f837298fb7a796f6011148b3a6aa7ab8587ae.png" src="_images/88f99b92236d2c4bea86fa9f029f837298fb7a796f6011148b3a6aa7ab8587ae.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas%205.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tugas 5</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-manual-spreadsheet">Perhitungan Manual (Spreadsheet)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-rank">Text Rank</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pramudya Dwi Febrianto
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
