@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'crawling_viva';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tugas 4" href="Tugas%204.html" />
+    <link rel="next" title="Scraping bantennews.com" href="scrapingbanten.html" />
     <link rel="prev" title="&lt;no title&gt;" href="Ringkas%20Berita.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -171,6 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="Tugas%203%20PPW.html">Tugas 3</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling Viva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrapingbanten.html">Scraping bantennews.com</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas%204.html">Tugas 4</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas%205.html">Tugas 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ekstraksi_kata.html">Ekstraksi Kata Kunci dengan Text Rank</a></li>
@@ -606,90 +607,90 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Firli Bahuri Tersangka, Wakil Ketua KPK Johanis Tanak Beri Penjelasan Begini&#39;,
- &#39;Jadi Tersangka Pemerasan, Polisi Sita Bukti Penukaran Valas Rp 7,4 Miliar dari Firli Bahuri&#39;,
- &#39;Panglima TNI soal KKB di Papua: Mereka Kombatan Bersenjata, Harus Lawannya Senjata&#39;,
- &#39;Kepala BKKBN Berharap Rakernas IDI Jadi Momentum Turunkan Angka Stunting&#39;,
- &#39;Warga Jakarta Kibarkan Bendera Palestina di Gunung Kerinci&#39;,
- &#39;3 Fakta Firli Bahuri Jadi Tersangka hingga Terancam Penjara Seumur Hidup&#39;,
- &#39;Terdakwa Kasus Mutilasi Mahasiswa UMY Mengaku Terinspirasi dari Film saat Lakukan Aksinya&#39;,
- &#39;Sederet Kontroversi Firli Bahuri: Bergaya Hedon hingga Tersangkut Kasus Pemerasan SYL&#39;,
- &#39;Terpopuler: Tentara Israel Frustasi Dihujat Warganet RI, Firli Bahuri Dituding Berbohong&#39;,
- &#39;Jadi Tersangka Pemerasan, Firli Bahuri Terancam Penjara Seumur Hidup!&#39;,
- &#39;Firli Bahuri Ditetapkan Tersangka, Eks Pegawai KPK: Alhamdulillah&#39;,
- &#39;Kondisi Terkini 4 Korban Luka Kecelakaan Minibus vs Kereta Api di Lumajang&#39;,
- &#39;Polisi Segera Periksa Firli sebagai Tersangka Pemerasan ke SYL&#39;,
- &#39;Panglima TNI Jenderal Agus Subiyanto Punya Harta Rp 19,3 Miliar, Ini Rinciannya&#39;,
- &#39;Ganjar Ungkap Pentingnya Beri Ruang Anak Muda Ekspresikan Bakat dan Minat&#39;,
- &#39;Cara Bikin Mahasiswa Lebih selektif dalam Memilih di Pemilu 2024&#39;,
- &#39;Firli Bahuri Resmi Jadi Tersangka Kasus Pemerasan SYL&#39;,
- &#39;Tutupi Wajah Seperti Ninja, Caleg PKB Ngamuk Serang Kompetitor di Pasuruan&#39;,
- &#39;Sumsel Jadi Daerah dengan Penurunan Kemiskinan Ekstrem Tercepat di Pulau Sumatera&#39;,
- &#39;Firli Bahuri Resmi Jadi Tersangka Kasus Pemerasan SYL&#39;,
- &#39;Jadi Tersangka Pemerasan, Firli Bahuri Terancam Penjara Seumur Hidup!&#39;,
- &#39;Firli Bahuri Ditetapkan Tersangka, Eks Pegawai KPK: Alhamdulillah&#39;,
- &#39;Sederet Kontroversi Firli Bahuri: Bergaya Hedon hingga Tersangkut Kasus Pemerasan SYL&#39;,
- &#39;Terpopuler: Tentara Israel Frustasi Dihujat Warganet RI, Firli Bahuri Dituding Berbohong&#39;,
- &#39;Harta Berjalan Crazy Rich Tanjung Priok yang Desak Polisi Usut Ketua KPK Firli Bahuri&#39;,
- &#39;PBNU: Boikot Produk Israel Penting, Tapi Tak Cukup&#39;,
- &#39;Sinopsis Serial India Hai Albelaa 23 November: Kabar Bahagia dari Sayuri dan Krishna&#39;,
- &#39;Kebahagiaan di Hai Albelaa Hari Ini, Sayuri Dapat Kembali Bersatu Dengan Krishna&#39;,
- &#39;Ketua TPN Ganjar-Mahfud Arsjad Rasjid Percaya TNI dan Polri Netral di Pilpres 2024&#39;,
- &#39;Mendagri Ingatkan Dana Otsus Triliunan Rupiah tapi Masih Banyak Warga Miskin di Papua&#39;,
- &#39;TKN Sebut Gambar Anak-anak dalam Iklan Politik Prabowo-Gibran Hasil Teknologi AI&#39;,
- &#39;Bawaslu Segera Kaji Iklan Politik Prabowo dengan Konten Susu yang Diduga Libatkan Anak-anak&#39;,
- &#39;Tiga Eks Pimpinan KPK Gabung Timnas Amin, Anies Sebut &quot;Orang-orang yang Ingin Perubahan&quot;&#39;,
- &#39;PPP Klaim Elektabilitas Ganjar-Mahfud Tak Anjlok dalam Survei Internal TPN&#39;,
- &#39;SMRC: Gibran Belum Kuat Ambil Suara di Jateng&#39;,
- &#39;Yusril Yakin Tak Ada Pelanggaran Pemilu saat Acara Kepala Desa di GBK&#39;,
- &#39;Petani Boyolali Yakin Prabowo-Gibran Wujudkan Swasembada Pangan&#39;,
- &#39;Respons Bobby Nasution Diusung Partai Golkar Maju di Pilgub Sumut 2024&#39;,
- &#39;Agus Subiyanto jadi Panglima TNI, Kapten Timnas Amin: Kita Harus Yakin Dia Netral&#39;,
- &#39;Hendropriyono Prediksi Prabowo jadi Presiden 2024, Pentolan PPP: Ini Cambuk Bagi Kami Semua&#39;,
- &#39;Koalisi Masyarakat Sipil: Bahaya Jika Perangkat Desa Tak Netral di 2024&#39;,
- &#39;Kampanye Pilpres Sebentar Lagi, Teddy Gusnaidi: Narasi Terzalimi Sudah Tak Bisa Dipakai&#39;,
- &#39;Cegah Hoaks, Isu Aparat Tak Netral Harus Disertai Bukti bukan Cuma Tuduhan&#39;,
- &#39;PPP Sebut TPN Bakal Evaluasi Narasi Ganjar-Mahfud, Ada Apa?&#39;,
- &#39;Sebut Ganjar-Mahfud Tonjolkan Kepemimpinan yang Berkarakter, Hasto: Bukan Gimik Politik&#39;,
- &#39;Galang Donasi untuk Palestina, Bappilu Gerindra Jabar Kumpulkan Ratusan Juta Rupiah&#39;,
- &#39;TKN: Survei LSI Denny JA Tunjukkan Milenial dan Gen Z Semakin Menyukai Prabowo&#39;,
- &#39;Firli Bahuri Resmi Jadi Tersangka Kasus Pemerasan SYL&#39;,
- &#39;Jadi Tersangka Pemerasan, Firli Bahuri Terancam Penjara Seumur Hidup!&#39;,
- &#39;Firli Bahuri Ditetapkan Tersangka, Eks Pegawai KPK: Alhamdulillah&#39;,
- &#39;Sederet Kontroversi Firli Bahuri: Bergaya Hedon hingga Tersangkut Kasus Pemerasan SYL&#39;,
- &#39;Terpopuler: Tentara Israel Frustasi Dihujat Warganet RI, Firli Bahuri Dituding Berbohong&#39;,
- &#39;Harta Berjalan Crazy Rich Tanjung Priok yang Desak Polisi Usut Ketua KPK Firli Bahuri&#39;,
- &#39;PBNU: Boikot Produk Israel Penting, Tapi Tak Cukup&#39;,
- &#39;Sinopsis Serial India Hai Albelaa 23 November: Kabar Bahagia dari Sayuri dan Krishna&#39;,
- &#39;Kebahagiaan di Hai Albelaa Hari Ini, Sayuri Dapat Kembali Bersatu Dengan Krishna&#39;,
- &#39;Cerdik Tapi Apes, 2 Pria Ini Selundupkan Nasi Campur Narkoba ke Lapas Kediri&#39;,
- &#39;Kronologi Lengkap Kasus Mutilasi Mahasiswa UMY&#39;,
- &#39;Tipu-Tipu Tiket Coldplay Raup Rp1,2 M, Begini Modus Pelaku Kelabui Korban&#39;,
- &#39;Ghisca Debora Refund Uang Tipu-Tipu Tiket Coldplay, Tapi...&#39;,
- &#39;Detik-detik Pria Boncengan dengan Istri Hajar Sopir Ambulans, Ngakunya Anggota TNI&#39;,
- &#39;Pengakuan Mengejutkan Tersangka Penggelapan Mobil Jessica Iskandar Kabur ke Luar Negeri&#39;,
- &#39;Bareskrim Tangkap Bandar Narkoba yang Pasok Ekstasi di Kafe Senopati&#39;,
- &#39;Detik-detik Tersangka Penggelapan Mobil Jessica Iskandar Ditangkap saat JJS di Bangkok&#39;,
- &#39;Pengakuan Mengejutkan Ghisca Debora, Jadi Calo Tiket Konser Artis Internasional sejak 2022&#39;,
- &#39;Ghisca Debora ke Belanda Cari Kampus dan Temui Kekasih, Pakai Uang Penipuan Tiket Coldplay?&#39;,
- &#39;Polisi Ungkap Siswa SMK yang Dikira Korban Kecelakaan Ternyata Dibacok Pelajar Lain&#39;,
- &#39;Polisi Minta Rekening Ghisca Debora yang Tipu-tipu Tiket Coldplay Diblokir&#39;,
- &#39;Kejar-Kejaran Motor lalu Cekcok, Pria di Pasar Rebo Tewas Ditikam&#39;,
- &#39;Polisi Buru 5 Anggota Tim Joki Seleksi CPNS Kejaksaan di Lampung&#39;,
- &#39;Ghisca Debora Plesiran ke Belanda Diduga Pakai Uang Hasil Penipuan, Lagi Diselidiki Polisi&#39;,
- &#39;Pengakuan Mengejutkan Ghisca Debora Raup Miliaran Rupiah dari Menipu Tiket Coldplay&#39;,
- &#39;Gischa Debora Pakai Uang Hasil Penipuan Tiket Coldplay Buat Beli Tas hingga Sandal Hermes&#39;,
- &#39;20 Kali Beraksi, Keluarga Komplotan Pencuri Motor Gunakan Pistol Mainan Ancam Korban&#39;,
- &#39;Cara Ghisca Debora Tipu-tipu hingga Raup Miliaran, Ngaku Kenal Promotor Coldplay&#39;,
- &#39;Jadi Tersangka Pemerasan, Firli Bahuri Terancam Penjara Seumur Hidup!&#39;,
- &#39;Firli Bahuri Resmi Jadi Tersangka Kasus Pemerasan SYL&#39;,
- &#39;Firli Bahuri Ditetapkan Tersangka, Eks Pegawai KPK: Alhamdulillah&#39;,
- &#39;Sederet Kontroversi Firli Bahuri: Bergaya Hedon hingga Tersangkut Kasus Pemerasan SYL&#39;,
- &#39;Terpopuler: Tentara Israel Frustasi Dihujat Warganet RI, Firli Bahuri Dituding Berbohong&#39;,
- &#39;Harta Berjalan Crazy Rich Tanjung Priok yang Desak Polisi Usut Ketua KPK Firli Bahuri&#39;,
- &#39;PBNU: Boikot Produk Israel Penting, Tapi Tak Cukup&#39;,
- &#39;Sinopsis Serial India Hai Albelaa 23 November: Kabar Bahagia dari Sayuri dan Krishna&#39;,
- &#39;Kebahagiaan di Hai Albelaa Hari Ini, Sayuri Dapat Kembali Bersatu Dengan Krishna&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Besok, Anies Baswedan Kampanye Akbar di Jambi&#39;,
+ &#39;Polda Metro Bawa 157 Bukti di Sidang Praperadilan Kasus Pemerasan Firli Bahuri&#39;,
+ &#39;Usai Cuti Hadiri Debat Capres di KPU, Gibran Langsung Pulang ke Solo&#39;,
+ &#39;Wakil Dekan Unpri Bantah Ada Pembunuhan, Tegaskan 5 Mayat Itu Cadaver&#39;,
+ &#39;Polda Kalsel Pastikan Usut Dugaan Korupsi Alih Fungsi Lahan PTPN XIII di Banjar&#39;,
+ &#39;Anies Singgung Orang Dalam, Pakar Sebut TGUPP Era Anies Itu Juga Orang Dalam&#39;,
+ &#39;Buka Suara soal Heboh Temuan 5 Mayat, Unpri: Itu Cadaver\xa0Praktikum Anatomi Sejak 2008&#39;,
+ &#39;Prabowo: Kehidupan Prajurit TNI Itu Pengabdian dan Pengorbanan Terus-menerus&#39;,
+ &#39;Sidang Praperadilan Firli Bahuri, Prof Romli: Tak Ada Saksi Adanya Pemerasan&#39;,
+ &#39;KPK Sebut Ketua Komisi IV DPR Terima Aliran Dana Kasus SYL&#39;,
+ &#39;Polda Metro Bantah Penetapan Tersangka Firli Berkaitan dengan Kasus M Suryo&#39;,
+ &#39;Penanganan Karhutla di Sumsel Efektif, Jumlah Hotspot Terus Berkurang&#39;,
+ &#39;Jokowi Minta Babinsa Dampingi Petani agar Produksi Beras Meningkat&#39;,
+ &#39;Hadiri Reuni Akabri 1970-1973 di Magelang, Prabowo Ingatkan Taruna-taruni Soal Ini&#39;,
+ &#39;Kemenag: Jemaah Haji 2024 Sudah Dapat Mencicil Pelunasan Biaya Haji&#39;,
+ &#39;Ketua KPK Nawawi Pomolango: Saya Nyesal Hadir Diundang Debat Kusir, eh Capres!&#39;,
+ &#39;Polisi di Ternate Buron Gara-gara Bolos Kerja Selama 30 Hari&#39;,
+ &#39;Polda Metro Minta Hakim Tolak Gugatan Firli Bahuri Soal Penetapan Tersangka Dugaan Pemerasan&#39;,
+ &#39;Jokowi Cerita ke Petani dan Babinsa: Semua Negara Alami Krisis Pangan&#39;,
+ &#39;Siapa Unggul di Debat Perdana Capres 2024? Ini Kata Panelis&#39;,
+ &#39;Viral Polantas Setop Pemotor yang Kawal Ambulans, Kombes Latif Ungkap Alasannya&#39;,
+ &#39;Kombes Ade Blak-Blakan Beri Kabar Terbaru Kasus Pemerasan Firli Bahuri ke SYL&#39;,
+ &#39;Motor Pengawal Ambulans di Jaksel Ditilang, Kombes Latif Ungkap Alasannya&#39;,
+ &#39;Geger! 5 Mayat Ditemukan di Kampus UNPRI Medan: Jasad 4 Pria 1 Perempuan&#39;,
+ &#39;Sebanyak Ini Chery Omoda 5 Terjual di Seluruh Dunia&#39;,
+ &#39;Harmony Sindangmulya, Rumah Mungil Idaman Keluarga&#39;,
+ &#39;Sinopsis Film Korea Pipeline (2021), Pencurian Minyak Didalangi Lee Soo Hyuk&#39;,
+ &#39;Lirik Lagu Tiara - Woro Widowati&#39;,
+ &#39;Usai Debat Perdana, Warganet Nilai Prabowo Sebagai Capres Paling Jujur&#39;,
+ &#39;Prabowo Makan Siang bareng SBY dan Alumni Akabri 1970-1973 di Ruang Makan Baru Akmil&#39;,
+ &#39;Nostalgia di Almamater, Prabowo Hadiri Reuni Akbar Akabri 1970-1973 bareng SBY&#39;,
+ &#39;Cheryl Tanzil: Pernyataan Pak Prabowo ke Anies Soal Polusi Mewakili Suara Jutaan Ibu di Jakarta&#39;,
+ &#39;Tokoh Muda Papua Puji Paparan Holistik Prabowo Terkait Isu Papua di Debat Capres&#39;,
+ &#39;Prabowo Subianto Tunjukkan Pemimpin Tegas tapi Santai di Debat Capres, Kata Sekjen Pandawa Lima&#39;,
+ &#39;Mahfud MD: Kemerdekaan Kita Masih Tersandera oleh Perilaku Politik maupun Geopolitik&#39;,
+ &#39;Nasdem soal Debat Cawapres: Lawan Cak Imin Harus Persiapkan Diri&#39;,
+ &#39;Anies Seperti Menepuk Air di Dulang, Pakar: TGUPP Itu Ordal&#39;,
+ &#39;Ogah Jadi Hakim Moral, Alasan Prabowo Tak Cecar Ganjar soal Kasus Wadas hingga e-KTP Saat Debat&#39;,
+ &#39;Sekjen PDIP Sebut Prabowo Tak Tegas Jawab Isu HAM saat Debat Perdana&#39;,
+ &#39;Nasdem: Semakin Anies Diserang, Semakin Muncul Kemampuannya di Debat Pilpres&#39;,
+ &#39;Kampanye Dua Arah Jadi Jurus Prabowo-Gibran Gaet Calon Pemilih yang Masih Galau&#39;,
+ &#39;Anies Perkenalkan Program Bansos Plus di Pekanbaru, Peningkatan dari Program Jokowi&#39;,
+ &#39;Debat Perdana Pilpres, Nasdem: Itu Panggungnya Anies Baswedan&#39;,
+ &#39;KPU DKI Pastikan ODGJ Bisa Ikut Nyoblos di Pemilu 2024, Jumlahnya 22.871&#39;,
+ &#39;Mardiono Ungkap Tak Ada Persiapan Debat Cawapres: Pak Mahfud Sudah Biasa&#39;,
+ &#39;Persatuan Jokowi dan Prabowo pada 2019 Adalah Rekonsiliasi Nasional&#39;,
+ &#39;LSI Denny JA: Ridwan Kamil Dongkrak Elektabilitas Prabowo di Kabupaten Bogor&#39;,
+ &#39;Siapa Unggul di Debat Perdana Capres 2024? Ini Kata Panelis&#39;,
+ &#39;Viral Polantas Setop Pemotor yang Kawal Ambulans, Kombes Latif Ungkap Alasannya&#39;,
+ &#39;Kombes Ade Blak-Blakan Beri Kabar Terbaru Kasus Pemerasan Firli Bahuri ke SYL&#39;,
+ &#39;Motor Pengawal Ambulans di Jaksel Ditilang, Kombes Latif Ungkap Alasannya&#39;,
+ &#39;Geger! 5 Mayat Ditemukan di Kampus UNPRI Medan: Jasad 4 Pria 1 Perempuan&#39;,
+ &#39;Sebanyak Ini Chery Omoda 5 Terjual di Seluruh Dunia&#39;,
+ &#39;Harmony Sindangmulya, Rumah Mungil Idaman Keluarga&#39;,
+ &#39;Sinopsis Film Korea Pipeline (2021), Pencurian Minyak Didalangi Lee Soo Hyuk&#39;,
+ &#39;Lirik Lagu Tiara - Woro Widowati&#39;,
+ &#39;Ngaku Menyesal, Begini Penampakan Pembunuh Wanita Dilakban di Bekasi&#39;,
+ &#39;Devid Bunuh Pacarnya Nindi Mahasiswi STIKES Bogor Diancam Hukuman Mati&#39;,
+ &#39;Baru 3 Bulan Kerja, ART Bobol ATM Majikan hingga Rugi Puluhan Juta&#39;,
+ &#39;Tersangka Penjaga Kambing, Sempat Beri Uang Santunan ke Keluarga Maling tapi Ditolak&#39;,
+ &#39;Ironi, Penjaga Kambing Ditetapkan Tersangka Gara-gara Lawan Maling yang Berujung Tewas&#39;,
+ &#39;Ustaz di Tangerang Diduga Cabuli Santrinya Ditangkap Polisi&#39;,
+ &#39;Terungkap Motif Pelaku Pembunuhan Wanita Dilakban di Bekasi&#39;,
+ &#39;Rumah Produksi Uang Palsu di Deli Serdang Digerebek Polisi&#39;,
+ &#39;Motif Sakit Hati jadi Dalih Devid Tega Bunuh Pacarnya, Tak Terima Diolok-olok Sering Minta Uang&#39;,
+ &#39;Nindi Mahasiswi di Bogor Ternyata Dibunuh Pacar, Korban Ditikam Berulang Kali Pakai Pisau&#39;,
+ &#39;Viral Video Penemuan Mayat, Polisi Datangi Kampus UNPRI Medan&#39;,
+ &#39;Terkuak, Motif Panca Tega Bunuh 4 Anaknya ternyata Sepele&#39;,
+ &#39;Terungkap, Panca Darmansyah Ternyata Sudah Rencanakan Bunuh 4 Anaknya&#39;,
+ &#39;Usai Kabur, Napi Wanita Kasus Penganiayaan Ditempatkan di Sel Khusus&#39;,
+ &#39;Rampok Uang Rp225 Juta dan 300 Gram Emas, Aipda Junaidin Ditangkap di Makassar&#39;,
+ &#39;Sadis! Kesal Digugat Cerai, Supriyadi Tega Aniaya Istrinya Pakai Obeng&#39;,
+ &#39;Panca Bohongi Anaknya yang Bontot, Ngaku Mau Tidurkan Padahal Bunuh&#39;,
+ &#39;Terkuak, Penyebab Balita Dianiaya Kekasih Tantenya hingga Patah Leher dan Koma&#39;,
+ &quot;Polisi: Panca Buat Tulisan &#39;Puas Bunda TX For All&#39; Pakai Darahnya Sendiri&quot;,
+ &#39;Siapa Unggul di Debat Perdana Capres 2024? Ini Kata Panelis&#39;,
+ &#39;Viral Polantas Setop Pemotor yang Kawal Ambulans, Kombes Latif Ungkap Alasannya&#39;,
+ &#39;Kombes Ade Blak-Blakan Beri Kabar Terbaru Kasus Pemerasan Firli Bahuri ke SYL&#39;,
+ &#39;Motor Pengawal Ambulans di Jaksel Ditilang, Kombes Latif Ungkap Alasannya&#39;,
+ &#39;Geger! 5 Mayat Ditemukan di Kampus UNPRI Medan: Jasad 4 Pria 1 Perempuan&#39;,
+ &#39;Sebanyak Ini Chery Omoda 5 Terjual di Seluruh Dunia&#39;,
+ &#39;Harmony Sindangmulya, Rumah Mungil Idaman Keluarga&#39;,
+ &#39;Sinopsis Film Korea Pipeline (2021), Pencurian Minyak Didalangi Lee Soo Hyuk&#39;,
+ &#39;Lirik Lagu Tiara - Woro Widowati&#39;]
 </pre></div>
 </div>
 </div>
@@ -701,90 +702,90 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://www.viva.co.id/berita/nasional/1660316-firli-bahuri-tersangka-wakil-ketua-kpk-johanis-tanak-beri-penjelasan-begini&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660314-jadi-tersangka-pemerasan-polisi-sita-bukti-penukaran-valas-rp-7-4-miliar-dari-firli-bahuri&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660315-panglima-tni-soal-kkb-di-papua-mereka-kombatan-bersenjata-harus-lawannya-senjata&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660313-kepala-bkkbn-berharap-rakernas-idi-jadi-momentum-turunkan-angka-stunting&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660306-warga-jakarta-kibarkan-bendera-palestina-di-gunung-kerinci&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660291-3-fakta-firli-bahuri-jadi-tersangka-hingga-terancam-penjara-seumur-hidup&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660299-terdakwa-kasus-mutilasi-mahasiswa-umy-mengaku-terinspirasi-dari-film-saat-lakukan-aksinya&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660237-kondisi-terkini-4-korban-luka-kecelakaan-minibus-vs-kereta-api-di-lumajang&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660268-polisi-segera-periksa-firli-sebagai-tersangka-pemerasan-ke-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660274-panglima-tni-jenderal-agus-subiyanto-punya-harta-rp-19-3-miliar-ini-rinciannya&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660270-ganjar-ungkap-pentingnya-beri-ruang-anak-muda-ekspresikan-bakat-dan-minat&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660225-cara-bikin-mahasiswa-lebih-selektif-dalam-memilih-di-pemilu-2024&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660212-tutupi-wajah-seperti-ninja-caleg-pkb-ngamuk-serang-kompetitor-di-pasuruan&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660251-sumsel-jadi-daerah-dengan-penurunan-kemiskinan-ekstrem-tercepat-di-pulau-sumatera&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong&#39;,
- &#39;https://www.100kpj.com/mobil/21069-harta-berjalan-crazy-rich-tanjung-priok-yang-desak-polisi-usut-ketua-kpk-firli-bahuri&#39;,
- &#39;https://www.sahijab.com/update/8461-pbnu-boikot-produk-israel-penting-tapi-tak-cukup&#39;,
- &#39;https://www.intipseleb.com/asia/88925-sinopsis-serial-india-hai-albelaa-23-november-kabar-bahagia-dari-sayuri-dan-krishna&#39;,
- &#39;https://jagodangdut.intipseleb.com/artikel/40162-kebahagiaan-di-hai-albelaa-hari-ini-sayuri-dapat-kembali-bersatu-dengan-krishna&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660319-ketua-tpn-ganjar-mahfud-arsjad-rasjid-percaya-tni-dan-polri-netral-di-pilpres-2024&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660318-mendagri-ingatkan-dana-otsus-triliunan-rupiah-tapi-masih-banyak-warga-miskin-di-papua&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660312-tkn-sebut-gambar-anak-anak-dalam-iklan-politik-prabowo-gibran-hasil-teknologi-ai&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660308-bawaslu-segera-kaji-iklan-politik-prabowo-dengan-konten-susu-yang-diduga-libatkan-anak-anak&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660305-tiga-eks-pimpinan-kpk-gabung-timnas-amin-anies-sebut-quot-orang-orang-yang-ingin-perubahan-quot&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660300-ppp-klaim-elektabilitas-ganjar-mahfud-tak-turun-dalam-survei-internal-tpn&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660288-smrc-gibran-belum-kuat-ambil-suara-di-jateng&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660259-yusril-yakin-tak-ada-pelanggaran-pemilu-saat-acara-kepala-desa-di-gbk&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660281-petani-boyolali-yakin-prabowo-gibran-wujudkan-swasembada-pangan&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660235-respons-bobby-nasution-diusung-partai-golkar-maju-di-pilgub-sumut-2024&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660240-agus-subiyanto-jadi-panglima-tni-kapten-timnas-amin-kita-harus-yakin-dia-netral&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660230-hendropriyono-prediksi-prabowo-jadi-presiden-2024-pentolan-ppp-ini-cambuk-bagi-kami-semua&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660250-koalisi-masyarakat-sipil-bahaya-jika-perangkat-desa-tak-netral-di-2024&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660248-kampanye-pilpres-sebentar-lagi-teddy-gusnaidi-narasi-terzalimi-sudah-tak-bisa-dipakai&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660245-cegah-hoaks-isu-aparat-tak-netral-harus-disertai-bukti-bukan-cuma-tuduhan&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660206-ppp-sebut-tpn-bakal-evaluasi-narasi-ganjar-mahfud-ada-apa&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660221-sebut-ganjar-mahfud-tonjolkan-kepemimpinan-yang-berkarakter-hasto-bukan-gimik-politik&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660223-galang-donasi-untuk-palestina-bappilu-gerindra-jabar-kumpulkan-ratusan-juta-rupiah&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660213-tkn-survei-lsi-denny-ja-tunjukkan-milenial-dan-gen-z-semakin-menyukai-prabowo&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong&#39;,
- &#39;https://www.100kpj.com/mobil/21069-harta-berjalan-crazy-rich-tanjung-priok-yang-desak-polisi-usut-ketua-kpk-firli-bahuri&#39;,
- &#39;https://www.sahijab.com/update/8461-pbnu-boikot-produk-israel-penting-tapi-tak-cukup&#39;,
- &#39;https://www.intipseleb.com/asia/88925-sinopsis-serial-india-hai-albelaa-23-november-kabar-bahagia-dari-sayuri-dan-krishna&#39;,
- &#39;https://jagodangdut.intipseleb.com/artikel/40162-kebahagiaan-di-hai-albelaa-hari-ini-sayuri-dapat-kembali-bersatu-dengan-krishna&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660290-cerdik-tapi-apes-2-pria-ini-selundupkan-nasi-campur-narkoba-ke-lapas-kediri&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660261-kronologi-lengkap-kasus-mutilasi-mahasiswa-umy&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660199-tipu-tipu-tiket-coldplay-raup-rp1-2-m-begini-modus-pelaku-kelabui-korban&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660169-ghisca-debora-refund-uang-tipu-tipu-tiket-coldplay-tapi&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660113-detik-detik-pria-boncengan-dengan-istri-hajar-sopir-ambulans-ngakunya-anggota-tni&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660027-pengakuan-mengejutkan-tersangka-penggelapan-mobil-jessica-iskandar-kabur-ke-luar-negeri&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660019-bareskrim-tangkap-bandar-narkoba-yang-pasok-ekstasi-di-kafe-senopati&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659947-detik-detik-tersangka-penggelapan-mobil-jessica-iskandar-ditangkap-saat-jjs-di-bangkok&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659885-pengakuan-mengejutkan-ghisca-debora-jadi-calo-tiket-konser-artis-internasional-sejak-2022&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659888-ghisca-debora-ke-belanda-cari-kampus-dan-temui-kekasih-pakai-uang-penipuan-tiket-coldplay&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659879-polisi-ungkap-siswa-smk-yang-dikira-korban-kecelakaan-ternyata-dibacok-pelajar-lain&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659871-polisi-minta-rekening-ghisca-debora-yang-tipu-tipu-tiket-coldplay-diblokir&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659856-kejar-kejaran-motor-lalu-cekcok-pria-di-pasar-rebo-tewas-ditikam&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659774-polisi-buru-5-anggota-tim-joki-seleksi-cpns-kejaksaan-di-lampung&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659392-ghisca-debora-plesiran-ke-belanda-diduga-pakai-uang-hasil-penipuan-lagi-diselidiki-polisi&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659352-pengakuan-mengejutkan-ghisca-debora-raup-miliaran-rupiah-dari-menipu-tiket-coldplay&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659338-gischa-debora-pakai-uang-hasil-penipuan-tiket-coldplay-buat-beli-tas-hingga-sandal-hermes&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659337-20-kali-beraksi-keluarga-komplotan-pencuri-motor-gunakan-pistol-mainan-ancam-korban&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659325-cara-ghisca-debora-tipu-tipu-hingga-raup-miliaran-ngaku-kenal-promotor-coldplay&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong&#39;,
- &#39;https://www.100kpj.com/mobil/21069-harta-berjalan-crazy-rich-tanjung-priok-yang-desak-polisi-usut-ketua-kpk-firli-bahuri&#39;,
- &#39;https://www.sahijab.com/update/8461-pbnu-boikot-produk-israel-penting-tapi-tak-cukup&#39;,
- &#39;https://www.intipseleb.com/asia/88925-sinopsis-serial-india-hai-albelaa-23-november-kabar-bahagia-dari-sayuri-dan-krishna&#39;,
- &#39;https://jagodangdut.intipseleb.com/artikel/40162-kebahagiaan-di-hai-albelaa-hari-ini-sayuri-dapat-kembali-bersatu-dengan-krishna&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://www.viva.co.id/berita/nasional/1667509-besok-anies-baswedan-kampanye-akbar-di-jambi&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667498-polda-metro-bawa-157-bukti-di-sidang-praperadilan-kasus-pemerasan-firli-bahuri&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667501-usai-cuti-hadiri-debat-capres-di-kpu-gibran-tak-muncul-di-balai-kota-solo&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667495-wakil-dekan-unpri-bantah-ada-pembunuhan-tegaskan-5-mayat-itu-cadaver&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667482-polda-kalsel-pastikan-usut-dugaan-korupsi-alih-fungsi-lahan-ptpn-xiii-di-banjar&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667476-anies-singgung-orang-dalam-pakar-sebut-tgupp-era-anies-itu-juga-orang-dalam&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667472-buka-suara-soal-heboh-temuan-5-mayat-unpri-itu-cadaver-praktikum-anatomi-sejak-2008&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667464-prabowo-kehidupan-prajurit-tni-itu-pengabdian-dan-pengorbanan-terus-menerus&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667468-sidang-praperadilan-firli-bahuri-prof-romli-tak-ada-saksi-adanya-pemerasan&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667454-kpk-sebut-ketua-komisi-iv-dpr-terima-aliran-dana-kasus-syl&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667444-polda-metro-bantah-penetapan-tersangka-firli-berkaitan-dengan-kasus-m-suryo&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667458-penanganan-karhutla-di-sumsel-efektif-jumlah-hotspot-terus-berkurang&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667436-jokowi-minta-babinsa-dampingi-petani-agar-produksi-beras-meningkat&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667429-hadiri-reuni-akabri-1970-1973-di-magelang-prabowo-ingatkan-taruna-taruni-soal-ini&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667421-kemenag-jemaah-haji-2024-sudah-dapat-mencicil-pelunasan-biaya-haji&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667399-ketua-kpk-nawawi-pomolango-saya-nyesal-hadir-diundang-debat-kusir-eh-capres&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667404-polisi-di-ternate-buron-gara-gara-bolos-kerja-selama-30-hari&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667390-polda-metro-minta-hakim-tolak-gugatan-firli-bahuri-soal-penetapan-tersangka-dugaan-pemerasan&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667385-jokowi-cerita-ke-petani-dan-babinsa-semua-negara-alami-krisis-pangan&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667126-siapa-unggul-di-debat-perdana-capres-2024-ini-kata-panelis&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667193-viral-polantas-setop-pemotor-yang-kawal-ambulans-kombes-latif-ungkap-alasannya&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667386-kombes-ade-blak-blakan-beri-kabar-terbaru-kasus-pemerasan-firli-bahuri-ke-syl&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667272-motor-pengawal-ambulans-di-jaksel-ditilang-kombes-latif-ungkap-alasannya&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667135-geger-5-ditemukan-di-kampus-unpri-medan-jasad-4-pria-1-perempuan&#39;,
+ &#39;https://www.100kpj.com/mobil/21287-sebanyak-ini-chery-omoda-5-terjual-di-seluruh-dunia&#39;,
+ &#39;https://www.sahijab.com/update/8470-harmony-sindangmulya-rumah-mungil-idaman-keluarga&#39;,
+ &#39;https://www.intipseleb.com/korea/90097-sinopsis-film-korea-pipeline-2021-pencurian-minyak-didalangi-lee-soo-hyuk&#39;,
+ &#39;https://jagodangdut.intipseleb.com/lirik/40814-lirik-lagu-tiara-woro-widowati&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667507-usai-debat-perdana-warganet-nilai-prabowo-sebagai-capres-paling-jujur&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667425-prabowo-makan-siang-bareng-sby-dan-alumni-akabri-1970-1973-di-ruang-makan-baru-akmil&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667419-nostalgia-di-almamater-prabowo-hadiri-reuni-akbar-akabri-1970-1973-bareng-sby&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667417-cheryl-tanzil-pernyataan-pak-prabowo-ke-anies-soal-polusi-mewakili-suara-jutaan-ibu-di-jakarta-nbsp&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667423-tokoh-muda-papua-puji-paparan-holistik-prabowo-terkait-isu-papua-di-debat-capres&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667492-prabowo-subianto-tunjukkan-pemimpin-tegas-tapi-santai-di-debat-capres-kata-sekjen-pandawa-lima&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667491-mahfud-md-kemerdekaan-kita-masih-tersandera-oleh-perilaku-politik-maupun-geopolitik&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667470-nasdem-soal-debat-cawapres-lawan-cak-imin-harus-persiapkan-diri&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667441-anies-seperti-menepuk-air-di-dulang-pakar-tgupp-itu-ordal&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667433-ogah-jadi-hakim-moral-alasan-prabowo-tak-cecar-ganjar-soal-kasus-wadas-hingga-e-ktp-saat-debat&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667449-sekjen-pdip-sebut-prabowo-tak-tegas-jawab-isu-ham-saat-debat-perdana&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667437-nasdem-semakin-anies-diserang-semakin-muncul-kemampuannya-di-debat-pilpres&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667442-kampanye-dua-arah-jadi-jurus-prabowo-gibran-gaet-calon-pemilih-yang-masih-galau&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667411-anies-perkenalkan-program-bansos-plus-di-pekanbaru-peningkatan-dari-program-jokowi&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667408-debat-perdana-pilpres-nasdem-itu-panggungnya-anies-baswedan&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667394-kpu-dki-pastikan-odgj-bisa-ikut-nyoblos-di-pemilu-2024-jumlahnya-22-871&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667391-mardiono-ungkap-tak-ada-persiapan-debat-cawapres-pak-mahfud-sudah-biasa&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667379-persatuan-jokowi-dan-prabowo-pada-2019-adalah-rekonsiliasi-nasional&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667368-lsi-denny-ja-ridwan-kamil-dongkrak-elektabilitas-prabowo-di-kabupaten-bogor&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667126-siapa-unggul-di-debat-perdana-capres-2024-ini-kata-panelis&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667193-viral-polantas-setop-pemotor-yang-kawal-ambulans-kombes-latif-ungkap-alasannya&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667386-kombes-ade-blak-blakan-beri-kabar-terbaru-kasus-pemerasan-firli-bahuri-ke-syl&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667272-motor-pengawal-ambulans-di-jaksel-ditilang-kombes-latif-ungkap-alasannya&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667135-geger-5-ditemukan-di-kampus-unpri-medan-jasad-4-pria-1-perempuan&#39;,
+ &#39;https://www.100kpj.com/mobil/21287-sebanyak-ini-chery-omoda-5-terjual-di-seluruh-dunia&#39;,
+ &#39;https://www.sahijab.com/update/8470-harmony-sindangmulya-rumah-mungil-idaman-keluarga&#39;,
+ &#39;https://www.intipseleb.com/korea/90097-sinopsis-film-korea-pipeline-2021-pencurian-minyak-didalangi-lee-soo-hyuk&#39;,
+ &#39;https://jagodangdut.intipseleb.com/lirik/40814-lirik-lagu-tiara-woro-widowati&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667356-ngaku-menyesal-begini-penampakan-pembunuh-wanita-dilakban-di-bekasi&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667352-devid-bunuh-pacarnya-nindi-mahasiswi-stikes-bogor-diancam-hukuman-mati&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667327-baru-3-bulan-kerja-art-bobol-atm-majikan-hingga-rugi-puluhan-juta&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667315-tersangka-penjaga-kambing-sempat-beri-uang-santunan-ke-keluarga-maling-tapi-ditolak&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667301-ironi-penjaga-kambing-ditetapkan-tersangka-gara-gara-lawan-maling-yang-berujung-tewas&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667287-ustaz-di-tangerang-diduga-cabuli-santrinya-ditangkap-polisi&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667266-terungkap-motif-pelaku-pembunuhan-wanita-dilakban-di-bekasi&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667256-rumah-produksi-uang-palsu-di-deli-serdang-digerebek-polisi&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667166-motif-sakit-hati-jadi-dalih-devid-tega-bunuh-pacarnya-tak-terima-diolok-olok-sering-minta-uang&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667162-nindi-mahasiswi-di-bogor-ternyata-dibunuh-pacar-korban-ditikam-berulang-kali-pakai-pisau&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666980-viral-video-penemuan-mayat-polisi-datangi-kampus-unpri-medan&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666970-terkuak-motif-panca-tega-bunuh-4-anaknya-ternyata-sepele&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666884-terungkap-panca-darmansyah-ternyata-sudah-rencanakan-bunuh-4-anaknya&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666861-usai-kabur-napi-wanita-kasus-penganiayaan-ditempatkan-di-sel-khusus&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666726-rampok-uang-rp225-juta-dan-300-gram-emas-aipda-junaidin-ditangkap-di-makassar&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666720-sadis-kesal-digugat-cerai-supriyadi-tega-aniaya-istrinya-pakai-obeng&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666712-panca-bohongi-anaknya-yang-bontot-ngaku-mau-tidurkan-padahal-bunuh&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666706-terkuak-penyebab-balita-dianiaya-kekasih-tantenya-hingga-patah-leher-dan-koma&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666650-polisi-panca-buat-tulisan-puas-bunda-tx-for-all-pakai-darahnya-sendiri&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667126-siapa-unggul-di-debat-perdana-capres-2024-ini-kata-panelis&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667193-viral-polantas-setop-pemotor-yang-kawal-ambulans-kombes-latif-ungkap-alasannya&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667386-kombes-ade-blak-blakan-beri-kabar-terbaru-kasus-pemerasan-firli-bahuri-ke-syl&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667272-motor-pengawal-ambulans-di-jaksel-ditilang-kombes-latif-ungkap-alasannya&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667135-geger-5-ditemukan-di-kampus-unpri-medan-jasad-4-pria-1-perempuan&#39;,
+ &#39;https://www.100kpj.com/mobil/21287-sebanyak-ini-chery-omoda-5-terjual-di-seluruh-dunia&#39;,
+ &#39;https://www.sahijab.com/update/8470-harmony-sindangmulya-rumah-mungil-idaman-keluarga&#39;,
+ &#39;https://www.intipseleb.com/korea/90097-sinopsis-film-korea-pipeline-2021-pencurian-minyak-didalangi-lee-soo-hyuk&#39;,
+ &#39;https://jagodangdut.intipseleb.com/lirik/40814-lirik-lagu-tiara-woro-widowati&#39;]
 </pre></div>
 </div>
 </div>
@@ -810,90 +811,90 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://www.viva.co.id/berita/nasional/1660316-firli-bahuri-tersangka-wakil-ketua-kpk-johanis-tanak-beri-penjelasan-begini?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660314-jadi-tersangka-pemerasan-polisi-sita-bukti-penukaran-valas-rp-7-4-miliar-dari-firli-bahuri?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660315-panglima-tni-soal-kkb-di-papua-mereka-kombatan-bersenjata-harus-lawannya-senjata?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660313-kepala-bkkbn-berharap-rakernas-idi-jadi-momentum-turunkan-angka-stunting?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660306-warga-jakarta-kibarkan-bendera-palestina-di-gunung-kerinci?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660291-3-fakta-firli-bahuri-jadi-tersangka-hingga-terancam-penjara-seumur-hidup?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660299-terdakwa-kasus-mutilasi-mahasiswa-umy-mengaku-terinspirasi-dari-film-saat-lakukan-aksinya?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660237-kondisi-terkini-4-korban-luka-kecelakaan-minibus-vs-kereta-api-di-lumajang?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660268-polisi-segera-periksa-firli-sebagai-tersangka-pemerasan-ke-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660274-panglima-tni-jenderal-agus-subiyanto-punya-harta-rp-19-3-miliar-ini-rinciannya?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660270-ganjar-ungkap-pentingnya-beri-ruang-anak-muda-ekspresikan-bakat-dan-minat?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660225-cara-bikin-mahasiswa-lebih-selektif-dalam-memilih-di-pemilu-2024?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660212-tutupi-wajah-seperti-ninja-caleg-pkb-ngamuk-serang-kompetitor-di-pasuruan?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660251-sumsel-jadi-daerah-dengan-penurunan-kemiskinan-ekstrem-tercepat-di-pulau-sumatera?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong?page=all&#39;,
- &#39;https://www.100kpj.com/mobil/21069-harta-berjalan-crazy-rich-tanjung-priok-yang-desak-polisi-usut-ketua-kpk-firli-bahuri?page=all&#39;,
- &#39;https://www.sahijab.com/update/8461-pbnu-boikot-produk-israel-penting-tapi-tak-cukup?page=all&#39;,
- &#39;https://www.intipseleb.com/asia/88925-sinopsis-serial-india-hai-albelaa-23-november-kabar-bahagia-dari-sayuri-dan-krishna?page=all&#39;,
- &#39;https://jagodangdut.intipseleb.com/artikel/40162-kebahagiaan-di-hai-albelaa-hari-ini-sayuri-dapat-kembali-bersatu-dengan-krishna?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660319-ketua-tpn-ganjar-mahfud-arsjad-rasjid-percaya-tni-dan-polri-netral-di-pilpres-2024?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660318-mendagri-ingatkan-dana-otsus-triliunan-rupiah-tapi-masih-banyak-warga-miskin-di-papua?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660312-tkn-sebut-gambar-anak-anak-dalam-iklan-politik-prabowo-gibran-hasil-teknologi-ai?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660308-bawaslu-segera-kaji-iklan-politik-prabowo-dengan-konten-susu-yang-diduga-libatkan-anak-anak?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660305-tiga-eks-pimpinan-kpk-gabung-timnas-amin-anies-sebut-quot-orang-orang-yang-ingin-perubahan-quot?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660300-ppp-klaim-elektabilitas-ganjar-mahfud-tak-turun-dalam-survei-internal-tpn?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660288-smrc-gibran-belum-kuat-ambil-suara-di-jateng?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660259-yusril-yakin-tak-ada-pelanggaran-pemilu-saat-acara-kepala-desa-di-gbk?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660281-petani-boyolali-yakin-prabowo-gibran-wujudkan-swasembada-pangan?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660235-respons-bobby-nasution-diusung-partai-golkar-maju-di-pilgub-sumut-2024?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660240-agus-subiyanto-jadi-panglima-tni-kapten-timnas-amin-kita-harus-yakin-dia-netral?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660230-hendropriyono-prediksi-prabowo-jadi-presiden-2024-pentolan-ppp-ini-cambuk-bagi-kami-semua?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660250-koalisi-masyarakat-sipil-bahaya-jika-perangkat-desa-tak-netral-di-2024?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660248-kampanye-pilpres-sebentar-lagi-teddy-gusnaidi-narasi-terzalimi-sudah-tak-bisa-dipakai?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660245-cegah-hoaks-isu-aparat-tak-netral-harus-disertai-bukti-bukan-cuma-tuduhan?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660206-ppp-sebut-tpn-bakal-evaluasi-narasi-ganjar-mahfud-ada-apa?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660221-sebut-ganjar-mahfud-tonjolkan-kepemimpinan-yang-berkarakter-hasto-bukan-gimik-politik?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660223-galang-donasi-untuk-palestina-bappilu-gerindra-jabar-kumpulkan-ratusan-juta-rupiah?page=all&#39;,
- &#39;https://www.viva.co.id/berita/politik/1660213-tkn-survei-lsi-denny-ja-tunjukkan-milenial-dan-gen-z-semakin-menyukai-prabowo?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong?page=all&#39;,
- &#39;https://www.100kpj.com/mobil/21069-harta-berjalan-crazy-rich-tanjung-priok-yang-desak-polisi-usut-ketua-kpk-firli-bahuri?page=all&#39;,
- &#39;https://www.sahijab.com/update/8461-pbnu-boikot-produk-israel-penting-tapi-tak-cukup?page=all&#39;,
- &#39;https://www.intipseleb.com/asia/88925-sinopsis-serial-india-hai-albelaa-23-november-kabar-bahagia-dari-sayuri-dan-krishna?page=all&#39;,
- &#39;https://jagodangdut.intipseleb.com/artikel/40162-kebahagiaan-di-hai-albelaa-hari-ini-sayuri-dapat-kembali-bersatu-dengan-krishna?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660290-cerdik-tapi-apes-2-pria-ini-selundupkan-nasi-campur-narkoba-ke-lapas-kediri?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660261-kronologi-lengkap-kasus-mutilasi-mahasiswa-umy?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660199-tipu-tipu-tiket-coldplay-raup-rp1-2-m-begini-modus-pelaku-kelabui-korban?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660169-ghisca-debora-refund-uang-tipu-tipu-tiket-coldplay-tapi?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660113-detik-detik-pria-boncengan-dengan-istri-hajar-sopir-ambulans-ngakunya-anggota-tni?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660027-pengakuan-mengejutkan-tersangka-penggelapan-mobil-jessica-iskandar-kabur-ke-luar-negeri?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1660019-bareskrim-tangkap-bandar-narkoba-yang-pasok-ekstasi-di-kafe-senopati?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659947-detik-detik-tersangka-penggelapan-mobil-jessica-iskandar-ditangkap-saat-jjs-di-bangkok?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659885-pengakuan-mengejutkan-ghisca-debora-jadi-calo-tiket-konser-artis-internasional-sejak-2022?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659888-ghisca-debora-ke-belanda-cari-kampus-dan-temui-kekasih-pakai-uang-penipuan-tiket-coldplay?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659879-polisi-ungkap-siswa-smk-yang-dikira-korban-kecelakaan-ternyata-dibacok-pelajar-lain?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659871-polisi-minta-rekening-ghisca-debora-yang-tipu-tipu-tiket-coldplay-diblokir?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659856-kejar-kejaran-motor-lalu-cekcok-pria-di-pasar-rebo-tewas-ditikam?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659774-polisi-buru-5-anggota-tim-joki-seleksi-cpns-kejaksaan-di-lampung?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659392-ghisca-debora-plesiran-ke-belanda-diduga-pakai-uang-hasil-penipuan-lagi-diselidiki-polisi?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659352-pengakuan-mengejutkan-ghisca-debora-raup-miliaran-rupiah-dari-menipu-tiket-coldplay?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659338-gischa-debora-pakai-uang-hasil-penipuan-tiket-coldplay-buat-beli-tas-hingga-sandal-hermes?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659337-20-kali-beraksi-keluarga-komplotan-pencuri-motor-gunakan-pistol-mainan-ancam-korban?page=all&#39;,
- &#39;https://www.viva.co.id/berita/kriminal/1659325-cara-ghisca-debora-tipu-tipu-hingga-raup-miliaran-ngaku-kenal-promotor-coldplay?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660272-jadi-tersangka-pemerasan-firli-bahuri-terancam-penjara-seumur-hidup?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660262-firli-bahuri-resmi-jadi-tersangka-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660271-firli-bahuri-ditetapkan-tersangka-eks-pegawai-kpk-alhamdulillah?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660298-sederet-kontroversi-firli-bahuri-bergaya-hedon-hingga-tersangkut-kasus-pemerasan-syl?page=all&#39;,
- &#39;https://www.viva.co.id/berita/nasional/1660151-terpopuler-tentara-israel-frustasi-dihujat-warganet-ri-firli-bahuri-dituding-berbohong?page=all&#39;,
- &#39;https://www.100kpj.com/mobil/21069-harta-berjalan-crazy-rich-tanjung-priok-yang-desak-polisi-usut-ketua-kpk-firli-bahuri?page=all&#39;,
- &#39;https://www.sahijab.com/update/8461-pbnu-boikot-produk-israel-penting-tapi-tak-cukup?page=all&#39;,
- &#39;https://www.intipseleb.com/asia/88925-sinopsis-serial-india-hai-albelaa-23-november-kabar-bahagia-dari-sayuri-dan-krishna?page=all&#39;,
- &#39;https://jagodangdut.intipseleb.com/artikel/40162-kebahagiaan-di-hai-albelaa-hari-ini-sayuri-dapat-kembali-bersatu-dengan-krishna?page=all&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://www.viva.co.id/berita/nasional/1667509-besok-anies-baswedan-kampanye-akbar-di-jambi?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667498-polda-metro-bawa-157-bukti-di-sidang-praperadilan-kasus-pemerasan-firli-bahuri?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667501-usai-cuti-hadiri-debat-capres-di-kpu-gibran-tak-muncul-di-balai-kota-solo?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667495-wakil-dekan-unpri-bantah-ada-pembunuhan-tegaskan-5-mayat-itu-cadaver?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667482-polda-kalsel-pastikan-usut-dugaan-korupsi-alih-fungsi-lahan-ptpn-xiii-di-banjar?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667476-anies-singgung-orang-dalam-pakar-sebut-tgupp-era-anies-itu-juga-orang-dalam?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667472-buka-suara-soal-heboh-temuan-5-mayat-unpri-itu-cadaver-praktikum-anatomi-sejak-2008?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667464-prabowo-kehidupan-prajurit-tni-itu-pengabdian-dan-pengorbanan-terus-menerus?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667468-sidang-praperadilan-firli-bahuri-prof-romli-tak-ada-saksi-adanya-pemerasan?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667454-kpk-sebut-ketua-komisi-iv-dpr-terima-aliran-dana-kasus-syl?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667444-polda-metro-bantah-penetapan-tersangka-firli-berkaitan-dengan-kasus-m-suryo?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667458-penanganan-karhutla-di-sumsel-efektif-jumlah-hotspot-terus-berkurang?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667436-jokowi-minta-babinsa-dampingi-petani-agar-produksi-beras-meningkat?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667429-hadiri-reuni-akabri-1970-1973-di-magelang-prabowo-ingatkan-taruna-taruni-soal-ini?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667421-kemenag-jemaah-haji-2024-sudah-dapat-mencicil-pelunasan-biaya-haji?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667399-ketua-kpk-nawawi-pomolango-saya-nyesal-hadir-diundang-debat-kusir-eh-capres?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667404-polisi-di-ternate-buron-gara-gara-bolos-kerja-selama-30-hari?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667390-polda-metro-minta-hakim-tolak-gugatan-firli-bahuri-soal-penetapan-tersangka-dugaan-pemerasan?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667385-jokowi-cerita-ke-petani-dan-babinsa-semua-negara-alami-krisis-pangan?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667126-siapa-unggul-di-debat-perdana-capres-2024-ini-kata-panelis?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667193-viral-polantas-setop-pemotor-yang-kawal-ambulans-kombes-latif-ungkap-alasannya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667386-kombes-ade-blak-blakan-beri-kabar-terbaru-kasus-pemerasan-firli-bahuri-ke-syl?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667272-motor-pengawal-ambulans-di-jaksel-ditilang-kombes-latif-ungkap-alasannya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667135-geger-5-ditemukan-di-kampus-unpri-medan-jasad-4-pria-1-perempuan?page=all&#39;,
+ &#39;https://www.100kpj.com/mobil/21287-sebanyak-ini-chery-omoda-5-terjual-di-seluruh-dunia?page=all&#39;,
+ &#39;https://www.sahijab.com/update/8470-harmony-sindangmulya-rumah-mungil-idaman-keluarga?page=all&#39;,
+ &#39;https://www.intipseleb.com/korea/90097-sinopsis-film-korea-pipeline-2021-pencurian-minyak-didalangi-lee-soo-hyuk?page=all&#39;,
+ &#39;https://jagodangdut.intipseleb.com/lirik/40814-lirik-lagu-tiara-woro-widowati?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667507-usai-debat-perdana-warganet-nilai-prabowo-sebagai-capres-paling-jujur?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667425-prabowo-makan-siang-bareng-sby-dan-alumni-akabri-1970-1973-di-ruang-makan-baru-akmil?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667419-nostalgia-di-almamater-prabowo-hadiri-reuni-akbar-akabri-1970-1973-bareng-sby?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667417-cheryl-tanzil-pernyataan-pak-prabowo-ke-anies-soal-polusi-mewakili-suara-jutaan-ibu-di-jakarta-nbsp?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667423-tokoh-muda-papua-puji-paparan-holistik-prabowo-terkait-isu-papua-di-debat-capres?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667492-prabowo-subianto-tunjukkan-pemimpin-tegas-tapi-santai-di-debat-capres-kata-sekjen-pandawa-lima?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667491-mahfud-md-kemerdekaan-kita-masih-tersandera-oleh-perilaku-politik-maupun-geopolitik?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667470-nasdem-soal-debat-cawapres-lawan-cak-imin-harus-persiapkan-diri?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667441-anies-seperti-menepuk-air-di-dulang-pakar-tgupp-itu-ordal?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667433-ogah-jadi-hakim-moral-alasan-prabowo-tak-cecar-ganjar-soal-kasus-wadas-hingga-e-ktp-saat-debat?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667449-sekjen-pdip-sebut-prabowo-tak-tegas-jawab-isu-ham-saat-debat-perdana?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667437-nasdem-semakin-anies-diserang-semakin-muncul-kemampuannya-di-debat-pilpres?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667442-kampanye-dua-arah-jadi-jurus-prabowo-gibran-gaet-calon-pemilih-yang-masih-galau?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667411-anies-perkenalkan-program-bansos-plus-di-pekanbaru-peningkatan-dari-program-jokowi?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667408-debat-perdana-pilpres-nasdem-itu-panggungnya-anies-baswedan?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667394-kpu-dki-pastikan-odgj-bisa-ikut-nyoblos-di-pemilu-2024-jumlahnya-22-871?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667391-mardiono-ungkap-tak-ada-persiapan-debat-cawapres-pak-mahfud-sudah-biasa?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667379-persatuan-jokowi-dan-prabowo-pada-2019-adalah-rekonsiliasi-nasional?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/politik/1667368-lsi-denny-ja-ridwan-kamil-dongkrak-elektabilitas-prabowo-di-kabupaten-bogor?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667126-siapa-unggul-di-debat-perdana-capres-2024-ini-kata-panelis?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667193-viral-polantas-setop-pemotor-yang-kawal-ambulans-kombes-latif-ungkap-alasannya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667386-kombes-ade-blak-blakan-beri-kabar-terbaru-kasus-pemerasan-firli-bahuri-ke-syl?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667272-motor-pengawal-ambulans-di-jaksel-ditilang-kombes-latif-ungkap-alasannya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667135-geger-5-ditemukan-di-kampus-unpri-medan-jasad-4-pria-1-perempuan?page=all&#39;,
+ &#39;https://www.100kpj.com/mobil/21287-sebanyak-ini-chery-omoda-5-terjual-di-seluruh-dunia?page=all&#39;,
+ &#39;https://www.sahijab.com/update/8470-harmony-sindangmulya-rumah-mungil-idaman-keluarga?page=all&#39;,
+ &#39;https://www.intipseleb.com/korea/90097-sinopsis-film-korea-pipeline-2021-pencurian-minyak-didalangi-lee-soo-hyuk?page=all&#39;,
+ &#39;https://jagodangdut.intipseleb.com/lirik/40814-lirik-lagu-tiara-woro-widowati?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667356-ngaku-menyesal-begini-penampakan-pembunuh-wanita-dilakban-di-bekasi?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667352-devid-bunuh-pacarnya-nindi-mahasiswi-stikes-bogor-diancam-hukuman-mati?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667327-baru-3-bulan-kerja-art-bobol-atm-majikan-hingga-rugi-puluhan-juta?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667315-tersangka-penjaga-kambing-sempat-beri-uang-santunan-ke-keluarga-maling-tapi-ditolak?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667301-ironi-penjaga-kambing-ditetapkan-tersangka-gara-gara-lawan-maling-yang-berujung-tewas?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667287-ustaz-di-tangerang-diduga-cabuli-santrinya-ditangkap-polisi?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667266-terungkap-motif-pelaku-pembunuhan-wanita-dilakban-di-bekasi?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667256-rumah-produksi-uang-palsu-di-deli-serdang-digerebek-polisi?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667166-motif-sakit-hati-jadi-dalih-devid-tega-bunuh-pacarnya-tak-terima-diolok-olok-sering-minta-uang?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1667162-nindi-mahasiswi-di-bogor-ternyata-dibunuh-pacar-korban-ditikam-berulang-kali-pakai-pisau?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666980-viral-video-penemuan-mayat-polisi-datangi-kampus-unpri-medan?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666970-terkuak-motif-panca-tega-bunuh-4-anaknya-ternyata-sepele?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666884-terungkap-panca-darmansyah-ternyata-sudah-rencanakan-bunuh-4-anaknya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666861-usai-kabur-napi-wanita-kasus-penganiayaan-ditempatkan-di-sel-khusus?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666726-rampok-uang-rp225-juta-dan-300-gram-emas-aipda-junaidin-ditangkap-di-makassar?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666720-sadis-kesal-digugat-cerai-supriyadi-tega-aniaya-istrinya-pakai-obeng?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666712-panca-bohongi-anaknya-yang-bontot-ngaku-mau-tidurkan-padahal-bunuh?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666706-terkuak-penyebab-balita-dianiaya-kekasih-tantenya-hingga-patah-leher-dan-koma?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/kriminal/1666650-polisi-panca-buat-tulisan-puas-bunda-tx-for-all-pakai-darahnya-sendiri?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667126-siapa-unggul-di-debat-perdana-capres-2024-ini-kata-panelis?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667193-viral-polantas-setop-pemotor-yang-kawal-ambulans-kombes-latif-ungkap-alasannya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667386-kombes-ade-blak-blakan-beri-kabar-terbaru-kasus-pemerasan-firli-bahuri-ke-syl?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/metro/1667272-motor-pengawal-ambulans-di-jaksel-ditilang-kombes-latif-ungkap-alasannya?page=all&#39;,
+ &#39;https://www.viva.co.id/berita/nasional/1667135-geger-5-ditemukan-di-kampus-unpri-medan-jasad-4-pria-1-perempuan?page=all&#39;,
+ &#39;https://www.100kpj.com/mobil/21287-sebanyak-ini-chery-omoda-5-terjual-di-seluruh-dunia?page=all&#39;,
+ &#39;https://www.sahijab.com/update/8470-harmony-sindangmulya-rumah-mungil-idaman-keluarga?page=all&#39;,
+ &#39;https://www.intipseleb.com/korea/90097-sinopsis-film-korea-pipeline-2021-pencurian-minyak-didalangi-lee-soo-hyuk?page=all&#39;,
+ &#39;https://jagodangdut.intipseleb.com/lirik/40814-lirik-lagu-tiara-woro-widowati?page=all&#39;]
 </pre></div>
 </div>
 </div>
@@ -948,53 +949,109 @@ document.write(`
 <span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title_article</span><span class="p">:</span>
 
 <span class="nn">&lt;ipython-input-9-bb8801bbcefd&gt;</span> in <span class="ni">scrape_article_content</span><span class="nt">(article_url)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">scrape_article_content</span><span class="p">(</span><span class="n">article_url</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="c1"># Mengirimkan permintaan ke URL artikel</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">article_url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
 <span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="c1"># Memeriksa apakah permintaan berhasil</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">10</span>         <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> 
-<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="c1"># Mengidentifikasi elemen HTML yang berisi isi berita</span>
 
-<span class="nn">/usr/local/lib/python3.10/dist-packages/bs4/__init__.py</span> in <span class="ni">__init__</span><span class="nt">(self, markup, features, builder, parse_only, from_encoding, exclude_encodings, element_classes, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span>             <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">initialize_soup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">333</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_feed</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span>                 <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>                 <span class="k">break</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">73</span><span class="s2">     return request(&quot;get&quot;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="s2"> </span>
 
-<span class="nn">/usr/local/lib/python3.10/dist-packages/bs4/__init__.py</span> in <span class="ni">_feed</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>         <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span> 
-<span class="ne">--&gt; </span><span class="mi">452</span>         <span class="bp">self</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">markup</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span>         <span class="c1"># Close out any unfinished strings and close all the open tags.</span>
-<span class="g g-Whitespace">    </span><span class="mi">454</span>         <span class="bp">self</span><span class="o">.</span><span class="n">endData</span><span class="p">()</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="s2">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="s2">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2"> </span>
 
-<span class="nn">/usr/local/lib/python3.10/dist-packages/bs4/builder/_htmlparser.py</span> in <span class="ni">feed</span><span class="nt">(self, markup)</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>         <span class="n">parser</span> <span class="o">=</span> <span class="n">BeautifulSoupHTMLParser</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>         <span class="n">parser</span><span class="o">.</span><span class="n">soup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">soup</span>
-<span class="ne">--&gt; </span><span class="mi">362</span>         <span class="n">parser</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span>         <span class="n">parser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span>         <span class="n">parser</span><span class="o">.</span><span class="n">already_closed_empty_element</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="s2">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="s2">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="s2">         return resp</span>
 
-<span class="nn">/usr/lib/python3.10/html/parser.py</span> in <span class="ni">feed</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span><span class="s2">         self.rawdata = self.rawdata + data</span>
-<span class="ne">--&gt; </span><span class="mi">110</span><span class="s2">         self.goahead(0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span><span class="s2">     def close(self):</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
 
-<span class="nn">/usr/lib/python3.10/html/parser.py</span> in <span class="ni">goahead</span><span class="nt">(self, end)</span>
-<span class="g g-Whitespace">    </span><span class="mi">168</span><span class="s2">             if startswith(&#39;&lt;&#39;, i):</span>
-<span class="g g-Whitespace">    </span><span class="mi">169</span><span class="s2">                 if starttagopen.match(rawdata, i): # &lt; + letter</span>
-<span class="ne">--&gt; </span><span class="mi">170</span><span class="s2">                     k = self.parse_starttag(i)</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span><span class="s2">                 elif startswith(&quot;&lt;/&quot;, i):</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="s2">                     k = self.parse_endtag(i)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">486</span><span class="s2">             resp = conn.urlopen(</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="s2">                 method=request.method,</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="s2">                 url=url,</span>
 
-<span class="nn">/usr/lib/python3.10/html/parser.py</span> in <span class="ni">parse_starttag</span><span class="nt">(self, i)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span><span class="s2">             self.handle_startendtag(tag, attrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span><span class="s2">         else:</span>
-<span class="ne">--&gt; </span><span class="mi">344</span><span class="s2">             self.handle_starttag(tag, attrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span><span class="s2">             if tag in self.CDATA_CONTENT_ELEMENTS:</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span><span class="s2">                 self.set_cdata_mode(tag)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span><span class="s2">             # Make the request on the HTTPConnection object</span>
+<span class="ne">--&gt; </span><span class="mi">791</span><span class="s2">             response = self._make_request(</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="s2">                 conn,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span><span class="s2">                 method,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span><span class="s2">         # Receive the response from the server</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">537</span><span class="s2">             response = conn.getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span><span class="s2">         except (BaseSSLError, OSError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connection.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span><span class="s2">         # Get the response from http.client.HTTPConnection</span>
+<span class="ne">--&gt; </span><span class="mi">461</span><span class="s2">         httplib_response = super().getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">463</span><span class="s2">         try:</span>
+
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1373</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1374</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1375</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1376</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1377</span><span class="s2">                 self.close()</span>
+
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">318</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">                 break</span>
+
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">279</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+
+<span class="nn">/usr/lib/python3.10/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">705</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span><span class="s2">                 self._timeout_occurred = True</span>
+
+<span class="nn">/usr/lib/python3.10/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1301</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1302</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1303</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1304</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1305</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+
+<span class="nn">/usr/lib/python3.10/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1157</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1158</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">-&gt; </span><span class="mi">1159</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1160</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1161</span><span class="s2">                 return self._sslobj.read(len)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1483,11 +1540,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="Tugas%204.html"
+       href="scrapingbanten.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tugas 4</p>
+        <p class="prev-next-title">Scraping bantennews.com</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

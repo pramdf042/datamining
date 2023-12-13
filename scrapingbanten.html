@@ -1,0 +1,2486 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Scraping bantennews.com &#8212; PPW</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'scrapingbanten';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tugas 4" href="Tugas%204.html" />
+    <link rel="prev" title="Crawling Viva" href="crawling_viva.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PPW</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    PPW
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tugas%201%20PPW.html">Tugas 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%202%20PPW.html">Tugas 2</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas%203%20PPW.html">Tugas 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawling_viva.html">Crawling Viva</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scraping bantennews.com</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%204.html">Tugas 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%205.html">Tugas 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ekstraksi_kata.html">Ekstraksi Kata Kunci dengan Text Rank</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fscrapingbanten.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/scrapingbanten.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scraping bantennews.com</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping">Scraping</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="scraping-bantennews-com">
+<h1>Scraping <a class="reference external" href="http://bantennews.com">bantennews.com</a><a class="headerlink" href="#scraping-bantennews-com" title="Permalink to this heading">#</a></h1>
+<section id="import-library">
+<h2>Import Library<a class="headerlink" href="#import-library" title="Permalink to this heading">#</a></h2>
+<p><strong>requests</strong> : digunakan untuk membuat permintaan HTTP ke situs web</p>
+<p><strong>BeautifulSoup</strong> : digunakan untuk mengurai konten HTML</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scraping">
+<h2>Scraping<a class="headerlink" href="#scraping" title="Permalink to this heading">#</a></h2>
+<p>Fungsi ini melakukan iterasi melalui setiap halaman berita dalam rentang yang ditentukan oleh hal.
+Pada setiap halaman, fungsi mengambil konten HTML menggunakan requests.get() dari tautan yang dibentuk berdasarkan nomor halaman.
+Jika respons dari permintaan adalah 200 (artinya halaman berhasil dimuat), konten halaman di-parse menggunakan BeautifulSoup untuk ekstraksi informasi.
+Fungsi mencari blok konten berita dengan class widget berita-list.
+Di dalam blok konten tersebut, ia mencari semua elemen berita dengan class berita.
+Untuk setiap artikel berita, fungsi mengekstrak judul dari elemen h3 dan tautan dari elemen a di dalamnya.
+Selanjutnya, fungsi melakukan permintaan HTTP GET ke tautan artikel untuk mengambil konten dari setiap artikel secara individu.
+Jika konten artikel berhasil diambil (status respons 200), fungsi mengekstrak konten dari elemen dengan class entry-content dan mengumpulkannya.
+Setelah mengumpulkan judul, konten, dan kategori dari setiap artikel, informasi tersebut dimasukkan ke dalam list data.
+Akhirnya, fungsi mengembalikan list data yang berisi informasi yang telah berhasil di-scrape dari halaman-halaman berita.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">scrap_beritajatim</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">hal</span><span class="p">,</span> <span class="n">kategori</span><span class="p">):</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">kategori</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="n">link</span>
+    <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hal</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s1">page/</span><span class="si">{</span><span class="n">page</span><span class="si">}</span><span class="s1">/&#39;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+            <span class="n">blok</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;td-ss-main-content&#39;</span><span class="p">)</span>
+            <span class="n">articles</span> <span class="o">=</span> <span class="n">blok</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;td-block-span6&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+                <span class="n">link</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="n">content_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">content_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                    <span class="n">content_soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">content_response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+                    <span class="n">_class_content</span> <span class="o">=</span> <span class="n">content_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;td-ss-main-content&#39;</span><span class="p">)</span>
+                    <span class="n">tanggal</span> <span class="o">=</span> <span class="n">content_soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>  <span class="c1"># Mengambil elemen tanggal</span>
+                    <span class="k">if</span> <span class="n">_class_content</span> <span class="ow">and</span> <span class="n">tanggal</span><span class="p">:</span>
+                        <span class="n">content_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">for</span> <span class="n">paragraph</span> <span class="ow">in</span> <span class="n">_class_content</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s1">&#39;p&#39;</span><span class="p">]):</span>
+                            <span class="n">content_text</span> <span class="o">+=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;ADVERTISEMENT&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;SCROLL TO RESUME CONTENT&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                        <span class="n">tanggal_publish</span> <span class="o">=</span> <span class="n">tanggal</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">strip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Mendapatkan tanggal publikasi</span>
+                        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">title</span><span class="p">,</span> <span class="n">content_text</span><span class="p">,</span> <span class="n">tanggal_publish</span><span class="p">,</span> <span class="n">category</span><span class="p">])</span>
+
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Tambahkan waktu tunggu 0.5 detik sebelum permintaan data berikutnya</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Scraping dilakukan perkategori
+Hasil scraping perkategori kemudian dirubah menjadi dataframe dan digabungkan.
+Data hasil penggabungan kemudian dilakukan random agar datanya tidak tersusun urut berdasarkan jenis kategori.
+Kemudian data disimpan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pendidikan</span> <span class="o">=</span> <span class="n">scrap_beritajatim</span><span class="p">(</span><span class="s1">&#39;https://www.bantennews.co.id/category/hukum/&#39;</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;hukum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Siswa SD Ditemukan Tewas di Belakang Kampus Unpam
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kejari Serang Kabulkan Penangguhan Penahanan Muhyani Penggembala Kambing
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hotman Paris Minta Keluarga Pengangon Kambing di Serang Jadi Tersangka Menghubunginya
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Polda Banten Ungkap Sindikat Penyuntik LPG Bersubsidi Beromzet Miliaran Rupiah
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Diduga Korupsi, Kades Mekarjaya di Lebak Dilaporkan Warga ke Kejari
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sepanjang 2023, Tiga Kasus Korupsi Perbankan di Banten
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ada Aroma Pungli di Pasar Rangkasbitung
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maling Gasak 9 Kambing Milik Warga Carenang Serang
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kedapatan Memiliki Sabu, Pria di Lebak Ditangkap Polisi
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Membela Diri Saat Pergoki Maling, Pengangon Kambing di Serang Jadi Tersangka
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Membela Diri Saat Pergoki Maling, Pengangon Kambing di Serang Jadi Tersangka
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jaksa Minta Hakim Tolak Pledoi Kades Tambakbaya
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sempat Buron, Polisi Tangkap Kawanan Spesialis Bobol Rumah di Serang
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akun Penyebar Video Porno Diduga ASN Pemprov Banten Lebih Dari Satu
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Awal Tahun Bakal Ada Tersangka Kasus Kredit Fiktif di BJB Labuan
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Polisi Sita Ribuan Obat Tanpa Izin Edar dari Tiga Pria di...
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-3-6151e847a9b9&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pendidikan</span> <span class="o">=</span> <span class="n">scrap_beritajatim</span><span class="p">(</span><span class="s1">&#39;https://www.bantennews.co.id/category/hukum/&#39;</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;hukum&#39;</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-2-801ae7de11c0&gt;</span> in <span class="ni">scrap_beritajatim</span><span class="nt">(link, hal, kategori)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                 <span class="n">link</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>                 <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;h3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">19</span>                 <span class="n">content_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>                 <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>                 <span class="k">if</span> <span class="n">content_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd"> </span>
+<span class="ne">---&gt; </span><span class="mi">73</span><span class="sd">     return request(&quot;get&quot;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="sd"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="sd">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="sd">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span><span class="sd">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="sd"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="sd">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="sd">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span><span class="sd">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="sd">         return resp</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="sd">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span><span class="sd">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="sd">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="sd">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">486</span><span class="sd">             resp = conn.urlopen(</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="sd">                 method=request.method,</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd">                 url=url,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span><span class="sd">             # Make the request on the HTTPConnection object</span>
+<span class="ne">--&gt; </span><span class="mi">791</span><span class="sd">             response = self._make_request(</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="sd">                 conn,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span><span class="sd">                 method,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="g g-Whitespace">    </span><span class="mi">466</span><span class="sd">             # Trigger any extra validation we need to do.</span>
+<span class="g g-Whitespace">    </span><span class="mi">467</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">468</span><span class="sd">                 self._validate_conn(conn)</span>
+<span class="g g-Whitespace">    </span><span class="mi">469</span><span class="sd">             except (SocketTimeout, BaseSSLError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span><span class="sd">                 self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_validate_conn</span><span class="nt">(self, conn)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1095</span><span class="sd">         # Force connect early to allow us to validate the connection.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1096</span><span class="sd">         if conn.is_closed:</span>
+<span class="ne">-&gt; </span><span class="mi">1097</span><span class="sd">             conn.connect()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span><span class="sd">         if not conn.is_verified:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connection.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span><span class="sd">     def connect(self) -&gt; None:</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span><span class="sd">         sock: socket.socket | ssl.SSLSocket</span>
+<span class="ne">--&gt; </span><span class="mi">611</span><span class="sd">         self.sock = sock = self._new_conn()</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd">         server_hostname: str = self.host</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span><span class="sd">         tls_in_tls = False</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connection.py</span> in <span class="ni">_new_conn</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">203</span>             <span class="n">sock</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/util/connection.py</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="k">raise</span> <span class="n">LocationParseError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">&#39;, label empty or too long&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> 
+<span class="ne">---&gt; </span><span class="mi">60</span>     <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>         <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>         <span class="n">sock</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">/usr/lib/python3.10/socket.py</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">953</span>     <span class="c1"># and socket type values to enum constants.</span>
+<span class="g g-Whitespace">    </span><span class="mi">954</span>     <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">955</span>     <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span>         <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>         <span class="n">addrlist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">_intenum_converter</span><span class="p">(</span><span class="n">af</span><span class="p">,</span> <span class="n">AddressFamily</span><span class="p">),</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sport</span> <span class="o">=</span> <span class="n">scrap_beritajatim</span><span class="p">(</span><span class="s1">&#39;https://www.bantennews.co.id/category/olahraga/&#39;</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;Sport&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Banten Borong 19 Medali di Kejurnas IBCA-MMA 2023
+Jumlah Penonton Piala Dunia U-17 di Indonesia Lampaui Target FIFA
+Final Piala Dunia U-17 2023, Jerman Juara usai Taklukkan Prancis Lewat...
+Dispora Kota Tangerang Gelar Lomba Senam Jantung Sehat
+Radja Nainggolan Datang, Liga Indonesia Semakin Dekat Jadi Kompetisi Terbaik di...
+Tuan Rumah Turnamen Piala Asia U-23, Qatar Tak Akan Sepelekan Timnas...
+Tangerang Open Nasional Yoga Asana, Perdana Digelar di Indonesia
+Kejurda Open Arung Jeram Digelar di Sungai Cisadane Kota Tangerang
+Hasil Kualifikasi Piala Dunia 2026 Usai Timnas Indonesia Ditahan Filipina: Garuda...
+Timnas Indonesia Berusaha Bangkit Lawan Filipina di Kualifikasi Piala Dunia 2026
+Kota Tangerang Jadi Tuan Rumah Kejurnas Voli U-17
+Pembinaan Teratur dan Berjenjang Hasilkan Atlet Sepak Bola Kelas Dunia
+Ribuan Peserta Ikut Meriahkan Bugar Fun Run Kota Tangerang
+Pelari Grup 1 Kopassus Kembali Ukir Prestasi
+Kejuaraan Karate Kabupaten Tangerang Diharapkan Lahirkan Atlet Dunia
+Posisi Timnas Indonesia di Ranking FIFA Usai Kalah Lawan Irak 1-5
+Hasil Kualifikasi Piala Dunia 2026: Timnas Indonesia Dibantai Irak Lima Gol
+Prediksi Maroko vs Timnas Indonesia di Piala Dunia U-17 2023
+Berlaga Diajang Soeratin 2023, Ini Target Kontingen Kota Tangerang
+Prediksi Irak vs Timnas Indonesia Kualifikasi Piala Dunia Malam Ini
+Hitung-hitungan Timnas Indonesia Lolos ke 16 Besar Piala Dunia U-17 2023...
+Rumput Stadion Rusak, Pertandingan Perserang vs Malut United Ditunda
+Hadapi Panama, Pelatih Minta Pemain Timnas Indonesia U-17 Kompak
+Laga Timnas Indonesia U-17 vs Ekuador, Arkhan Kaka Dinobatkan FIFA Jadi...
+Hasil Piala Dunia U-17, Timnas Indonesia Tahan Imbang Ekuador di Laga...
+Kembangkan Cabor Renang, Dispora Kota Tangerang Gelar Pelatihan Wasit
+Dindik Kota Tangerang Gelar Lomba Voli antar Guru
+FIFA Puas dengan Persiapan Indonesia untuk Piala Dunia U-17 2023
+Megawati Raih Gelar Pemain Terbaik Putaran Pertama Liga Voli Korea Selatan
+Ratusan Pesilat Unjuk Kebolehan di Kejuaraan IPSI Cup Pandeglang
+Bangun Regenerasi dan Jaring Atlet Muda Berbakat
+Ini Skuad Timnas Indonesia untuk Kualifikasi Piala Dunia 2026
+Arab Saudi Jadi Tuan Rumah Piala Dunia 2034 Setelah Australia Mundur
+Ini Target Timnas Indonesia di Piala Dunia U-17 2023
+Terapkan Gaya Hidup Sehat, Dispora Kota Tangerang Gelar Aeroboxing Class
+Pebasket Indonesia Marques Bolden akan Bermain untuk Tim NBA Milwaukee Bucks
+Begini Cara Pembelian Tiket Piala Dunia U-17 2023
+Jadwal BRI Liga 1 Padat, Timnas Indonesia Skip Latihan di Tanah...
+Ranking FIFA Timnas Indonesia Naik Usai 2 Kali Kalahkan Brunei
+Indonesia Batal Maju Calonkan Diri Sebagai Tuan Rumah Piala Dunia 2034,...
+Jalan Panjang dan Terjal Timnas Indonesia Menuju Piala Dunia 2026
+Marc Marquez Memotivasi Pembalap Muda Indonesia
+22 Club Bersaing Kerjurda Bola Voli Provinsi Banten
+Pebalap MotoGP Akui Kualitas Sirkuit Mandalika Saat Ini Lebih Baik
+Gawang Putra Tangerang Dibombardir Serang Jaya
+Persikota Tangerang Menang di Laga Pertama Liga 3 Banten
+Persikab Tekuk Perserang di Pegadaian Liga 2
+Penerima Penghargaan dari Pemprov Kritik Hanya Diberi Sertifikat
+Hasil Asian Games 2022 Jadi Evaluasi Menuju Olimpiade Paris
+Persikota Siap Hadapi Kompetisi Liga 3
+Indonesia Rebut Medali Emas Perahu Naga 1000m Putra Asian Games 2022
+Pertina Kota Tangerang Sosialisasikan Olahraga Tinju ke Sekolah
+Grand Final AXIS Nation Cup 2023, 10 Tim Futsal SMA/SMK Terbaik...
+Raji’ah Sallsabillah Atlet Panjat TebingA Kota Tangerang Raih Perunggu di Asian...
+Desak Made Rita, Atlet Pemecah Rekor Panjat Tebing Speed Putri Asian...
+Kota Tangerang Didaulat Jadi Tuan Rumah Kejurnas Voli
+Kejurda Askot PSSI Kota Tangerang Ditutup
+Veda Pembalap Indonesia Raih Podium Tertinggi di ATC Motegi
+Asian Games, Zohri Amankan Tiket Semifinal 100 Meter Putra
+Gagal Tambah Medali, Indonesia Tertahan di Posisi 12 Klasemen Medali Asian...
+Pencarian Bibit Muda, Open Turnamen Futsal U17 Tingkat Kecamatan Cibodas Digelar
+Kalender MotoGP 2024 Dirilis, Mandalika Dipastikan Kembali Jadi Tuan Rumah
+Sanggoe Darma Tanjung Sumbang Medali Perak dari Skateboard
+FIFA Umumkan Wasit Piala Dunia U-17 2023, Tiga di Antaranya Asal...
+Siap Hadapi Uzbekistan di 16 Besar, Indra Sjafri Sudah Pantau Kekuatan...
+Tambah 1 Emas, Indonesia Naik ke Posisi Tujuh Klasemen Asian Games
+Gairah Olahraga di Kota Tangerang Meningkat, Sederet GOR Full Booked hingga...
+Tambah Medali dari Menembak, Indonesia Naik Peringkat Asian Games
+Tim Dayung Raih Medali Pertama Asian Games 2022 untuk Kontingen Merah...
+Ranking FIFA Timnas Indonesia Melesat Tiga Tingkat
+Jaga Independensi, Satgas Anti Mafia Bola Tanpa Biaya dari PSSI
+Raji’ah Sallsabillah, Atlet Panjat Tebing Asal Kota Tangerang Berlaga di Asian...
+FIFA Kasih Target Jumlah Penonton Piala Dunia U-17
+Prediksi Timnas Indonesia vs Kirgistan di Asian Games 2022
+Liga Santri Usai, Daarul Qur’an Juarai Sepakbola Pesantren di Kota Tangerang
+Sachrudin Ditetapkan Jadi Ketua Askot-PSSI Periode 2023-2027 Kota Tangerang
+Kejuaraan Taekwondo Piala Bupati Tingkat Pelajar Digelar di Kabupaten Tangerang
+Kajati Banten Buka Kompetisi Renang 2023
+Peserta Asal Kota Tangerang Raih Juara pada Kajati Banten Open Swimming...
+Turnamen IBCA MMA Provinsi Banten 2023 Resmi Dibuka
+Hasil Drawing Piala Dunia U-17 2023: Ini Dia Lawan Timnas Indonesia...
+Kejuaraan Silat Tradisi Kategori Remaja Kota Tangerang Siap Digelar
+Erick Thohir Minta Timnas Berjuang Maksimal di Asian Games
+Pratama Arhan Ungkap Cerita di Balik Selebrasi Romantis untuk Azizah
+Shin Tae-yong Bawa 3 Timnas Indonesia ke Ajang Piala Asia
+Bantai Taiwan, Timnas Indonesia U-23 Jangan Terlena
+Klasemen Grup K Kualifikasi Piala Asia, Timnas Indonesia Mantap di Puncak
+TNI Selenggarakan Olimpiade Militer Internasional
+Pemprov Banten Raih Penghargaan 5 Besar Peningkatan Indeks Pembangunan Pemuda
+Bungkam Turkmenistan, Timnas Indonesia Kangkangi 2 Negara Afrika di Ranking FIFA
+Sejumlah Pemain Cedera, Shin Tae-yong Ubah Strategi Lawan Turkmenistan
+Atlet Judo Kota Tangerang Raih Medali Emas di International Judo Championship
+Pandeglang Harus Bangga! Maskot Resmi Piala Dunia U-17 Gunakan Badak Jawa...
+Liga Santri Digelar di Kota Tangerang
+Cabor Judo Provinsi Banten Sumbang 5 Medali POPNAS XVI Sumsel 2023
+Kontingen Banten pada Cabor Taekwondo Raih 5 Medali Pada Popnas XVI...
+Serang Jaya Lakukan Persiapan Jelang Liga 3
+Kontingen Provinsi Banten Raih 2 Medali Emas di POPNAS XVI Sumsel...
+Atlet Karate Kota Tangerang Siap Bertanding di PON XXI Aceh –...
+Ratusan Off-Roader Motor Trail ‘Ulin Bareng’ di Lebak
+Dukung Timnas Indonesia di Piala AFF U-23, Pemkot Tangerang Gelar Nobar...
+Kalah Adu Penalti, Timnas Indonesia U-23 Gagal Juara Piala AFF 2023
+2 Pemain Asal Kota Tangerang Bela Timnas Indonesia U-23 di Final...
+Tumbangkan Thailand, Timnas Indonesia U-23 Lolos ke Final Piala AFF 2023
+Kejuaraan Tinju Antarsasana Bakal di Gelar di Kota Tangerang, 70 Petinju...
+Timnas Indonesia U-23 Lolos ke Semifinal Piala AFF, Begini Kata Asisten...
+2 Atlet Motocross Kota Tangerang Raih Podium di KMI National Motocross...
+Olahraga Rekreasi Harus Semakin Digemari Masyarakat
+Kejurnas Katapel Digelar di Kota Tangerang
+Shin Tae-yong Jamin Timnas Indonesia Siap Hadapi Malaysia di Piala AFF...
+200 Sekolah se-Jabodetabek Berebut Tiket Grand Final Turnamen Futsal Pelajar AXIS...
+Kejuaraan Nasional Katapel 2023 Digelar di Kota Tangerang
+Sekretaris KONI Kota Serang Jadi Bacalon Tunggal Ketua Umum
+Kejurnas Rugby 2023 Kota Tangerang Usai, Provinsi Bali Jadi Juara
+Sekretaris dan Bendahara KONI Kota Serang Ramaikan Bursa Pencalonan Ketua Umum
+KONI Kota Serang Segera Gelar Musorkot
+Shin Tae-yong Tak Segan Coret Pemain yang Tak Profesional
+Kejurda Askot Kota Tangerang Kesempatan Kembangkan Potensi dan Gapai Prestasi
+Ranking FIFA Timnas Indonesia Bakal Melesat Jika Kalahkan Brunei Darussalam
+Piala Walikota Tangerang Cipete Shooting Championship 2023 Resmi Digelar
+Timnas Indonesia Pede Bisa Menang Lawan Brunei di Kualifikasi Piala Dunia...
+Pendaftaran Bakal Calon Ketum KONI Kota Serang Segera Dibuka, Berikut Jadwal...
+PSSI Melobi Negara Besar untuk Lawan Timnas Indonesia
+Indra Sjafri Siapkan Timnas Indonesia U-24 untuk Asian Games
+Banten Internasional Stadium Masuk Bidding Venue Piala Dunia U-17 ?
+Wasit Indonesia Diberi Pelatihan oleh Instruktur dari FIFA
+Jaring Tim Potensial, AFK dan AAFI Gelar Liga Futsal Kota Serang
+Askot PSSI Kota Serang Gelar Festival Sepakbola U-11
+Jaring Bibit Pesepakbola, Pemkab Tangerang Gelar Ajang Gala Siswa Indonesia
+3 Pemain Timnas Indonesia U-22 Dihukum AFC Akibat Kericuhan di Final...
+Terpilih Aklamasi, Ananda Pimpin Judo Banten
+Atlet Pornas XVI Korpri Kabupaten Tangerang Dilepas
+2 Atlet Taekwondo FightandFun Club Kota Serang Boyong Medali dari Thailand
+Tim Yoga Banten Juara Umum di FORNAS VII 2023
+Hari Ketiga FORNAS VII, Kontingen Provinsi Banten Sementara di Posisi 4
+Shin Tae Yong Resmi Tangani Timnas Indonesia U-23
+Drum Band Provinsi Banten Boyong 10 Medali di Fornas VII 2023
+Hari Kedua FORNAS VII, Kontingen Banten Raih 53 Medali
+550 Pesenam Muda Unjuk Bakat di Indonesia Open Gymnastic 2023
+Erick Thohir Umumkan Rencana Perbaikan Stadion Jakarta International Stadium
+Lewat SSPB Kota Tangerang Para Atlet Tinju Raih Karir Impian
+Tim Sepakbola Antar Kelurahan Berlaga di Serang Jaya Cup I
+Elkan Baggott Dipinjamkan ke Klub Lain Lagi, Ini Misi Terselubung Ipswich...
+Turnamen Mobile Legend Bangbang Cafe Gue Berakhir, Ini Pemenangnya!
+Ini Daftar 24 Negara yang Lolos Piala Dunia U-17 di Indonesia
+Benahi Wasit, Erick Thohir Datangkan Dua Instruktur dari Jepang
+Berantas Mafia Sepak Bola, Erick Serahkan Bukti-Bukti kepada Kapolri
+Erick Thohir Beberkan Tiga Alasan Indonesia Terpilih Tuan Rumah Piala Dunia...
+Piala Dunia U-17 2023 Resmi di Indonesia, Netizen Minta Wayan Koster...
+Indonesia Ditunjuk FIFA Jadi Tuan Rumah Piala Dunia U-17, Erick Thohir...
+FIFA Resmi Tunjuk Indonesia Jadi Tuan Rumah Piala Dunia U-17
+Kejurnas Atletik 2023 Ajang Pencarian Bibit
+Erick Thohir Sebut Gaji Wasit Liga 1 Bakal Setara Menteri
+PT LIB: Pemasukan Klub Liga 1 akan Jauh Lebih Besar Musim...
+Ini Ranking FIFA Timnas Indonesia Usai Kalah dari Argentina
+Timnas Indonesia Hanya Kalah 0-2 Lawan Argentina
+Messi Bikin Ruang Konferensi Pers Timnas Indonesia vs Argentina Heboh
+Kelurahan Cimone Rajai Kompetisi Liga Tarkam Kota Tangerang 2023
+Pj Gubernur Banten Al Muktabar Ajak Masyarakat Terapkan Pola Hidup Sehat
+FAJI Kabupaten Serang Dibentuk, Lulu Jamaludin Kolaborasikan Olahraga dan Wisata
+Laga Persahabatan Basket Skala Internasional Digelar di AIM High Stadium Kota...
+Shin Tae-yong Berharap Pemain Timnas Indonesia Tak Demam Panggung saat Hadapi...
+Ini Alasan Messi Tak Ikut Pertandingan Argentinas vs Indonesia
+Batal Lawan Timnas Indonesia, Messi Lebih Pilih Main di Laga Eksibisi
+Resmi Dibuka, 810 Atlet Siap Bertanding di O2SN Kota Tangerang
+Argentina Turunkan Pemain Pelapis Lawan Indonesia, Lionel Messi Batal Tampil?
+Pengurus KONI Kota Tangerang Diminta Capai Prestasi Lebih Tinggi
+Kabar Buruk dari Lionel Messi, Disebut Batal Ikut Timnas Argentina ke...
+Anthony Ginting Satu-satunya Wakil Indonesia di Semifinal Singapore Open
+Waktu Mepet, Banyak Pemain Timnas Indonesia Belum Bergabung di Pusat Pelatihan
+PSSI Umumkan Hak Siar Pertandingan Timnas Indonesia
+Setelah Argentina, Timnas Indonesia Berpotensi Lawan Rusia
+Mau Nonton Indonesia vs Argentina, Begini Cara Dapatkan Tiketnya
+Stadion Manahan Resmi Jadi Tuan Rumah Kualifikasi Piala Asia U-23 2024
+Timnas Indonesia vs Argentina, Jordi Amat Diyakini Bisa Hentikan Gocekan Messi?
+Tekuk Manchester United di Final Piala FA, Manchester City Juara
+Juan Sebastian Veron Akui Sepak Bola Indonesia Miliki Masa Depan Cerah
+Invitasi Olahraga Tradisional Warisan Budaya Bagi Generasi Muda
+Asnawi Mangkualam Sebut Liga Indonesia Ketinggalan Jauh dari Korea Selatan
+Alasan Penting Argentina Terima Tawaran Tanding Lawan Timnas Indonesia
+Invitasi Olahraga Tradisional Digelar di Kabupaten Tangerang
+Harga Tiket Indonesia vs Argentina Dinilai Mahal, PSSI Beri Penjelasan
+Kompetisi Tangerang Junior League Diklaim Cetak Atlet Muda yang Mumpuni
+VAR Diwacanakan Dipakai di Pertengahan Musim Liga 1 Indonesia
+Shin Tae Yong Yakin Timnas Indonesia Lolos 16 Besar Piala Asia
+Shin Tae-yong Enggan Remehkan Lawan Timnas Indonesia
+Terkait Bayaran Argentina Sampai Mau Lawan Timnas, Ini Kata Erick Thohir
+Timnas Indonesia vs Argentina, Suporter Diminta Jaga Keamanan
+Prestasi Rizki Juniansyah Luar Biasa
+Jangan Mau Kalah! Shin Tae-yong Harus Buktikan Bisa Berprestasi di 2...
+Ditumbangkan China 3-0, Indonesia Tersingkir di Perempat Final Piala Sudirman 2023
+Prestasi Gemilang Rizki Juniansyah di SEA Games 2023 Sorot Minimnya Fasilitas...
+Bangga! Lifter Asal Kota Serang Sabet Emas untuk Indonesia di SEA...
+Rayakan Kemenangan, Hari Ini Ada Arak-arakan Timnas Indonesia U-22
+Qasim Matar Ali Al-Hatmi, Wasit yang Bikin Penonton Final SEA Games...
+Bawa Pulang Emas SEA Games 2023, Timnas Indonesia Diminta Tak Cepat...
+Diserang Netizen Indonesia, Akun Instagram Timnas Thailand Tutup Kolom Komentar
+Jokowi Tegang Namun Puas Timnas Sepakbola Indonesia Raih Emas SEA Games...
+Drama 7 Gol dan 7 Kartu Merah Lawan Thailand, Timnas Indonesia...
+Prediksi Susunan Pemain Timnas Indonesia vs Thailand di Final SEA Games
+Raih 69 Emas di SEA Games 2023 Kamboja, Indonesia Capai Target
+Petenis Indonesia Christopher dan Aldila Raih Hattrick Emas di SEA Games...
+Timnas Indonesia Melaju ke Final Sepakbola SEA Games 2023 Kamboja
+Tiga Wakil Tenis Indonesia Berpeluang Raih Emas di SEA Games 2023
+Prediksi Susunan Pemain Timnas Indonesia U-22 vs Vietnam di SEA Games...
+Timnas Indonesia U-22 Sapu Bersih Kemenangan di Fase Grup SEA Games
+Exco Update Proses Audit Forensik Keuangan PSSI
+Kota Tangerang Jadi Tuan Rumah Kejuaraan Nasional Panjat Tebing
+Timnas U22 Asuhan Indra Sjafri Lolos Semifinal SEA Games
+Timnas Indonesia Disebut Bakal Lawan Argentina
+SEA Games 2023: Kamboja Minta Maaf atas Insiden Bendera Indonesia Terbalik
+Timnas Indonesia U-22 Bungkam Filipina dan Myanmar, Indra Sjafri Belum Puas
+Kejuaraan Panjat Tebing Nasional Akan Digelar di Kota Tangerang
+Persita Tangerang Lepas Delapan Pemain pada Bursa Transfer
+Veddriq Leonardo, Atlet Indonesia yang Pecahkan Rekor di Piala Dunia Panjat...
+Ini yang Dilakukan Timnas Indonesia Jelang Lawan Myanmar di SEA Games...
+Timnas Indonesia U-22 Bungkam Filipina 3-0 di SEA Games 2023
+Sore Ini, Timnas Indonesia U-22 Bakal Lawan Filipina di SEA Games...
+Nusantara United FC Kunjungi Banten International Stadium, Jadi Home Base?
+Panji Mohamad Paisal, Atlet Asal Kota Tangerang Bakal Berlaga di SEA...
+Menpora Pastikan Israel Tidak Ikut World Beach Games di Bali
+Bakal Tampil Impresif di Sea Games Kamboja, Timnas Indonesia dapat Porsi...
+Mulai Dijual Esok, Ini Harga Tiket Formula E Jakarta 2023
+Erick Thohir Ancam Pelaku Pengaturan Skor dengan Hukuman Berat
+FIFA Pilih Argentina Jadi Tuan Rumah Piala Dunia U-20 Gantikan Indonesia
+Sosialisasi E-Sport di Cilegon Merambah ke Berbagai Kalangan
+Pemkot Serang Belum Bayar Kadeudeuh Atlet Hingga Gaji Pegawai KONI
+Timnas Indonesia U-22 Tumbang Lawan Lebanon
+Hasil BRI Liga 1: Persita Tangerang Kalahkan Persib Bandung 4-0
+Indonesia Terhindar dari Sanksi Berat FIFA, Timnas U-22 Gelar Syukuran
+Kontrak Kepelatihan Shin Tae Yong Dikabarkan Diperpanjang Hingga 2027
+Gagal Gelar Piala Dunia U-20, Indonesia Rugi Rp3,5 Triliun
+Alhamdulillah, Indonesia Terhindar dari Sanksi Berat FIFA
+KONI Banten Kejar Target 10 Besar Raihan Emas di PON Aceh...
+Musprov Pertina ke-5 Banten Segera Pilih Ketua Umum Baru
+5 Rekomendasi Olahraga yang Dilakukan Jelang Buka Puasa
+PKS Kini Desak Pemerintah Perjuangkan Hak Jadi Tuan Rumah Piala Dunia...
+Persib Bandung Bidik Tiga Poin, Persija Jakarta Andalkan Pemain Timnas
+Hormati Keputusan FIFA, Presiden Minta Erick Thohir Berusaha Agar Indonesia Tak...
+Jejak Perjuangan Indonesia Jadi Tuan Rumah Piala Dunia U-20 yang Berakhir...
+FIFA Cabut Status Indonesia Sebagai Tuan Rumah Piala Dunia U-20
+Terbang ke Qatar, Erick Thohir Mulai Lobi FIFA
+Penolakan Timnas Israel, Indonesia Jadi Tuan Rumah Piala Dunia U-20 Terancam...
+Drawing Piala Dunia U-20 di Bali Batal, PSSI Sadar soal 9...
+KONI Kota Tangerang Diminta Tingkatkan Pembinaan dan Prestasi
+FOBI Banten Diharapkan Terus Jaga Eksistensi dan Prestasi Barongsai
+FIFA Matchday, Timnas Indonesia Bantai Burundi 3-1
+Ikuti Amanat Bung Karno, Ganjar Tolak Timnas Israel Ikut Piala Dunia...
+Gubernur Bali Tolak Kedatangan Timnas Israel di Piala Dunia U-20
+Komisi X DPR Setujui Naturalisasi Tiga Pesepak Bola dan Satu Pebasket
+Turnamen Sepakbola Anniversary Legend Kecamatan Sukadiri Digelar
+Tiga Ganda Indonesia Hadapi China di Semifinal All England 2023
+Bidik Prestasi, Ketiadaan Sirkuit Motor Memadai Disoal IMI Pengprov Banten
+Hasil Liga Champions: Liverpool Disingkirkan Real Madrid
+Nurul Azizah, Atlet MMA Wanita Tangguh dari Cipondoh Kota Tangerang
+Piala Dunia 2026 Punya Format Baru, Jumlah Tim Bertambah
+6 Stadion Piala Dunia U-20 2023 Bakal Gunakan VAR?
+Erick Thohir Pastikan Proses Naturalisasi Pemain Berlanjut
+Tim Bulu Tangkis Indonesia Bertolak ke Inggris, Siap Berlaga di All...
+Imbang Lawan Uzbekistan, Timnas Indonesia U-20 Gagal ke Perempat Final Piala...
+Piala Asia, Timnas Indonesia U-20 Pede Bisa Hajar Uzbekistan
+2 Ribu Peserta Bakal Berlaga di Pekan Olahraga Pelajar Kabupaten Tangerang...
+Liverpool Habisi Manchester United 7-0
+Musim Depan, Liga 1 Akan Ganti Nama Jadi Liga Indonesia
+Timnas Indonesia U-20 Tumbangkan Suriah 0-1 di Piala Asia 2023
+Benteng Cisadane Championship II Kota Tangerang, Wadah Regenerasi Atlet Pencak Silat
+Hadapi Suriah, Timnas Indonesia U-20 Diminta Tampil Gagah Berani
+Persita vs PSS Berakhir 2-1: Kemenangan Perdanan Luis Duran Bersama Pendekar...
+Erick Thohir Pastikan Pelatih Timnas Indonesia Shin Tae-yong Tidak akan Diganti
+Ratusan Pesilat Kesti TTKDH Bakal ‘Putihkan’ Cibubur Jakarta
+Timnas Indonesia U-20 Ditekuk Irak 2-0
+Persita Punya Pelatih Baru, Ini Sosoknya
+Pemkot Tangerang Gelar Liga Sepakbola Tarkam Antar Kelurahan
+488 Atlet di Kota Tangerang Ikuti Kejuaraan Sepatu Roda Piala Walikota
+Proliga 2023 Pakai VAR, Liga 1 Indonesia Makin Ketinggalan
+Skuad Timnas Indonesia untuk SEA Games 2023 Diisi Pemain Liga 1...
+Atlet Panahan Banten Ikut Seleknas Olimpiade Paris
+Persita Tangerang Depak Alfredo Vera sebagai Pelatih
+Ketum PSSI Bertemu Presiden Minta Kerjasama Pemerintah Membangun Sepak Bola Indonesia
+Tim Putri Kota Tangerang Sabet Juara Turnamen Voli se-Jawa
+Tournament Bola Voli Walikota Tangerang Cup 2023, 19 Klub Berbagai Daerah...
+Jadi Ketum PSSI, Ini Janji Erick Thohir Perbaiki Prestasi Sepakbola Nasional
+Hari Ini Pemilihan Ketua Umum PSSI, Begini Mekanismenya
+Ini Juara Turnamen Sepakbola Pelajar Walikota Tangerang Cup
+Tiga Pengurus Panahan Banten Dilirik Pusat
+Prediksi Persita Tangerang vs Bhayangkara FC di BRI Liga 1
+Pakai Biaya Sendiri, Atlet BMX Kota Serang Sabet Juara 1 di...
+Klasemen Liga Spanyol, Barcelona Jauhi Kejaran Real Madrid
+Kompetisi Sepakbola Antar Satpol PP se-Banten Digelar di Kota Tangerang
+PSSI Tunjuk Pelatih Baru Timnas Indonesia U-23 Diam-Diam, Shin Tae-yong Tak...
+Mantan Pelatih Timnas Indonesia Benni Dollo Meninggal Dunia
+Atlet Kabupaten Tangerang Peraih Medali Porprov Banten VI Terima Bonus
+PSSI Pastikan Shin Tae-yong Tetap Latih Timnas Indonesia
+Erick Thohir Daftar Calon Ketum PSSI
+Derby Manchester, MU Bungkam Manchester City 2-1 di Kandang
+Lionel Messi Jadi Incaran Al Hilal, Tim Sepakbola Arab Saudi
+Timnas Indonesia Gagal ke Final Piala AFF 2022
+Timnas Indonesia Akan Bekerja Keras Rebut Tiket Final AFF 2022
+Open Tournament PASGA CUP 2023 di Legok Digelar
+Ditahan Imbang Vietnam di GBK, Timnas Indonesia Harus Kerja Keras di...
+Kontingen Atlet Basket U-15 Banten Bersaing di Kejurnas Pangkalpinang
+Hadapi Vitenam, Shin Tae-yong Pastikan Timnas Indonesia Tampil Menyerang
+Piala AFF 2022, Vietnam Tantang Timnas Indonesia, Malaysia Ditunggu Thailand di...
+Hadapi Filipina, Timnas Indonesia Butuh Hasil Imbang untuk Lolos Grup A
+Timnas Filipina vs Indonesia Jelang Duel Piala AFF 2022, Ini Head...
+Digaji Rp3,3 Triliun Per Tahun, Cristiano Ronaldo Resmi Bergabung Klub Asal...
+Legenda Sepakbola Pele Meninggal Dunia
+Prediksi Timnas Indonesia vs Thailand di Piala AFF 2022
+Liga Sepakbola Pelajar Antar SMP Digelar di Kota Tangerang
+Shin Tae-yong Masih Ragu Bisa Kalahkan Thailand di Piala AFF 2022
+Sore Ini, Timnas Indonesia Lawan Brunei di Ajang Piala AFF 2022
+Ajang Futsal Competition, Sportivitas Pelajar SMA Tangerang Diacungi Jempol
+Shin Tae Yong Akui Fisik Skuad Garuda Belum Maksimal
+Hadapi Persita Tangerang, Persib Bandung Bidik 3 Poin
+Banten Raih 3 Besar Nasional dalam Kejurnas Equestrian 2022
+Piala Dunia 2026 Akan Digelar di Tiga Negara
+23 Pemain Timnas Indonesia Siap Tempur di Piala AFF 2022
+Juara Umum Peparprov Banten, NPC Kabupaten Tangerang Dapat Bantuan Kendaraan Operasional
+Nikita Mirzani Tagih Janji JPU, Bakal Dipulangkan Jika Dito Mahendra 3...
+Pele: Maradona Bisa Tersenyum Sekarang
+Lewat Adu Penalti, Argentina Juara Piala Dunia 2022
+Ribuan Penggowes Ikuti Fun Bike PUPR 2022 di Anyer
+TAPCHA Ke-4 Digelar, Benyamin : Kejuaraan Tak Hanya Cari Pemenang
+Timnas Prancis Ingin Bungkam Mulut Pedukung Argentina di Final Piala Dunia...
+Kontingen Banten Optimis Juarai Kejurnas Muay Thai 2022
+Jelang Final Piala Dunia Lawan Argentina, 3 Pemain Prancis Sakit
+Pendaftar Relawan Piala Dunia U-20 Indonesia 2023 Membludak
+865 Atlet Ikut Kejurnas Taekwondo di Kabupaten Tangerang
+Sekda Kukuhkan 16 Pengurus Cabang Olahraga Anggota KONI Kabupaten Tangerang
+Bungkam Kroasia 3-0, Argentina Melaju ke Final Piala Dunia 2022
+Laga Sengit, Ini Prediksi Argentina Vs Kroasia di Semifinal Piala Dunia...
+Maroko dan Entitas Agama di Piala Dunia 2022
+Inisiasi Generasi Aktif, Speedo Dukung Sport Day
+Timnas Maroko Sangat Bernafsu Tembus Final Piala Dunia 2022
+Lolos Semi Final Piala Dunia Qatar 2022, Kroasia Malah Disanksi FIFA
+Termotivasi Tembus Final Piala Dunia 2022, Maroko Siap Terkam Prancis
+Ini Jadwal Pertandingan 4 Tim yang Lolos Semi Final Piala Dunia...
+Hajar Inggris 2-1, Prancis Melaju ke Semifinal Piala Dunia 2022
+Portugal Tumbang, Maroko Melenggang ke Semifinal Piala Dunia 2022
+Liga Pelajar Kota Tangerang Diharapkan Bisa Lahirkan Calon Atlet Masa Depan
+Shin Tae-yong Mohon Pendukung Timnas Padati Stadion saat Piala AFF 2022
+Singkirkan Brasil, Kroasia Tembus Semifinal Piala Dunia
+Hebat! Kabupaten Tangerang Juara Umum Peparprov IV Banten
+Perhelatan Perparprov IV Banten di Kota Tangerang Resmi Ditutup
+Kalah Adu Penalti Lawan Kroasia, Brasil Kandas di Perempat Final Piala...
+Begini Cara Daftar Volunteer Piala Dunia U-20 Indonesia 2023
+Kontingen Atletik Paralympic Kota Tangerang Duduki Klasemen Pertama Peparprov IV Banten
+2 Emas Diboyong Tim Catur Kota Tangerang di Peparprov IV Banten
+Vanny Zafira, Atlet Atletik Paralympic Kota Tangerang Perempuan Satu-Satunya Raih 2...
+Cabor Atletik Kota Tangerang Borong 16 Medali di Hari Pertama Peparprov...
+Tumbangkan Spanyol Lewat Drama Adu Penalti, Timnas Maroko Cetak Sejarah Baru
+Pekan Paralympic Provinsi IV Banten di Kota Tangerang Resmi Digelar
+Hasil Liga 1: Bali United Bungkam Persita Tangerang 3-2
+Tangerang Tuan Rumah Peparprov IV Banten, Atlet Paralympic 8 Kabupaten/Kota di...
+Hadapi Brasil, Son Heung-min Ingin Korea Selatan Buat Keajaiban Lagi di...
+Kick off Liga 1 2022-2023 Dimulai 5 Desember
+Korea Selatan Tembus Babak 16 Besar, Asia Sah Bikin Sejarah Baru...
+Jepang dan Spanyol Melaju 16 Besar, Jerman Tersingkir
+Shin Tae-yong Fokus Naikkan Fisik Pemain Timnas Indonesia Jelang Piala AFF...
+Kabupaten Serang Boyong 218 Medali di Porprov Banten VI
+Pandeglang Bawa Pulang 128 Medali di Porprov VI Banten
+Kota Tangerang Sabet 638 Medali, Panjat Tebing Mendominasi
+Kota Tangerang Jadi Juara Umum Porprov VI Banten
+Perhelatan Porprov Banten ke 6, 10 Atlet PRSI Tangsel Melakukan Mutasi...
+Farhan, Freestyler BMX Banten Sabet Medali Perunggu Pada Kejurnas Freestyle BMX...
+Cabor Futsal Putra dan Putri Kota Tangerang Sabet Medali Emas di...
+Dua Atlet BMX Wakili Banten Pada Kejurnas Freestyle BMX 2022
+PSSI Incar Kursi Exco AFC
+Cabor Sepakbola Kota Tangerang Gagal ke Final Porprov VI Banten 2022
+Suporter Kompak Semangati Atlet Porprov VI Banten di Kota Tangerang
+10 Kejutan Piala Dunia Terbesar Teratas
+Cabor Anggar Kabupaten Tangerang Berhasil Sabet 4 Medali Emas di Porprov...
+Menang Lawan Argentina di Piala Dunia, Arab Saudi Liburkan Sekolah dan...
+Pengurus Perbasi Banten yang Baru Diharapkan Toreh Prestasi Lebih Baik
+Taekwondo Kabupaten Tangerang Sementara Sabet Medali dari Seluruh Kelas di Kategori...
+Ditekuk Arab Saudi, Peluang Argentina Juara Piala Dunia 2022 Memudar
+Pertandingan Porprov VI Banten Ada di Mall, Walikota Tangerang Ajak Warga...
+Ini Asal Usul Laeeb Maskot Piala Dunia 2022
+Kontingen Porprov Kabupaten Tangerang Diminta Pertahankan Juara Umum
+Ekuador Tekuk Tuan Rumah Qatar 2-0 di Laga Pembuka Piala Dunia...
+Pemkab Pandeglang Target 3 Besar Pada Porprov Banten VI 2022
+Kontroversi Piala Dunia 2022 Qatar Mulai Bermunculan
+Tari Kolosal Wangkawa Bumi Surosoan Tampil Memukau di Pembukaan Porprov VI...
+Porprov VI Banten di Kota Tangerang Resmi Dibuka
+Tinjau Pertandingan, Arief Semangati Para Atlet Kota Tangerang di Porprov VI...
+Pemkot dan Polres Metro Tangerang Jamin Keamanan Porprov VI Banten 2022
+Saksikan Pembukaan Porprov Banten, Masyarakat Diimbau Gunakan Transportasi Umum
+Kirab Api Porprov VI Banten Tiba Kembali di Kota Tangerang Sebagai...
+Nobar Piala Dunia Bisa Kena Pidana
+Tuan Rumah Larang Penjualan Bir di Sekitar Stadion Piala Dunia 2022
+Makanan Para Atlet Porprov VI Banten Dicek Kesehatannya
+1072 Atlet Kota Tangerang Siap Bertanding di Porprov VI Banten
+Jelang Porprov VI Banten 2022 di Kota Tangerang, Para Atlet Uji...
+Cabor Drum Band Kota Tangerang Porprov VI Banten Laksanakan Pertandingan LBJP
+Kontingen Porprov VI Banten 2022 Asal Lebak Resmi Dilepas
+Ini Rute Kirab Api Porprov VI Banten di Kota Tangerang
+Porprov VI Banten, Pemkot Tangerang Optimalkan Atlet dan Venue
+Atlet Kontingen Porprov Kabupaten Tangerang Resmi Dilepas
+Seminggu Lagi Porprov Banten VI 2022 Tangerang Digelar, Arief Beri Semangat...
+Luis Suarez Pimpin Skuad Uruguay di Piala Dunia 2022 Qatar
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">politik</span> <span class="o">=</span> <span class="n">scrap_beritajatim</span><span class="p">(</span><span class="s1">&#39;https://www.bantennews.co.id/category/politik/&#39;</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s1">&#39;Politik&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Moderator dan Panelis Tak Akan Ajukan Pertanyaan Pendalaman saat Debat Pilpres
+Kesbangpol Kabupaten Tangerang Ajak Semua Pihak Jaga Etika dan Hindari Politik...
+Benarkah Masyarakat Indonesia Jadi Pemilih yang Gampang Iba dan Lupa?
+Dipasang di Pohon Hingga Fasilitas Pendidikan, 890 APK Parpol di Kota...
+Mobil Pengangkut Logistik KPU Lebak Terperosok ke Drainase
+Satu Fraksi Parpol Pengusung Walikota Cilegon Jalani PAW
+Terima Kunjungan Gibran, Said Aqil Klaim Netral
+Hasto Sebut Gimik Joget dan Gemoy Prabowo karena Tidak Bisa Blusukan...
+Sekjen DPP PDI Perjuangan Kenalkan KTP Sakti Kepada Warga Lebak
+Anies Janji Bakal Memiskinkan Koruptor Lewat UU Perampasan Aset
+Gagasan 3 Capres dan Cawapres Dalam Menangani Stunting Sudah Tepatkah?
+Jelang Pemilu 2024, Pekulahan Masjid Kesunyatan Kota Serang Sering Dipakai Mandi...
+Meski Dikunjungi Prabowo-Gibran, Abuya Muhtadi  Tetap Pilih Ganjar-Mahfud
+Malam-malam Berkunjung ke Abuya Muhtadi Cidahu, Gibran: Silaturahmi Biasa
+Bawaslu Kabupaten Serang Temukan Pelanggaran Kampanye Pemilu
+Ketua Bawaslu Perintahkan Copot Stiker Kampanye di Mobil Plat Kuning
+KPU Pandeglang Buka Rekrutmen 26.313 Anggota KPPS
+Inilah Hasil Raker Relawan Gerakan Banten Nyata untuk Prabowo Gibran
+BPBD Lebak Antisipasi Bencana Alam Menjelang Pemilu 2024
+Relawan Ganjar Luncurkan Mobil Sehat untuk Masyarakat
+Gabungan Relawan Gerakan Banten Nyata untuk Prabowo-Gibran, Gelar Raker Satukan Visi...
+Abuya Muhtadi Jadi Dewan Penasihat  TPN Ganjar – Mahfud
+Berkunjung ke Lebak, Prabowo Diteriaki Gemoy
+PPK dan PPS Kabupaten Tangerang Diminta Junjung Tinggi Integritas dan Netralitas
+Kunjungi Banten, Prabowo Temui Pendekar dan Ulama
+Prabowo Kunjungi Dua Ulama Besar di Pandeglang
+Koalisi Indonesia Maju Optimis Menangkan Prabowo-Gibran Satu Putaran
+Cak Imin Menyesalkan Penghapusan Debat Khusus Cawapres
+Ini Tanggapan Bupati Pandeglang Soal ASN yang Kampanyekan Anaknya
+Kesbangpol Sebut Banyak Daerah Rawan Pemilu 2024 di Lebak
+Bawaslu Ungkap Kerawanan Logistik Pemilu 2024 di Kabupaten Serang
+Masa Kampanye Dimulai, KPU Kabupaten Serang Waspadai Hoaks
+Kades Karangsari Angsana Sebut Ancaman Hapus Nama Warga Penerima Bansos Hanya...
+Dukung Gibran Rakabuming, Organisasi Ini Bidik 75 Persen Suara Milenial di...
+Digelar 5 Kali, Ini Tema Debat Capres-Cawapres 2024
+Menjamin Pemilu yang Jujur dan Adil: Peran KPU, Bawaslu dan Masyarakat
+Bawaslu Banten Gandeng KPID Awasi Penyiaran dan Iklan Kampanye Pemilu 2024
+Buntut Gibran Jadi Cawapres, KPU Digugat Dalam 9 Perkara
+3 Anggota Panwascam Pangarangan yang Tersandung Narkoba Dipecat
+KPU Kota Serang : Tak Lapor Kampanye, Siap-siap Dibubarkan
+Sah! Camat Carita dan Kepala DPKPP Langgar Netralitas ASN
+Logistik Pemilu 2024 di Gudang KPU Lebak dalam Kondisi Aman
+TPD Ganjar-Mahfud Targetkan Suara Maksimal di Banten
+PMII Desak Bawaslu Pandeglang Beri Sanksi Tegas Kepala DPKPP, Camat dan...
+KPU Siapkan Logistik Hingga ke TPS Terpencil di Wilayah Banten
+Anak Bupati Pandeglang Minta Bawaslu Usut Voice Note yang Menyeret Namanya
+Survei SPIN Tren Voters Pilih Prabowo dan Anies Naik Tipis-tipis, Ganjar...
+Megawati: Rakyat Harus Diajarkan Pilih Pemimpin yang Rekam Jejak Politik Baik
+Bawaslu Lebak Tertibkan APK Sebelum Tahapan Kampanye di Mulai
+Soal Alat Peraga Kampanye, KPU Banten Minta Peserta Pemilu Taati Aturan
+Colong Star Sembako Berstiker Caleg DPRD Pandeglang Beredar di Cimanuk Pandeglang
+Gibran Blusukan Malam Hari Bagikan Susu dan Sembako
+Puluhan Kotak Suara di Kabupaten Lebak Rusak
+Ramai Dibahas, Helldy-Ati Marliati Berpotensi Berpasangan di Pilkada Cilegon 2024
+Beda dengan PPP, Kornas Kader Petiga Deklarasi Dukung Prabowo-Gibran
+Siap menangkan Ganjar-Mahfud di Banten, Relawan Arus Bawah Gelar Konsolidasi
+Ganjar Akui Istrinya Pernah ‘Cawe-cawe’ Saat Jadi Gubernur Jateng
+Pakar Hukum UNS Sebut Banyak Pihak Masih Berusaha Gagalkan Gibran Maju...
+Anies Bakal Bawa Indonesia Jadi Negara Inklusif: Supaya Negeri Ini Tak...
+Parpol Hingga Politisi Manfaatkan Hasil Survei Elektabilitas Capres-cawapres untuk Propaganda
+Bawaslu Angkut APK di Semua Titik Kecamatan Sekota Serang
+Gibran Jadi Cawapres di Pemilu 2024, Bagaimana Pandangan Kaum Muda?
+Jika Jadi Presiden, Anies Tegaskan Istrinya Tak Bakal Cawe-cawe Urusan Politik
+Masyarakat Perlu Edukasi Aturan Pemilu 2024
+Airin dan Rano Karno Jadi Ancaman di Pilgub Banten 2024, WH:...
+Helldy Ajak Masyarakat Cilegon Rayakan Pemilu dengan Damai dan Tertib
+Tak Terpilih Jadi Ketua TPD AMIN di Banten, WH: Ya Bagus...
+Elemen Masyarakat di Kabupaten Tangerang Diminta Jaga Stabilitas dan Kelancaran Pemilu...
+Jaga Pemilu Damai dan Adil di Kota Serang Diperlukan Kerjasama Berbagai...
+Bawaslu Kabupaten Serang: Pengawas Pemilu Jangan Runtuhkan Semangat Demokrasi
+Bawaslu Minta Semua Pengawas Pemilu Siaga Hadapi Masa Kampanye
+Diduga Ajak Warga Menangkan Anak Bupati, Camat dan Kepala DPKPP Pandeglang...
+Tidak Datang Sidang Pelanggaran Administrasi, Bawaslu Tegur KPU
+Caleg Partai Koalisi di Cilegon Ditarget Menangkan Prabowo-Gibran
+Relawan Apresiasi Rano Karno Pimpin Tim Pemenangan Ganjar-Mahfud di Banten
+Muncul 2 Nama Bakal Calon Walikota, Golkar Cilegon Klaim Solid dan...
+Rano Karno Terima Amanah sebagai Ketua TPD Ganjar – Mahfud di...
+Golkar Pasang Jagoan di Pilkada Pandeglang Mendatang
+2.064 Warga yang Tercatat dalam DPT Kota Serang Telah Meninggal Dunia
+Jelang Masa Kampanye, 4.071 APK Ditertibkan Bawaslu Kota Serang
+Jadi Ketua TKD, Fahmi Hakim Targetkan Kabupaten Serang Lumbung Suara Prabowo-Gibran
+KPU RI Bakal Gelar Lima Sesi Debat Capres-Cawapres di Kota Berbeda
+Bawaslu Pandeglang Gelar Deklarasi Damai Jelang Kampanye
+Dongkrak Partisipasi Pemilih Pemilu 2024, Pesantren di Cilegon Disasar
+Oknum Kades di Pandeglang Diduga Ancam Coret Penerima Bansos Jika Tak...
+DPP Golkar Keluarkan Surat Bakal Calon Walikota Cilegon, Ati Sebut Bukan...
+Eks Bawaslu Sebut KPU Kini Lembek Bahkan Bak Petugas Partai
+Resmi! DPP Golkar Tunjuk Isro Mi’raj Jadi Bakal Calon Walikota Cilegon...
+Bawaslu Pandeglang Garap Dugaan Pelanggaran Netralitas ASN
+Wapres Minta Kepala Daerah Netral Saat Pemilu 2024, Helldy Malah Nampang...
+Relawan Ganjar Untuk Semua Dirikan Tempat Pemandian Umum di Lebak
+Pimpinan Partai Kota Serang Bersatu untuk Menangkan Prabowo-Gibran dalam Pilpres 2024
+Apa yang Dipikirkan Tiga Cawapres Sebelum Tidur?
+Tim Pemanangan Ganjar-Mahfud di Banten Dibentuk
+Tak Ada Wajah Jokowi Di Baliho Ganjar-Mahfud, Begini Kata PDIP
+Prabowo Tak Malu Akui Sangat Sayang Dengan Jokowi
+Relawan Ganjar Mahfud Gelar Pengukuhan Gapura Nusantara Banten
+Bawaslu Kota Serang Gencar Tertibkan APK Sebelum Kampanye
+KPU Pesan 1,2 Miliar Surat Suara untuk Pemilu 2024
+Manuver Klan Jokowi Bakal Goyang PDIP di Kandang Banteng?
+Beredar Dokumen ‘Pakta Integritas’ Kepala Daerah Menangkan Ganjar, Data Intelijen Bisa...
+KPU Pandeglang Mulai Terima Logistik Pemilu 2024
+2 Putra Jokowi Bertemu Megawati di KPU, Gibran Salim, Kaesang Sungkem
+Tiga Pasangan Capres-Cawapres 2024 Dapat Nomor Urut
+Bawaslu Pandeglang Sebut Ini Potensi Sengketa Antar Peserta Pemilu
+KPU Kota Serang Terima Logistik Pemilu 2024
+Yudi Budi Wibowo Serap Aspirasi Masyarakat Tangerang Selatan
+Eks Kepala Basarnas Rasmi jadi Kapten Timnas Pemenangan Anies – Cak...
+KPU Lebak Terima Ribuan Botol Tinta Pemilu 2024
+Usai Ditetapkan Jadi Peserta Pilpres 2024, 3 Pasang Capres-Cawapres Akan Undi...
+KPU Tetapkan Tiga Pasangan Capres-Cawapres Penuhi Syarat Jadi Peserta Pilpres 2024
+Pojok JDIH di Kantor Bawaslu Lebak Mengusung Keaarifan Lokal
+Hari Ini, KPU Tetapkan Bakal Pasangan Capres Cawapres
+Begini Respons TKN Prabowo-Gibran Soal Anggapan Ada Manipulasi Hukum Dan Nepotisme...
+Survei Indikator Politik Sebut Efek Gibran Bikin Basis Ganjar Beralih Dukung...
+Pemilu 2024 di Kota Tangerang Diharapkan Damai
+Dorong Pemilu Damai, Polres Serang Gandeng Ulama
+PKB Berharap Polisi Netral dalam Pemasangan Baliho Capres-Cawapres
+Gibran Yakin Menang Pilpres Satu Putaran
+Pengumuman Struktur Timnas Pemenangan AMIN Tinggal Menunggu Restu Anies
+Jaga Netralitas ASN, Bawaslu Banten Intip Aktivitas Pejabat Negara
+Survei Poltracking: Ada Potensi Pilpres Satu Putaran Dimenangkan Prabowo – Gibran
+Bawaslu Kabupaten Serang Temukan 317 Pemilih Baru
+Klaim Ada Bukti, Jubir AMIN Anggap Jokowi jadi Sutradara di Balik...
+Keterwakilan Perempuan di DCT Pileg KPU Pandeglang Diduga Kurang dari 30...
+KPU dan Bawaslu Dapat Hibah Rp608 Miliar, Digunakan untuk Apa?
+Sudah Final dan Mengikat, Aturan Main Pilpres 2024 Tak Bisa Diubah...
+Pengamat Sebut PDIP Tak Berani Pecat Gibran
+KPU Banten Ajukan Approval Finalisasi Surat Suara ke KPU RI
+Jokowi Singgung Situasi Politik Saat Ini: Terlalu Banyak Drama Gegara Pertarungan...
+Jusuf Kalla Janji Netral di Pilpres 2024, Pilih yang Terbaik Buat...
+Pemilu 2024 di Kabupaten Tangerang Diharapkan Aman, Lancar dan Damai
+PDIP Klaim Tetap Sayang Jokowi, Tapi…
+Partisipasi Pemilih Pemilu 2024 di Kabupaten Tangerang Diharapkan Capai 85 Persen
+KPU Banten Minta Peserta Pemilu Tak Kampanye di Luar Jadwal
+Tak Ada Perubahan, Sistem Debat Capres 2024 Masih Seperti Pilpres 2019
+1.333 Caleg DPRD Banten Resmi Masuk DCT Pemilu 2024
+6.333 Atribut Kampanye di Kabupaten Serang Dibongkar
+Survei SMRC Soal Cawapres: Gibran Paling Tenar, Mahfud MD Disukai, Cak...
+Bima Sakti Beberkan Perkembangan Timnas Indonesia U-17
+Tanggapi PDIP yang Sedih Ditinggal Gibran, Prabowo: Saya Banyak Ditinggal Kader,...
+Anies Sebut Nama Kapten Timnas AMIN Tinggal Pengumuman Saja
+Jokowi Berharap 3 Bacapres Adu Gagasan di Pemilu 2024
+‘Rungkad’ Meriahkan Kirab Pemilu di Kota Serang
+Jejak Panas Dingin Hubungan Gus Dur dan Megawati
+PDIP Sedih, Berikan Privilese ke Jokowi dan Keluarga, Namun Sekarang Ditinggalkan
+Gibran Rakabuming Siap Hadapi Mahfud MD dan Cak Imin Saat Debat...
+DPC Demokrat Kabupaten Tangerang Lakukan Konsolidasi Hingga Akar Ruput
+Bawaslu Kota Serang Kembali Tertibkan APS Calon Peserta Pemilu
+Status Keanggotaan Masih Digantung PDIP, Golkar Sulit Ajak Gibran Gabung
+Ketua KPU Minta Pendukung Capres-Cawapres Jangan Kampanye Dulu
+Banten Urutan 4 Kerawanan Politik Uang Pada Pemilu 2024
+Prabowo Masih Menunggu Bisa Bertemu Megawati
+Intip Harga Jam Tangan Capres – Cawapres, Ada yang Ratusan Juta
+Timsel Ajak Kaum Perempuan Ikut Ramaikan Bursa Calon Anggota KPU Lebak
+Din Syamsudin: Saya Yakin Warga Muhammadiyah Dukung Anies – Cak Imin
+Ratusan Sopir Angkot Serang Beri Dukungan untuk Ganjar – Mahfud
+Prabowo-Gibran Jalani Tes Kesehatan Pilpres 2024 di RSPAD
+Jarang Masuk Kantor, KPU Pandeglang Berhentikan 1 Orang PPS
+Polres Lebak Catat Ada 34 TPS Rawan Konflik
+Prabowo Anggap Wajar Dinasti Politik
+Besok Pagi, Pasangan Prabowo-Gibran Daftar ke KPU RI
+Pendaftaran Seleksi Calon Anggota KPU Lebak Dibuka, Ini Syaratnya
+Gibran Tak Hadir saat Prabowo Umumkan Dirinya Sebagai Cawapres
+Masih Berstatus Jurkam Ganjar-Mahfud, Puan Akui Gibran Izin Ikut Pilpres 2024
+Pendukung Prabowo, Ganjar dan Anies ‘Hamburkan’ Miliaran Rupiah untuk Bayar Iklan...
+Tak Ada yang Bisa Halangi Deklarasi Prabowo-Gibran
+Anies-Cak Imin Jalani Pemeriksaan Kesehatan di RSPAD Hingga 10 Jam
+TNI-Polri dan ASN Netral, Pemilu 2024 Berjalan Lancar
+Di depan Ganjar Pranowo, Mardiono Sindir soal Ada Amin yang Geser...
+Gibran Temui Megawati untuk Pamit Jadi Cawapres Prabowo?
+16 TPS di Pandeglang Masuk Kategori Rawan
+Jelang Pilpres 2024, TikTok Bakal Berangus Konten Hoax
+Lawan Sibuk Daftar KPU, Prabowo Malah Belum Umumkan Cawapres
+Pilpres Bakal Dilakukan 2 Putaran, Warga Kasihan ke Petugas KPPS
+Prabowo Belum Deklarasi Cawapres dan Daftar ke KPU
+Dikawal Ribuan Pendukung, Ganjar-Mahfud Resmi Daftar KPU RI
+Anies dan Cak Imin Jadi Pasangan Pertama Daftar KPU RI
+Yusril dan Erick Thohir Siapkan SKCK, Siapa yang Akan Dipilih Prabowo...
+Dua Pasangan Capres – Cawapres Hari Ini Daftar ke KPU
+Beredar Kabar Gabung Golkar, Hasto Pastikan Gibran Masih Kader PDIP
+Jokowi Izinkan Mahfud MD Daftar Cawapres 2024
+Jurkam PDIP Kota Serang Optimis Pasangan Ganjar Pranowo-Mahfud MD Diterima Masyarakat...
+Sandiaga Gagal Jadi Cawapres Ganjar, PPP Klaim Tak Berkecil Hati
+Mahfud MD Resmi Diumumkan Jadi Cawapres Ganjar Pranowo
+Prabowo Buka Opsi Umumkan Cawapres Saat Pendaftaran di KPU
+Tokoh Berinisial M Disebut Bakal Jadi Cawapres Ganjar Pranowo
+Jelang Pemilu 2024, Masyarakat Diingatkan Jangan Mudah Terprovokasi
+Polda Banten Apel Gelar Pasukan Operasi Mantap Brata Untuk Kawal Pemilu...
+Polres Pandeglang Siapkan 1.481 Personel Gabungan Amankan Pemilu 2024
+MK Tolak Ubah Batas Usia Capres-Cawapres
+Relawan Ganjar di Banten Tak Terpengaruh Putusan MK
+Adu Utang Bakal Capres Prabowo, Anies dan Ganjar
+Sukanta Didorong Maju Jadi Wakil Bupati Lebak di Pemilu 2024
+Makin Jelas, Begini Analisis Pakar Soal Dukungan Presiden Jokowi ke Prabowo
+Komunitas Milenial Cilegon Network Deklarasi Dukung Gibran Maju Jadi Cawapres 2024
+Bantu Kerja Petugas, Bacaleg di Cilegon Ini Tertibkan APK Miliknya Sendiri
+Sumber Kekayaan Prabowo, Capres Paling Tajir
+Kasus Hukum yang Jerat Politisi NasDem Tak Pengaruhi Koalisi Perubahan
+Bawaslu Sebut Kabupaten Pandeglang Rawan Netralitas ASN dan Politisasi SARA
+Bakal Cawapres Prabowo Mengerucut Empat Nama
+Diam-diam Prabowo Bertemu Bertiga dengan Jokowi dan Gibran di Istana
+Nama Tukimin Masuk Hasil Survey IPRC Calon Gubernur Banten
+Hasil Survey IPRC Klaim Airin Unggul Pada Pilgub Banten 2024
+KPU Pastikan KPPS Dapat Jaminan Sosial Ketenagakerjaan
+Koalisi Indonesia Maju Kumpulkan Para Ketum, Lakukan Simulasi Cawapres Prabowo
+KMABK Lebak Dukung Gibran Menjadi Pemimpin Masa Depan
+Banten Jadi Daerah Nomor 3 Kerawanan Netralitas ASN di Indonesia
+Diduga Langgar Aturan, Bawaslu Lebak Copot Puluhan APK
+Survei Ganjar di Banten Diklaim Lebih Unggul
+Ormas Laporkan Dugaan Pelanggaran Pemilu ke Bawaslu Cilegon, Helldy: Gak Ngerti...
+Pj Bupati Tangerang Minta Parpol Wujudkan Pemilu Damai
+Pemkab Pandeglang Gelontorkan Dana Rp64 Miliar untuk Pilkada 2024
+Diduga Langgar Aturan Pemilu, Walikota Cilegon Dilaporkan ke Bawaslu
+Segini Dana yang Digelontorkan Pemerintah untuk Sukseskan Pemilu 2024
+Apa Untungnya Jika Prabowo Pinang Gibran Jadi Cawapres?
+Jusuf Kalla Tak Akan Gabung Timses Capres-Cawapres 2024
+Pasca Diperiksa Bawaslu Cilegon, Sanuji Pilih Bungkam
+Jika Prabowo Jadi Presiden, Gerindra Sebut Susu dan Makan Siang Pelajar...
+KPU Banten Pastikan 5 Bacaleg Mantan Napi Korupsi Sudah Penuhi Syarat
+Diduga Promosikan Caleg, Wakil Walikota Cilegon Diperiksa Bawaslu
+Anies Baswedan Temui Jusuf Kalla, Bahas Apa?
+Prabowo : Kalau Ada Yang Kasih Uang Terima Saja, Itu Uang...
+Khofifah dan Mahfud MD Jadi Rebutan Cawapres Demi Suara Nahdliyin
+Ade Armando Dapat Sanksi dari Ketum PSI Kaesang
+Jawab Usulan Gantikan Megawati Jadi Ketum PDIP, Jokowi : Saya Mau...
+Satpol PP Cilegon Tertibkan Puluhan APK dan APS di Jalur Protokol
+Konflik Menag vs PKB yang Makin Panas: Disindir Cak Imin, Ditegur...
+Mahfud MD Sebut Pengusutan Kasus Korupsi Elite Parpol Bakal Ditunda saat...
+Bawaslu Pandeglang Kembali Bredel APK dan APS Tanpa Izin
+Berapa Gaji Megawati di PDIP?
+Sandiaga Uno Ngaku Legowo Kalau Gagal Jadi Cawapres Ganjar
+Jokowi Disebut Layak Gantikan Megawati Jadi Ketum PDIP
+Projo Condong Dukung Gibran Jadi Cawapres Prabowo
+Nama Bacawapres Ganjar Sudah di Kantong Mega, Hasto: Tunggu Tanggal Mainnya
+Prabowo Subianto Dinilai Sebagai Capres Berpengalaman Soal Keamanan Global
+Ganjar di Hadapan Megawati Sebut Jokowi Sebagai Mentornya
+KPU Banten Ajak Siswa SMK Insan Mulya Kibin Jadi Pemilih Cerdas
+Isu Gibran Jadi Cawapres Prabowo Disebut Dimunculkan untuk Pecah Belah
+Cak Imin Yakin Duet AMIN Daftar Capres-Cawapres ke KPU Hari Pertama...
+Pemilu 2024 di Cilegon Harus Damai, Aman dan Sejuk
+PSI Jadi ‘Rebutan’ Gerindra dan PDI Perjuangan Setelah Kaesang Resmi Jabat...
+Kader PSI Ingin Kaesang Jadi Ketum
+Peneliti BRIN Sebut Aura Ganjar Jadi Pemikat Banyak Pemilih Perempuan
+Putri Gus Dur Imbau Pemilih Pemula Tak Pilih Pemimpin yang Gunakan...
+Cak Imin Tolak Wacana Pilkada 2024 Dimajukan September
+Peluang Prabowo Subianto Gandeng Erick Thohir Maju Pilpres 2024 Menguat
+Demi Kemenangan Prabowo, SBY Siap Turun Gunung
+Dinilai Bisa Menang Banyak Jika Ganjar-Prabowo Diduetkan di Pilpres 2024
+Diwacanakan Lagi Duet dengan Ganjar, Begini Kata Prabowo
+Pemungutan Suara di Luar Negeri Diusulkan Digelar Lebih Cepat
+Sejarawan Bonie Triana Nilai Rano Karno Layak Kembali Pimpin Banten
+Rano Karno Siap Maju Pilgub Banten 2024
+Dukungan Demokrat Jadi Angin Segar untuk Prabowo di Pilpres 2024
+AHY dan Ridwan Kamil Sudah Dicoret dari Bakal Cawapres Ganjar
+Singgung Etika Politik, Capres-Cawapres Ikut 2 Kali Pilpres Diminta Tak Calonkan...
+Tokoh Lintas Agama di Cilegon Diharapkan Ikut Jaga Kondusifitas Pemilu 2024
+Temui Walikota Serang, Bawaslu Bakal Tertibkan APK di Jalan Protokol
+KPU Lebak Gelar Kirab Pemilu 2024
+Disebut Dukung Prabowo, Demokrat Bakal Umumkan Arah Koalisi Saat Rapimnas 21...
+Airlangga Sebut Partai Biru Bakal Gabung Dukung Prabowo
+Tak Ingin Khianati Amanat, Gus Yahya Pastikan PBNU Tak akan Dukung...
+Menag Izinkan KUA, Madrasah Aliyah Hingga PTKIN Boleh Digunakan untuk Sosialisasi...
+Satpol PP Cilegon Segera Tertibkan Alat Peraga Kampanye
+Koalisi Indonesia Maju Susun Tim Pemenangan, Sejumlah Tokoh Mulai Didekati
+Jika Menang di Pilpres 2024, Prabowo Janji Kemiskinan di Indonesia Hilang
+Survei SMRC Terbaru Anies-Muhaimin Ganjar-RK dan Prabowo-Erick
+Malam Ini Seluruh Parpol Pendukung Prabowo Kumpul
+Nama Koalisi Perubahan Tetap Dipakai, NasDem-PKB Bentuk Timnas Pemenangan AMIN
+Diisukan Mundur dari PDIP, Ini Kata Hasbi Jayabaya
+Tak Punya Nyali, Bawaslu Pandeglang Batalkan Rencana Klarifikasi Kadinsos dan Bacaleg
+Tidak Masuk DCS, Bacaleg Laporkan KPU Lebak ke Bawaslu
+KPU Pandeglang Terima Bendera Kirab Pemilu
+PDIP Nilai Rano Karno Berpotensi Maju di Pilgub Banten 2024
+Relawan Condong Pilih Sandiaga Uno Dibanding Ridwan Kamil Jadi Cawapres Ganjar
+Hasto Ingin PDIP Ulangi Kemenangan Pemilu 2014 di Banten
+Persiapan Pemilu 2024, Polda Banten Tingkatkan Kemampuan Personel
+Demokrat Jadwalkan Pertemuan Dengan Prabowo, Gabung Koalisi?
+Aktif di Media Sosial, Ganjar Dinilai Punya Cara Sendiri Gaet Suara...
+KPU Pandeglang Mantapkan Persiapan Penerimaan Bendera Kirab Pemilu
+Cak Imin Berharap PKS Tetap Jadi Pilar Utama Koalisi Perubahan
+Said Aqil Sebut Mahfud MD Cocok Jadi Presiden
+Jelang Pemilu 2024 Polres Pandeglang Kumpulkan Perwakilan Parpol
+Kerja Sama PDIP dan Demokrat Bisa Terjalin, Asalkan….
+Satpol PP dan Bawaslu Lebak Didesak Tertibkan Atribut Kampanye Pemilu 2024
+KPU Bakal Ubah Jadwal Pendaftaran Capres-Cawapres
+PPP Sebut Ada Parpol dan Tokoh yang Buka Komunikasi untuk Dukung...
+AHY Kumpulkan Ketua DPD, Demokrat Bakal Jalin Kerja Sama Politik dengan...
+Soal Kansnya Jadi Cawapres Prabowo, Begini Kata Yenny Wahid
+Eks Penasihat KPK Bicara Peluang Cak Imin Jadi Tersangka Usai Jadi...
+PDIP Masih Buka Pintu Parpol Lain Gabung Koalisi
+Mengingat Lagi Ramalan Gus Dur Tentang Prabowo Jadi Presiden di Usia...
+Mardiono Bicara Potensi PPP Cabut Dukungan ke Ganjar
+Anies: Surya Paloh Tak Menolak AHY Jadi Bacawapres, Tapi…
+Bawaslu Pandeglang Belum Klarifikasi Dinsos Terkait Bacaleg Ikut Kegiatan PKH
+Rencana Pertemuan SBY dan Megawati, Buka Peluang Demokrat Gabung ke PDIP...
+Kandidat Kuat Cawapres Prabowo Usai Cak Imin Membelot ke Anies
+Sandiaga Uno Tegaskan PPP Komit Bareng PDIP di Pilpres 2024
+Bacaleg Golkar Kota Cilegon Dibekali Pendidikan Politik
+Puan Maharani Beri Sinyal Demokrat Merapat ke PDIP
+Anies Senang PKB Bergabung dengan Koalisi Perubahan
+Pengamat Politik Nilai Jokowi Berharap Prabowo Menangkan Pilpres 2024
+Anies Baswedan Berpaling ke Cak Imin, Kader Demokrat Banten Kecewa
+KPU Banten Nilai Pemilu Jadi Kesempatan Memilih Pemimpin yang Berkualitas
+AHY Kena Tikung, Cak Imin Bakal Jadi Cawapres Anies Baswedan
+Catat Ini Pelaksanaan Kirab Pemilu 2024 di Provinsi Banten
+Kota Serang dan Provinsi Banten Peringkat 11 dan 4 Politik Uang...
+KPK Tegaskan Mantan Koruptor yang Nyaleg Harus Umumkan Dirinya Bekas Narapidana
+KPU dan Bawaslu Didorong Tingkatkan Partisipasi Pemilih di Banten
+Survei Elektabilitas Capres LSI, Ganjar dan Prabowo Bersaing Ketat, Anies Turun
+Politisi Ini Sebut Tidak akan Ada Presiden dari Partai Golkar Hingga...
+Politikus NasDem Sebut Masih Ada Kemungkinan Duet Ganjar-Anies
+Sandiaga Uno Serius Soal Wacana Duet Bareng AHY di Pilpres 2024
+Nasdem Optimis Fraksi Jadi Pertimbangan Utama dalam Penentuan Pj Walikota Serang
+KPU Pandeglang Perbolehkan Pegawai Bergaji APBN dan APBD Jadi Bacaleg
+Prabowo Umumkan Nama Baru Koalisi KKIR: Koalisi Indonesia Maju
+KPU Minta Pemkot Naikan Hibah Pilkada Kota Serang
+Datangi KPU Cilegon, Masyarakat Purwakarta Laporkan Bacaleg Mantan Napi Pencabulan
+Sudah Tahu Nama Cawapres di Kantong Anies, AHY Harap Segera Deklarasi
+Lima Calegnya Eks Napi Koruptor, NasDem: Kami Serahkan ke Rakyat
+Anies Baswedan Diamanahkan jadi Capres, Bukan Cawapres!
+Terikat Kerja Sama Politik Dukung Ganjar Capres, PPP Tak Ada Niat...
+ICW Temukan 12 Mantan Terpidana Korupsi dalam Daftar Caleg DPR dan...
+DPD PKS Sudah Siapkan 4 Kandidat untuk Pilkada Lebak 2024
+Mahasiswa Untirta Diajak Proaktif Dalam Pemilu 2024
+Dipecat PDIP, Budiman Sudjatmiko Ucapkan Terima Kasih
+Ternyata Nama Gibran Serius Dibahas Gerindra Jadi Cawapres Prabowo
+Ada Wacana Capres Cuma Boleh Maju 2 Kali, Jegal Prabowo?
+Ida Farida Arief Resmi Jadi Anggota DPRD Banten Gantikan Syihabudin Siddiq...
+Bawaslu Pandeglang Temukan Aparat Desa dan Kades Aktif Terdaftar di DCS
+Survei SMRC Sebut Tren Elektabilitas Prabowo Merosot di Semua Simulasi Capres...
+Kalau Gagal Jadi Cawapres Ganjar, PPP Jadikan Sandiaga Uno Capres di...
+Mahasiswa Untirta Diajak Proaktif Dalam Pemilu 2024
+Bawaslu Pandeglang Buka Posko Pengaduan Masyarakat
+Demokrat dan PKS Harap Anies Segera Deklarasi Cawapres
+Ini Alasan Partai Gelora Dukung Prabowo
+Prabowo Keruk Suara Pendukung Jokowi
+PKS Siapkan Hasan Basri Maju Jadi Balon Walikota Serang
+Konsolidasi Akbar, Kader Gerindra Siapp Rebut Kembali Kemenangan Prabowo di Banten
+DCS Anggota DPR RI Berubah, KPU : Ada Typo
+Tetapkan DCS Anggota DPRD Lebak, KPU Minta Masyarakat Lakukan Pencermatan
+Ramai- Ramai Rebut Kursi DPR, Ini Deretan Menteri dan Wamen yang...
+Nama Bacawapres Belum Juga Diumumkan, Presiden PKS Minta Anies Beri Pengertian...
+Kunjungi Markas PPP Banten, Begini Arahan Sandiaga Uno untuk Pemilu 2024
+DCS Sudah Ditetapkan, KPU Beri Kesempatan Masyarakat untuk Menanggapi
+Minta Bacaleg Publikasikan Daftar Riwayat Hidup, KPU Akan Gunakan Pendekatan Persuasif
+Putusan MK Perbolehkan Kampanye di Fasilitas Pemerintah dan Pendidikan
+Puluhan Bacaleg di Kota Serang Tak Memenuhi Syarat
+Hasto Kristiyanto Sebut PDIP Tak Ingin Berkuasa Melalui Pemilu
+Demokrat Sebut Anies Sosok Independen dalam Menentukan Cawapres
+Gabung di Barisan Pendukung Prabowo Subianto, PAN Usul Nama Baru Koalisi:...
+Sandiaga Uno Serahkan Peluang Dirinya Jadi Cawapres kepada Megawati dan Mardiono
+Respons Anies Soal Potensi Penjegalannya Jadi Capres di Pilpres 2024
+Dianggap Jadi Aktor di Balik Dukungan PAN-Golkar ke Prabowo, Jokowi: Ndak,...
+PPP Bakal Terus Ikhtiarkan Sandiaga Jadi Cawapres Ganjar di Pilpres 2024
+Banten Masuk Daerah Rawan Tinggi Politik Uang
+Golkar Banten Sepakat Usung Prabowo di Pilpres
+PAN Usulkan Erick Thohir Sebagai Cawapres Dampingi Prabowo
+Respons PDIP Usai Golkar dan PAN Dukung Prabowo di Pilpres 2024
+Amien Rais Ungkap Kemungkinan Partai Ummat Bisa Putar Haluan dari Anies...
+Arah Dukungan PAN Condong Ke Prabowo Subianto di Pilres 2024
+Anies Baswedan Ramai Didesak Umumkan Cawapres, PKS dan Demokrat Mulai Ketar-ketir?
+Kini Giliran PKS Desak Anies Umumkan Bakal Cawapres Secepatnya
+Membaca Isyarat Jokowi untuk Prabowo Subianto – Erick Thohir di Pilpres...
+Demokrat Curiga NasDem Godok Surya Paloh Jadi Bakal Cawapres Anies Baswedan
+Antisipasi Pemilu dan Pilpres 2024, Peran Media Sosial yang Belum Beradab
+PPS Desa Pagintungan Buka Posko Layanan Pindah Memilih, Ini Syaratnya
+Pengamat Nilai Pemilu 2024 Tak Berkualitas, Aturan Dibuat Hanya untuk Formalitas
+Ini Survei Terbaru Elektabilitas Figur Capres Jelang Pilpres 2024
+Tren Pendukung Jokowi Pilih Prabowo di Pilpres 2024
+Nama Yenny Wahid Santer Jadi Bacawapres Anies, Demokrat Ngotot Tetap AHY
+Begini Cara Cek DPT Pemilu 2024, Apakah Nama Kamu Sudah Terdaftar...
+Catat, Ini Jadwal Tahapan Kampanye Pileg dan Pilpres 2024
+Mahfud MD Sebut Korupsi Kerap Terjadi Jelang Pemilu
+Calon Anggota Bawaslu Kabupaten/Kota Diuji Kelayakan dan Kepatutan
+Fauzan Dardiri Wakili PDI Perjuangan Banten Ikuti Latihan Jurkam Tingkat Nasional
+Paripurna DPRD Cilegon Sering Tertunda, Andi Kurniyadi : Kami Kecewa Kinerja...
+Sandiaga Uno Ikhlas Jika Gagal Jadi Cawapres Ganjar
+Anies Baswedan Beri Kode Positif Susi Pudjiastuti Jadi Cawapres?
+Sayap Partai Gerindra se-Banten Solid Menangkan Prabowo Subianto
+Ustaz Abdul Somad Bahas Hukum Menerima Uang Serangan Fajar di Pemilu...
+Bawaslu RI Ungkap Potensi Kerawanan Penghitungan Suara Dua Panel di Pemilu...
+SAF Gandeng Pramuka Gencarkan Gerakan Sadar Pemilu 2024
+Puan Maharani Nyatakan Buka Pintu Komunikasi, PSI Segera Merapat ke PDIP
+Bawaslu Tegaskan KPU Tak Boleh Izinkan Pemilih Gunakan KK di TPS
+Ketum PKB Mulai Tergoda PDIP, Mau Tinggalkan Gerindra?
+Bawaslu Banten Akan Laksanakan Uji Kelayakan dan Kepatutan Calon Anggota Bawaslu...
+Caleg Nasdem Ajak Masyarakat Tingkatkan Partisipasi Pemilih, Wibowo: Jangan Golput, Itu...
+Menjelang Pemilu 2024, Ketua DPC Gerinda Lebak Diganti
+Prabowo Ajak PSI Bergabung dengan Koalisi KIR di Pilpres 2024
+Pelajar di Kota Tangerang Diajak Cegah Konflik Sosial saat Pemilu 2024
+Nasib Anies ‘Diramalkan’ Mirip Seperti Donald Trump Jelang Pilpres
+Golkar Cilegon Didesak Menang Pemilu 2024, Isro: Kami Optimis Capai Target!
+Tatu Desak Golkar Cilegon Kembali Menang di Pemilu 2024
+Dinyatakan Tak Penuhi Syarat, 373 Orang Bacaleg DPRD Banten Gagal Ikut...
+Presidential Threshold Disebut Disalahartikan Partai Politik
+Partai Gelora Siap Deklarasikan Dukungan ke Prabowo
+DPD Golkar Se-Indonesia Tolak Munaslub
+Ini Deretan Partai yang Dukung Prabowo Subianto di Pilpres 2024
+Ganjar Pranowo Klaim Didukung Purnawirawan TNI-Polri
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hasil1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pendidikan</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Judul&#39;</span><span class="p">,</span> <span class="s1">&#39;Isi&#39;</span><span class="p">,</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span> <span class="s1">&#39;Kategori&#39;</span><span class="p">])</span>
+<span class="n">hasil2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">politik</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Judul&#39;</span><span class="p">,</span> <span class="s1">&#39;Isi&#39;</span><span class="p">,</span> <span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span><span class="s1">&#39;Kategori&#39;</span><span class="p">])</span>
+<span class="n">hasil3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sport</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Judul&#39;</span><span class="p">,</span> <span class="s1">&#39;Isi&#39;</span><span class="p">,</span> <span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span><span class="s1">&#39;Kategori&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">hasil1</span><span class="p">,</span> <span class="n">hasil2</span><span class="p">,</span> <span class="n">hasil3</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">combined_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-0e38f4b0-b0b0-47a7-8d64-0cf17f58ae15" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul</th>
+      <th>Isi</th>
+      <th>Tanggal</th>
+      <th>Kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Siswa SD Ditemukan Tewas di Belakang Kampus Unpam</td>
+      <td>SERANG– Seorang siswa SD berusia 12 tahun asal...</td>
+      <td>Rabu 13 Des 2023,    13:48 WIB</td>
+      <td>hukum</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Kejari Serang Kabulkan Penangguhan Penahanan M...</td>
+      <td>SERANG– Kejaksaan Negeri (Kejari) Serang menga...</td>
+      <td>Rabu 13 Des 2023,    13:41 WIB</td>
+      <td>hukum</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hotman Paris Minta Keluarga Pengangon Kambing ...</td>
+      <td>SERANG– Hotman Paris, pengacara kondang angkat...</td>
+      <td>Rabu 13 Des 2023,    13:32 WIB</td>
+      <td>hukum</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Polda Banten Ungkap Sindikat Penyuntik LPG Ber...</td>
+      <td>SERANG– Tim Subdit IV Tipiter Ditreskrimsus Po...</td>
+      <td>Rabu 13 Des 2023,    13:03 WIB</td>
+      <td>hukum</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Diduga Korupsi, Kades Mekarjaya di Lebak Dilap...</td>
+      <td>LEBAK– Beberapa warga Desa Mekarjaya, Kecamata...</td>
+      <td>Rabu 13 Des 2023,    10:10 WIB</td>
+      <td>hukum</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1195</th>
+      <td>Ini Rute Kirab Api Porprov VI Banten di Kota T...</td>
+      <td>TANGERANG– Pekan Olahraga Provinsi (Porprov) B...</td>
+      <td>Rabu 16 Nov 2022,    06:09 WIB</td>
+      <td>Sport</td>
+    </tr>
+    <tr>
+      <th>1196</th>
+      <td>Porprov VI Banten, Pemkot Tangerang Optimalkan...</td>
+      <td>TANGERANG– Menuju Pekan Olahraga Provinsi (Por...</td>
+      <td>Rabu 16 Nov 2022,    00:08 WIB</td>
+      <td>Sport</td>
+    </tr>
+    <tr>
+      <th>1197</th>
+      <td>Atlet Kontingen Porprov Kabupaten Tangerang Re...</td>
+      <td>KAB. TANGERANG– Bupati Tangerang, Ahmed Zaki I...</td>
+      <td>Selasa 15 Nov 2022,    05:15 WIB</td>
+      <td>Sport</td>
+    </tr>
+    <tr>
+      <th>1198</th>
+      <td>Seminggu Lagi Porprov Banten VI 2022 Tangerang...</td>
+      <td>TANGERANG– Satu minggu lagi Kota Tangerang aka...</td>
+      <td>Minggu 13 Nov 2022,    08:07 WIB</td>
+      <td>Sport</td>
+    </tr>
+    <tr>
+      <th>1199</th>
+      <td>Luis Suarez Pimpin Skuad Uruguay di Piala Duni...</td>
+      <td>BANTEN– Uruguay resmi mengumumka daftar skuadn...</td>
+      <td>Sabtu 12 Nov 2022,    13:05 WIB</td>
+      <td>Sport</td>
+    </tr>
+  </tbody>
+</table>
+<p>1200 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0e38f4b0-b0b0-47a7-8d64-0cf17f58ae15')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-0e38f4b0-b0b0-47a7-8d64-0cf17f58ae15 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0e38f4b0-b0b0-47a7-8d64-0cf17f58ae15');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d014a536-9171-4fbf-aa6d-3e3acd2e60aa">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d014a536-9171-4fbf-aa6d-3e3acd2e60aa')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d014a536-9171-4fbf-aa6d-3e3acd2e60aa button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">combined_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;beritabanten.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-6bfe43a8-1e1b-48a4-a672-2b56f6fdbe7d" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Judul</th>
+      <th>Isi</th>
+      <th>Tanggal</th>
+      <th>Kategori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bacakan Pledoi, Terdakwa Korupsi Tanah Desa Ta...</td>
+      <td>SERANG– Terdakwa mantan Kepala Desa (Kades) Ta...</td>
+      <td>Rabu 6 Des 2023,    19:01 WIB</td>
+      <td>hukum</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>DCS Anggota DPR RI Berubah, KPU : Ada Typo</td>
+      <td>JAKARTA– Data bakal calon anggota legislatif (...</td>
+      <td>Minggu 20 Agu 2023,    14:04 WIB</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>KPU Kota Serang Terima Logistik Pemilu 2024</td>
+      <td>SERANG– Komisi Pemilihan Umum (KPU) Kota Seran...</td>
+      <td>Selasa 14 Nov 2023,    21:07 WIB</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pasca Diperiksa Bawaslu Cilegon, Sanuji Pilih ...</td>
+      <td>CILEGON– Wakil Walikota Cilegon, Sanuji Pentam...</td>
+      <td>Selasa 10 Okt 2023,    13:10 WIB</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Cabor Atletik Kota Tangerang Borong 16 Medali ...</td>
+      <td>TANGERANG– Pekan Paralympic Provinsi (Peparpro...</td>
+      <td>Kamis 8 Des 2022,    01:12 WIB</td>
+      <td>Sport</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1195</th>
+      <td>Pele: Maradona Bisa Tersenyum Sekarang</td>
+      <td>BANTEN– Legenda sepak bola Brazil Edson Arante...</td>
+      <td>Senin 19 Des 2022,    11:12 WIB</td>
+      <td>Sport</td>
+    </tr>
+    <tr>
+      <th>1196</th>
+      <td>Relawan Condong Pilih Sandiaga Uno Dibanding R...</td>
+      <td>SERANG– Para relawan pendukung Bakal Calon Pre...</td>
+      <td>Senin 11 Sep 2023,    06:11 WIB</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>1197</th>
+      <td>PDIP Masih Buka Pintu Parpol Lain Gabung Koalisi</td>
+      <td>SERANG– Wakil Sekretaris Jenderal DPP PDIP, Ut...</td>
+      <td>Rabu 6 Sep 2023,    04:21 WIB</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>1198</th>
+      <td>Bawaslu Pandeglang Garap Dugaan Pelanggaran Ne...</td>
+      <td>PANDEGLANG– Badan Pengawas Pemilu (Bawaslu) Ka...</td>
+      <td>Selasa 21 Nov 2023,    13:12 WIB</td>
+      <td>Politik</td>
+    </tr>
+    <tr>
+      <th>1199</th>
+      <td>Ini Target Timnas Indonesia di Piala Dunia U-1...</td>
+      <td>JAKARTA– Timnas Indonesia U-17 memiliki target...</td>
+      <td>Sabtu 28 Okt 2023,    13:08 WIB</td>
+      <td>Sport</td>
+    </tr>
+  </tbody>
+</table>
+<p>1200 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-6bfe43a8-1e1b-48a4-a672-2b56f6fdbe7d')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-6bfe43a8-1e1b-48a4-a672-2b56f6fdbe7d button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-6bfe43a8-1e1b-48a4-a672-2b56f6fdbe7d');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-7225f37f-0a77-4d4e-add0-ce6ab0289447">
+  <button class="colab-df-quickchart" onclick="quickchart('df-7225f37f-0a77-4d4e-add0-ce6ab0289447')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-7225f37f-0a77-4d4e-add0-ce6ab0289447 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Kategori&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-29a0f605-5f94-4023-947a-22a2efee7bd1" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>col_0</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>Kategori</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Politik</th>
+      <td>400</td>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <td>400</td>
+    </tr>
+    <tr>
+      <th>hukum</th>
+      <td>400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-29a0f605-5f94-4023-947a-22a2efee7bd1')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-29a0f605-5f94-4023-947a-22a2efee7bd1 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-29a0f605-5f94-4023-947a-22a2efee7bd1');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-08d62b56-7388-4c3a-a343-4b86fbea0109">
+  <button class="colab-df-quickchart" onclick="quickchart('df-08d62b56-7388-4c3a-a343-4b86fbea0109')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-08d62b56-7388-4c3a-a343-4b86fbea0109 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="crawling_viva.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Crawling Viva</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Tugas%204.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tugas 4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scraping">Scraping</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Pramudya Dwi Febrianto
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
